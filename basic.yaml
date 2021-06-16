@@ -1,0 +1,17 @@
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '':
+       - themes://basic
+
+enabled: true
+favicon:
+logo:
+  file:
+  url:
+  alt:
+  remove_site_title: false
+  remove_home_url: false
+  custom_text:

@@ -1,0 +1,23 @@
+{# Start by setting the logo image to use later. #}
+{% if theme_var('logo.file') %}
+    {% set logo_img %}
+    {# TODO: Change logo file location #}
+        <img src="{{ url('theme://images/logo/'~theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('logo') }}" />
+    {% endset %}
+    <div class="logo">
+        {% if theme_var('logo.url') and theme_var('logo.alt') %}
+            <a href="{{ theme_var('logo.url') }}">{{ logo_img }}</a>
+        {% else %}
+            {{ logo_img }}
+        {% endif %}
+    </div>
+{% endif %}
+{% if not theme_var('logo.remove_site_title') or not theme_var('logo.file') %}
+    <div class="text">
+        {% if theme_var('logo.remove_home_url') %}
+            <span>{{ theme_var('logo.custom_text') ?: site.title }}</span>
+        {% else %}
+            <a href="{{ base_url }}"><span>{{ theme_var('logo.custom_text') ?: site.title }}</span></a>
+        {% endif %}
+    </div>
+{% endif %}

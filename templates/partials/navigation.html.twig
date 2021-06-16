@@ -1,0 +1,48 @@
+{% macro loop(page, tour) %}
+    {% import _self as self %}
+
+    {% for p in page.children.visible %}
+    <li class="{{ p.activeChild ? ' parent' : '' }}{{ p.active ? ' active' : '' }}">
+        {% if p.routable %}
+        <a href="{{ p.url }}" class="nav-item" {% if p.active %}aria-current="page"{% endif %}>{{ p.menu }}</a>
+            {% if (p.activeChild or p.active) and p.children.visible.count > 0 %}
+            <ul role="list">
+                {{ self.loop(p) }}
+            </ul>
+            {% endif %}
+        {% elseif p.children.visible.count > 0 %}
+        <button id="{{ p.slug }}-dd-btn"
+            {% if p.activeChild %}
+             class="nav-item dd-btn dd-caret-btn disabled" aria-expanded="true" aria-disabled="true"
+            {% else %}
+            class="nav-item dd-btn dd-caret-btn" aria-expanded="false"
+            {% endif %}
+        >
+            <span>{{ p.menu }}</span>
+            <i class="fas fa-caret-up" aria-hidden="true"></i>
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+        </button>
+        <ul class="dd-list" role="list">
+            {{ self.loop(p) }}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as macro %}
+
+<div class="sidenav">
+    <nav id="main-nav" aria-label="Primary" class="main-nav">
+        <div class="nav-btn-wrapper">
+            <button class="hamburger-btn" id="toggle-nav-btn" aria-expanded="false" data-toggle="main-nav-list">
+                <span class="sr-only">Menu</span>
+                <i class="fas fa-bars" aria-hidden="true"></i>
+                <i class="fas fa-minus" aria-hidden="true"></i>
+            </button>
+        </div>
+        <ul id="main-nav-list" class="hide" role="list">
+            {{ macro.loop(pages, false) }}
+        </ul>
+    </nav>
+</div>

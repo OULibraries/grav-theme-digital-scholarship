@@ -1,0 +1,85 @@
+name: Basic Theme
+version: 0.0.1
+description: Basic Theme - in development
+icon: book
+author:
+  name: Theo Acker/University of Oklahoma Libraries
+  email: theoacker@ou.edu
+  url: https://libraries.ou.edu/users/theo-acker
+homepage: https://github.com/TheoAcker12/grav-theme-basic
+demo:
+keywords:
+bugs: https://github.com/TheoAcker12/grav-theme-basic/issues
+docs: https://github.com/TheoAcker12/grav-theme-basic/blob/main/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.7.0' }
+
+form:
+  validation: loose
+  fields:
+
+    branding:
+      type: section
+      title: Branding
+    
+    favicon:
+      type: file
+      label: Favicon
+      description: Will be used instead of the default favicon `theme://images/default/favicon.png`. The favicon is the website icon shown in the address bar and bookmarks list.
+      markdown: true
+      destination: 'theme://images/favicon'
+      multiple: false
+      accept:
+        - image/*
+    
+    logo.file:
+      type: file
+      label: Logo
+      description: "Logo to display in every page's header."
+      destination: 'theme://images/logo'
+      multiple: false
+      accept:
+        - image/*
+
+    logo.url:
+      type: text
+      label: Logo Destination URL
+      description: 'Make the logo a link to the URL specified'
+
+    logo.alt:
+      type: text
+      label: Logo Alt Text
+      description: 'If logo is a link, describe where the link goes, otherwise describe the logo'
+    
+    logo.remove_site_title:
+      type: toggle
+      label: Remove Site Title
+      description: 'Check this if the logo will replace the site title. Will be ignored if no logo is provided.'
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    logo.remove_home_url:
+      type: toggle
+      label: Remove Home URL
+      description: "Make the site title normal text instead of a link to the website's homepage."
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    logo.custom_text:
+      type: text
+      label: Custom Logo Text
+      description: Replace the default site title with custom text.
+    
+    # TODO: Google Analytics section

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+    <head>
+    {% block head %}
+    {% block metadata %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% endblock metadata %}
+        
+        {# TODO: Deal with Google Analytics. Can check grav-theme-leaflet/templates/base.html.twig for sample code #}
+    
+        {# Favicon #}
+        {% set favicon = ((theme_var('favicon')|first).name) %}
+        {% if favicon %}
+            <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('theme://images/favicon/'~favicon) }}" />
+        {% else %}
+            <link rel="icon" type="image/png" href="{{ url('theme://images/default/favicon.png') }}" />
+        {% endif %}
+        
+        {# Page Title #}
+        {% set pageTitle = header.title ~ " | " ~ site.title %}
+        {% if header.title == site.title %}
+            {% set pageTitle = header.title %}
+        {% endif %}
+        <title>{{ pageTitle }}</title>
+    {% endblock head %}
+    
+    {# Assets - CSS and JS #}
+    {% block stylesheets %}
+        {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
+        {% do assets.addCss('theme://css/theme.css') %}
+    {% endblock stylesheets %}
+
+    {% block javascripts %}
+        {% do assets.addJs('jquery') %}
+        {% do assets.addJs('theme://js/theme.js') %}
+    {% endblock javascripts %}
+
+    {% block assets deferred %}
+        {{ assets.css()|raw }}
+        {{ assets.js()|raw }}
+    {% endblock assets %}
+    </head>
+    
+    <body>
+        <!-- skip link -->
+        <a href="#main" id="main-skip-link" class="skip-link">Skip to main content</a>
+        
+        <header id="top">
+        {% block header %}
+            {% include 'partials/header.html.twig' %}
+        {% endblock header %}
+        </header>
+
+    {% block navigation %}
+        {% include 'partials/navigation.html.twig' %}
+    {% endblock navigation %}
+
+        <main id="main">
+        {% block main %}
+        {% block title %}
+            <h1>{{ page.title }}</h1>
+        {% endblock title %}
+        {% block content %}
+            <div>
+                {{ page.content|raw }}
+            </div>
+        {% endblock content %}
+        {% endblock main %}
+        </main>
+    
+    {% block backtotop %}
+        {% include 'partials/bits/back_to_top.html.twig' %}
+    {% endblock backtotop %}
+
+    <footer id="footer">
+    {% block footer %}
+        {% include 'partials/footer.html.twig' %}
+    {% endblock footer %}
+    </footer>
+
+    {% block bottom %}
+        {{ assets.js('bottom')|raw }}
+    {% endblock bottom %}
+    </body>
+</html>
