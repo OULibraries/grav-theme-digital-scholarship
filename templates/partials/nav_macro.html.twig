@@ -1,0 +1,31 @@
+{% macro loop(page) %}
+    {% import _self as self %}
+
+    {% for p in page.children.visible %}
+    <li class="{{ p.activeChild ? ' parent' : '' }}{{ p.active ? ' active' : '' }}">
+        {% if p.routable %}
+        <a href="{{ p.url }}" class="nav-item" {% if p.active %}aria-current="page"{% endif %}>{{ p.menu }}</a>
+            {% if (p.activeChild or p.active) and p.children.visible.count > 0 %}
+            <ul role="list">
+                {{ self.loop(p) }}
+            </ul>
+            {% endif %}
+        {% elseif p.children.visible.count > 0 %}
+        <button id="{{ p.slug }}-dd-btn"
+            {% if p.activeChild %}
+             class="nav-item dd-btn dd-caret-btn disabled" aria-expanded="true" aria-disabled="true"
+            {% else %}
+            class="nav-item dd-btn dd-caret-btn" aria-expanded="false"
+            {% endif %}
+        >
+            <span>{{ p.menu }}</span>
+            <i class="fas fa-caret-up" aria-hidden="true"></i>
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+        </button>
+        <ul class="dd-list" role="list">
+            {{ self.loop(p) }}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+{% endmacro %}
