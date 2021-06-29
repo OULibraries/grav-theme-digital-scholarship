@@ -14,11 +14,11 @@ jQuery(document).ready(function() {
     if (sessionStorage.getItem("nav-expanded") === "true") toggleNavMenu($("#toggle-nav-btn"));
     else if (window.innerWidth > mobileWidth && sessionStorage.getItem("nav-expanded") !== "false") toggleNavMenu($("#toggle-nav-btn"));
     // navigation dropdown toggle
-    $("nav .dd-btn").on("click", function(e) {
+    $("#main-nav-list .dd-btn").on("click", function(e) {
         toggleNavDropdown(this);
         toggleStorage($(this).attr("id")+"-expanded");
     });
-    for (let btn of $("nav .dd-btn")) {
+    for (let btn of $("#main-nav-list .dd-btn")) {
         if (sessionStorage.getItem($(btn).attr("id")+"-expanded") === "true") toggleNavDropdown(btn);
     }
 
