@@ -21,6 +21,11 @@ jQuery(document).ready(function() {
     for (let btn of $("#main-nav-list .dd-btn")) {
         if (sessionStorage.getItem($(btn).attr("id")+"-expanded") === "true") toggleNavDropdown(btn);
     }
+    
+    // back to top button
+    $("#back-to-top").on("click", function(e) {
+        window.scrollTo(0, 0);
+    });
 
     // set role for all markdown notices
     let notices = document.getElementsByClassName("notices");
