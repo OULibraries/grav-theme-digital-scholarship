@@ -28,11 +28,13 @@
     {# Assets - CSS and JS #}
     {% block stylesheets %}
         {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
+        {% do assets.addCss('theme://css/modal.css') %}
         {% do assets.addCss('theme://css/theme.css') %}
     {% endblock stylesheets %}
 
     {% block javascripts %}
         {% do assets.addJs('jquery') %}
+        {% do assets.addJs('theme://js/modal.js') %}
         {% do assets.addJs('theme://js/theme.js') %}
     {% endblock javascripts %}
 
