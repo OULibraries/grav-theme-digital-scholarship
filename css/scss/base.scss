@@ -74,6 +74,9 @@ $desktop: 1200px;
     &:focus, &:active {
         top: 15px;
     }
+    &:visited {
+        color: $link-blue;
+    }
 }
 .list-unstyled {
     list-style: none;
@@ -103,7 +106,8 @@ $desktop: 1200px;
     color: $accent-color-1;
     background-color: $theme-color-1;
     text-align: center;
-    white-space: nowrap;
+    // white-space: nowrap;
+    white-space: pre-wrap;
     line-height: 1.2;
     @include font-size(16);
     user-select: none;
@@ -113,13 +117,20 @@ $desktop: 1200px;
         border-color: $theme-color-1;
         @include box-shadow(76);
     }
+    &:visited {
+        color: $accent-color-1;
+        &:hover, &:focus {
+            color: $theme-color-1;
+        }
+    }
 }
-.btn:disabled, .btn:disabled:hover, .btn:disabled:focus {
+.btn:disabled, .btn:disabled:hover, .btn:disabled:focus, .btn-disabled, .btn-disabled:hover, .btn-disabled:focus {
     pointer-events: none;
     cursor: default;
     background-color: #e2e2e2;
     color: #474747;
     border-color: #999;
+    box-shadow: none;
 }
 // TODO: Separate .btn vs. .btn-primary?
 .icon-btn {
@@ -134,8 +145,8 @@ $desktop: 1200px;
     background-color: $main-light;
     text-align: center;
     @include font-size(16);
-    &:hover, &:focus {
-        background-color: color.adjust($main-light, $lightness: -15%);
+    &:hover {
+        // background-color: color.adjust($main-light, $lightness: -15%);
         @include box-shadow(120);
     }
     &:active {
@@ -212,6 +223,9 @@ header {
         &:visited, &:hover, &:focus {
             color: inherit;
         }
+        &:hover:not(:focus) {
+            outline: 1px solid;
+        }
     }
     .logo {
         padding: 5px;
@@ -283,15 +297,11 @@ footer {
     }
     li {
         margin-bottom: 0;
+        border-bottom: 1px solid;
+        border-color: $nav-item-border;
         // bottom border
-        &:last-child > .nav-item {
+        &:last-child {
             border-bottom-style: none;
-        }
-        &:last-child.expanded > .nav-item {
-            border-bottom-style: solid;
-        }
-        &:not(:last-child) li:last-child > .nav-item {
-            border-bottom-style: solid;
         }
     }
     // nav-item - consistency for links and buttons
@@ -299,10 +309,8 @@ footer {
     .nav-item {
         display: block;
         padding: 5px 10px;
-        margin-top: 5px;
+        margin: 5px 0;
         border: none;
-        border-bottom: 1px solid;
-        border-color: $nav-item-border;
         color: inherit;
         background-color: transparent;
         @include font-size(18);
@@ -371,7 +379,7 @@ footer {
 /* Back to top button */
 #back-to-top {
     position: fixed;
-    display: none;
+    display: flex;
     bottom: 10%;
     right: 15px;
     width: 40px;
@@ -380,9 +388,13 @@ footer {
     box-sizing: border-box;
     color: #333;
     border-color: #333;
+    opacity: 0;
+    transition: opacity linear .5s;
+    pointer-events: none;
     @include font-size(21);
-    &.active {
-        display: flex;
+    &.active, &:focus {
+        opacity: 1;
+        pointer-events: auto;
     }
     &:hover, &:focus {
         color: #000;

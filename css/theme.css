@@ -32,6 +32,9 @@
 .skip-link:focus, .skip-link:active {
   top: 15px;
 }
+.skip-link:visited {
+  color: #004fa3;
+}
 
 .list-unstyled, .breadcrumbs ol, .main-nav ul {
   list-style: none;
@@ -59,7 +62,7 @@
   color: #fff;
   background-color: #070f4e;
   text-align: center;
-  white-space: nowrap;
+  white-space: pre-wrap;
   line-height: 1.2;
   font-size: 16px;
   font-size: 1.6rem;
@@ -72,13 +75,20 @@
   box-shadow: 0 0 2px 2px #4c4c4c;
   box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.5);
 }
+.btn:visited {
+  color: #fff;
+}
+.btn:visited:hover, .btn:visited:focus {
+  color: #070f4e;
+}
 
-.btn:disabled, .btn:disabled:hover, .btn:disabled:focus {
+.btn:disabled, .btn:disabled:hover, .btn:disabled:focus, .btn-disabled, .btn-disabled:hover, .btn-disabled:focus {
   pointer-events: none;
   cursor: default;
   background-color: #e2e2e2;
   color: #474747;
   border-color: #999;
+  box-shadow: none;
 }
 
 .icon-btn, .hamburger-btn {
@@ -95,8 +105,7 @@
   font-size: 16px;
   font-size: 1.6rem;
 }
-.icon-btn:hover, .hamburger-btn:hover, .icon-btn:focus, .hamburger-btn:focus {
-  background-color: #d9d9d9;
+.icon-btn:hover, .hamburger-btn:hover {
   box-shadow: 0 0 2px 2px #787878;
   box-shadow: 0 0 2px 2px rgba(120, 120, 120, 0.5);
 }
@@ -179,6 +188,9 @@ header a {
 header a:visited, header a:hover, header a:focus {
   color: inherit;
 }
+header a:hover:not(:focus) {
+  outline: 1px solid;
+}
 header .logo {
   padding: 5px;
   max-width: 100%;
@@ -251,23 +263,17 @@ footer {
 }
 .main-nav li {
   margin-bottom: 0;
+  border-bottom: 1px solid;
+  border-color: darkgray;
 }
-.main-nav li:last-child > .nav-item {
+.main-nav li:last-child {
   border-bottom-style: none;
-}
-.main-nav li:last-child.expanded > .nav-item {
-  border-bottom-style: solid;
-}
-.main-nav li:not(:last-child) li:last-child > .nav-item {
-  border-bottom-style: solid;
 }
 .main-nav .nav-item {
   display: block;
   padding: 5px 10px;
-  margin-top: 5px;
+  margin: 5px 0;
   border: none;
-  border-bottom: 1px solid;
-  border-color: darkgray;
   color: inherit;
   background-color: transparent;
   font-size: 18px;
@@ -333,7 +339,7 @@ footer {
 /* Back to top button */
 #back-to-top {
   position: fixed;
-  display: none;
+  display: flex;
   bottom: 10%;
   right: 15px;
   width: 40px;
@@ -342,11 +348,15 @@ footer {
   box-sizing: border-box;
   color: #333;
   border-color: #333;
+  opacity: 0;
+  transition: opacity linear 0.5s;
+  pointer-events: none;
   font-size: 21px;
   font-size: 2.1rem;
 }
-#back-to-top.active {
-  display: flex;
+#back-to-top.active, #back-to-top:focus {
+  opacity: 1;
+  pointer-events: auto;
 }
 #back-to-top:hover, #back-to-top:focus {
   color: #000;

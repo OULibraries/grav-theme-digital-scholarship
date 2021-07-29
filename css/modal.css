@@ -7,6 +7,8 @@
   border: 1px solid #000;
   background-color: #fff;
   min-height: 100vh;
+  /* added */
+  overflow-y: auto;
 }
 
 @media screen and (min-width: 600px) {
@@ -22,6 +24,8 @@
       min-width: calc(640px - (15px * 2)); /* == breakpoint - left+right margin */
       min-height: auto;
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.12), 0 15px 12px rgba(0, 0, 0, 0.22);
+      /* added: max-height so that the box stops the same distance from the edge that it starts */
+      max-height: calc(100% - 4rem);
     }
 }
 
@@ -169,6 +173,8 @@
   justify-content: space-between;
   border-bottom: 2px solid #333;
   margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
 }
 .dialog-top h2 {
   border: none;

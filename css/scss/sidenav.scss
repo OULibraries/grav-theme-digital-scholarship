@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* Sidenav (left) - Desktop Settings */
 @media (min-width: $tablet) {
     $sidenav-width: 240px;
@@ -26,7 +28,7 @@
     }
     .sidenav-hidden, .full {
         main {
-            transform: translateX(-$sidenav-width / 2 - $sidenav-margin);
+            transform: translateX(math.div(-$sidenav-width, 2) - $sidenav-margin);
         }
     }
     main {
