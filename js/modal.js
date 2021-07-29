@@ -460,3 +460,13 @@ aria.Utils = aria.Utils || {};
   }; // end replaceDialog
 
 }());
+
+// added:
+$(document).ready(function() {
+  $(".dialog-backdrop").on("click", function(e) {
+    closeDialog($(this).children()[1])
+  });
+  $(".dialog-backdrop").children().on("click", function(e) {
+      e.stopPropagation();
+  });
+})
