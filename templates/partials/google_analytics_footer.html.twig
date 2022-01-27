@@ -1,0 +1,16 @@
+{% if use_ga and (theme_var('ga.statement') or theme_var('ga.opt_out')) %}
+    <div id="ga" class="footer-section">
+        {% if theme_var('ga.statement') %}
+            <div id="ga-statement">
+                {{ theme_var('ga.statement') }}
+            </div>
+        {% endif %}
+        {% if theme_var('ga.opt_out') %}
+            <div id="ga-opt-out">
+                <div role="status" id="ga-status"></div>
+                {# TODO: Should button have aria-controls="ga-status"? #}
+                <button id="ga-toggle-btn" class="btn" data-tracking="true">Opt Out of Google Analytics</button>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

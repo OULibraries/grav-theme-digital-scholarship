@@ -1,8 +1,6 @@
 {# Can add custom content via page modules/footer #}
 {% if page.find('/modules/footer') %}
-<div class="footer-section">
-    {{ page.find('/modules/footer').content|raw }}
-</div>
+    <div class="footer-section">
+        {{ page.find('/modules/footer').content|raw }}
+    </div>
 {% endif %}
-    
-{# TODO: Provide button to opt out of (or opt back in to) Google Analytics. Check grav-theme-leaflet/templates/partials/footer.html.twig #}

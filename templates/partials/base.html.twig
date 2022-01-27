@@ -1,88 +1,129 @@
 <!DOCTYPE html>
-<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
-    <head>
+<html lang="TWIG">
+
     {% block head %}
-    {% block metadata %}
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {% endblock metadata %}
-        
-        {# TODO: Deal with Google Analytics. Can check grav-theme-leaflet/templates/base.html.twig for sample code #}
-    
-        {# Favicon #}
-        {% set favicon = ((theme_var('favicon')|first).name) %}
-        {% if favicon %}
-            <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('theme://images/favicon/'~favicon) }}" />
-        {% else %}
-            <link rel="icon" type="image/png" href="{{ url('theme://images/default/favicon.png') }}" />
-        {% endif %}
-        
-        {# Page Title #}
-        {% set pageTitle = header.title ~ " | " ~ site.title %}
-        {% if header.title == site.title %}
-            {% set pageTitle = header.title %}
-        {% endif %}
-        <title>{{ pageTitle }}</title>
-    {% endblock head %}
-    
-    {# Assets - CSS and JS #}
-    {% block stylesheets %}
-        {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
-        {% do assets.addCss('theme://css/modal.css') %}
-        {% do assets.addCss('theme://css/theme.css') %}
-    {% endblock stylesheets %}
+    <head>
 
-    {% block javascripts %}
-        {% do assets.addJs('jquery') %}
-        {% do assets.addJs('theme://js/modal.js') %}
-        {% do assets.addJs('theme://js/theme.js') %}
-    {% endblock javascripts %}
+        {% block metadata %}
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% endblock metadata %}
 
-    {% block assets deferred %}
-        {{ assets.css()|raw }}
-        {{ assets.js()|raw }}
-    {% endblock assets %}
+        {% block starting_scripts %}
+        {% endblock starting_scripts %}
+
+        {% block google_analytics %}
+            {% set use_ga = theme_var('use_ga') and theme_var('ga_id') %}
+            {% if use_ga %}
+                {% include 'partials/google_analytics_scripts.html.twig' %}
+            {% endif %}
+        {% endblock google_analytics %}
+
+        {% block favicon %}
+            {% set favicon = ((theme_var('favicon')|first).name) %}
+            {% if favicon %}
+                <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('theme://images/favicon/'~favicon) }}" />
+            {% else %}
+                <link rel="icon" type="image/png" href="{{ url('theme://images/default/favicon.png') }}" />
+            {% endif %}
+        {% endblock favicon %}
+
+        {% block page_title %}
+            {% set menu = header.menu ?: page.title %}
+            <title>{{ menu == site.title ? menu : menu ~ " | " ~ site.title }}</title>
+        {% endblock page_title %}
+
+        {% block stylesheets %}
+            {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
+            {% do assets.addCss('theme://css/modal.css') %}
+            {% do assets.addCss('theme://css/theme.css') %}
+            {% do assets.addCss('theme://css/' ~ theme_var('color_scheme') ~ '.css') %}
+        {% endblock stylesheets %}
+
+        {% block javascripts %}
+            {% do assets.addJs('jquery') %}
+            {% do assets.addJs('theme://js/modal.js') %}
+            {% do assets.addJs('theme://js/theme.js') %}
+        {% endblock javascripts %}
+
+        {% block assets deferred %}
+            {{ assets.css()|raw }}
+            {{ assets.js()|raw }}
+        {% endblock assets %}
+        
     </head>
-    
-    <body>
-        <!-- skip link -->
-        <a href="#main" id="main-skip-link" class="skip-link">Skip to main content</a>
-        
+    {% endblock head %}
+
+    {# In case someone wants to set something ahead of time, like body_classes #}
+    {% block setup %}
+        {% set body_classes = body_classes ~ ' ' ~ header.body_classes %}
+    {% endblock setup %}
+
+    {% block body %}
+    <body id="body" class="{{ body_classes }}{# Remove?{ theme_var('sticky_header') ?: ' sticky_header' }#}">
+
+        {% block skip %}
+            <a href="#main" id="main-skip-link" class="skip-link">Skip to Content</a>
+        {% endblock skip %}
+
+        {% block header_wrapper %}
         <header id="top">
-        {% block header %}
-            {% include 'partials/header.html.twig' %}
-        {% endblock header %}
+
+            {% block header %}
+                {% include 'partials/header.html.twig' %}
+            {% endblock header %}
+
         </header>
+        {% endblock header_wrapper %}
 
-    {% block navigation %}
-        {% include 'partials/navigation.html.twig' %}
-    {% endblock navigation %}
+        <div class="wrapper">
+            {% block navigation %}
+                {% include 'partials/navigation.html.twig' %}
+            {% endblock navigation %}
 
-        <main id="main">
-        {% block main %}
-        {% block title %}
-            <h1>{{ page.title }}</h1>
-        {% endblock title %}
-        {% block content %}
-            <div>
-                {{ page.content|raw }}
-            </div>
-        {% endblock content %}
-        {% endblock main %}
-        </main>
-    
-    {% block backtotop %}
-        {% include 'partials/bits/back_to_top.html.twig' %}
-    {% endblock backtotop %}
+            {% block main_wrapper %}
+            <main id="main">
 
-    <footer id="footer">
-    {% block footer %}
-        {% include 'partials/footer.html.twig' %}
-    {% endblock footer %}
-    </footer>
+                {% block main %}
 
-    {% block bottom %}
-        {{ assets.js('bottom')|raw }}
-    {% endblock bottom %}
+                    {% block title %}
+                        <h1>{{ page.title }}</h1>
+                    {% endblock title %}
+
+                    {% block content %}
+                        <div class="content-wrapper">
+                            {{  page.content|raw }}
+                        </div>
+                    {% endblock content %}
+
+                    {% block back_to_top %}
+                        {% include 'partials/back_to_top.html.twig' %}
+                    {% endblock back_to_top %}
+
+                {% endblock main %}
+            
+            </main>
+            {% endblock main_wrapper %}
+        </div>
+
+        {% block footer_wrapper %}
+        <footer id="footer">
+
+            {% block footer %}
+                {% if use_ga %}
+                    {% include 'partials/google_analytics_footer.html.twig' %}
+                {% endif %}
+                {% include 'partials/footer.html.twig' %}
+            {% endblock footer %}
+
+        </footer>
+        {% endblock footer_wrapper %}
+
+        {% block bottom %}
+            {{ assets.js('bottom')|raw }}
+        {% endblock bottom %}
+
     </body>
+    {% endblock body %}
+
 </html>

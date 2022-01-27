@@ -1,10 +1,10 @@
-{# Start by setting the logo image to use later. #}
 {% if theme_var('logo.file') %}
+    {# Start by setting the logo image for convenience. #}
     {% set logo_img %}
-    {# TODO: Change logo file location #}
-        <img src="{{ url('theme://images/logo/'~theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('logo') }}" />
+        <img src="{{ url('theme://images/logo/' ~ theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('logo') }}" />
     {% endset %}
     <div class="logo">
+        {# Only make the logo a link if a url and alt text have both been provided. #}
         {% if theme_var('logo.url') and theme_var('logo.alt') %}
             <a href="{{ theme_var('logo.url') }}">{{ logo_img }}</a>
         {% else %}
@@ -12,12 +12,18 @@
         {% endif %}
     </div>
 {% endif %}
-{% if not theme_var('logo.remove_site_title') or not theme_var('logo.file') %}
+
+{# Include the site title/custom title text if indicated or if no logo image has been provided. #}
+{% if theme_var('title.option') != 'none' or not theme_var('logo.file') %}
+    {% set title_text = (theme_var('title.option') == 'custom' and theme_var('title.custom')) ? theme_var('title.custom') : site.title %}
+    {% set title_url = theme_var('title.url') == 'default' ? base_url : (theme_var('title.url') == 'custom' and theme_var('title.custom_url')) ? theme_var('title.custom_url') : '' %}
     <div class="text">
-        {% if theme_var('logo.remove_home_url') %}
-            <span>{{ theme_var('logo.custom_text') ?: site.title }}</span>
+        {% if title_url %}
+            <a href="{{ title_url }}">
+                <span>{{ title_text }}</span>
+            </a>
         {% else %}
-            <a href="{{ base_url }}"><span>{{ theme_var('logo.custom_text') ?: site.title }}</span></a>
+            <span>{{ title_text }}</span>
         {% endif %}
     </div>
 {% endif %}

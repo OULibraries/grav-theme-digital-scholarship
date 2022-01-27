@@ -1,0 +1,12 @@
+<script>
+    const ga_property = "{{ theme_var('ga.id') }}";
+</script>
+<script src="{{ url('theme://js/ga.js') }}"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ theme_var('ga.id') }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "{{ theme_var('ga.id') }}");
+</script>

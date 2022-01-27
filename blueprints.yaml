@@ -1,11 +1,11 @@
 name: Basic Theme
-version: 0.0.1
+version: 1.0.0
 description: Basic Theme - in development
 icon: book
 author:
   name: Theo Acker/University of Oklahoma Libraries
   email: theoacker@ou.edu
-  url: https://libraries.ou.edu/users/theo-acker
+  url: https://libraries.ou.edu/users/theo-acker/theo-acker
 homepage: https://github.com/TheoAcker12/grav-theme-basic
 demo:
 keywords:
@@ -20,66 +20,133 @@ form:
   validation: loose
   fields:
 
-    branding:
-      type: section
-      title: Branding
-    
+    color_scheme:
+      type: select
+      label: Color Scheme
+      description: See documentation for more further customization options.
+      # TODO: Modify and provide actual options
+      options:
+        default: Default
+        op2: Option 2
+        op3: Option 3
+
     favicon:
       type: file
       label: Favicon
-      description: Will be used instead of the default favicon `theme://images/default/favicon.png`. The favicon is the website icon shown in the address bar and bookmarks list.
-      markdown: true
+      description: Will replace the default icon displayed in the address bar and bookmarks list for the website.
       destination: 'theme://images/favicon'
       multiple: false
       accept:
         - image/*
-    
+
+    link_new_tab:
+      type: toggle
+      label: Links open in new tab
+      description: All links added to content will be affected by this setting.
+      highlight: 1
+      default: 0
+      options:
+        0: PLUGIN_ADMIN.DISABLED
+        1: PLUGIN_ADMIN.ENABLED
+      validate:
+        type: bool
+
+    header_section:
+      type: section
+      title: Header Options
+      underline: true
+
+    # Remove? sticky_header:
+    #   type: toggle
+    #   label: Sticky Header
+    #   highlight: 1
+    #   default: 0
+    #   options:
+    #     0: PLUGIN_ADMIN.DISABLED
+    #     1: PLUGIN_ADMIN.ENABLED
+    #   validate:
+    #     type: bool
+
+    title.option:
+      type: select
+      label: Header Title
+      options:
+        default: Site Title
+        none: Remove Title
+        custom: Provide Custom Text
+
+    title.custom:
+      type: text
+      label: Custom Header Title
+      description: If nothing is provided, the site title will be used instead.
+
+    title.url:
+      type: select
+      label: Title URL
+      options:
+        default: Link to Home Page
+        none: Not a Link
+        custom: Provide Custom URL
+
+    title.custom_url:
+      type: text
+      label: Custom Title URL
+      description: If custom is selected but nothing is provided here, the header title will not be a link.
+
     logo.file:
       type: file
       label: Logo
-      description: "Logo to display in every page's header."
+      description: Logo to display in every page header.
       destination: 'theme://images/logo'
       multiple: false
       accept:
         - image/*
 
-    logo.url:
-      type: text
-      label: Logo Destination URL
-      description: 'Make the logo a link to the URL specified'
-
     logo.alt:
       type: text
       label: Logo Alt Text
-      description: 'If logo is a link, describe where the link goes, otherwise describe the logo'
-    
-    logo.remove_site_title:
-      type: toggle
-      label: Remove Site Title
-      description: 'Check this if the logo will replace the site title. Will be ignored if no logo is provided.'
-      highlight: 1
-      default: 0
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
+      description: Alternative text for the logo image. If the logo is a link, describe where the link goes. Otherwise describe the logo.
 
-    logo.remove_home_url:
-      type: toggle
-      label: Remove Home URL
-      description: "Make the site title normal text instead of a link to the website's homepage."
-      highlight: 1
-      default: 0
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-
-    logo.custom_text:
+    logo.url:
       type: text
-      label: Custom Logo Text
-      description: Replace the default site title with custom text.
-    
-    # TODO: Google Analytics section
+      label: Logo URL
+      description: Make the logo a link to the URL specified.
+
+    ga_section:
+      type: section
+      title: Google Analytics
+      underline: true
+
+    ga.enable:
+      type: toggle
+      label: Use Google Analytics
+      highlight: 1
+      default: 0
+      options:
+        0: PLUGIN_ADMIN.DISABLED
+        1: PLUGIN_ADMIN.ENABLED
+      validate:
+        type: bool
+
+    ga.id:
+      type: text
+      label: Google Analytics ID
+      # TODO: Description: What does this look like?
+
+    ga.statement:
+      type: text
+      label: Google Analytics Statement
+      description: Leave blank for no statement.
+      default: "TODO: This site uses Google Analytics...."
+
+    # TODO: Include, or not include?
+    ga.opt_out:
+      type: toggle
+      label: Include Google Analytics Opt-Out Button
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

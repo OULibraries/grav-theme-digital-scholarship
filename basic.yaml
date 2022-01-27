@@ -7,11 +7,20 @@ streams:
        - themes://basic
 
 enabled: true
+color_scheme: 'default'
 favicon:
+link_new_tab: false
+title:
+    option: 'default'
+    custom:
+    url: 'default'
+    custom_url:
 logo:
-  file:
-  url:
-  alt:
-  remove_site_title: false
-  remove_home_url: false
-  custom_text:
+    file:
+    alt:
+    url:
+ga:
+    enable: true
+    id:
+    statement:
+    opt_out: true

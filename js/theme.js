@@ -1,124 +1,73 @@
-const mobileWidth = 599;
-const backToTopScroll = 250;
-var current = {
-    scrollTick: false,
-    lastNavElement: null,
-}
+const MOBILE_WIDTH = 599; // anything under 600 pixels wide is counted as a mobile device
+const BACK_TO_TOP_Y = 250; // at 250px of scroll, the back to top button will appear
 
-jQuery(document).ready(function() {
-    // navigation toggle
-    $("#toggle-nav-btn").on("click", function(e) {
-        toggleNavMenu(this);
-        toggleStorage("nav-expanded");
-    });
-    if (sessionStorage.getItem("nav-expanded") === "true") toggleNavMenu($("#toggle-nav-btn"));
-    else if (window.innerWidth > mobileWidth && sessionStorage.getItem("nav-expanded") !== "false") toggleNavMenu($("#toggle-nav-btn"));
-    // navigation dropdown toggle
-    $("#main-nav-list .dd-btn").on("click", function(e) {
-        toggleNavDropdown(this);
-        toggleStorage($(this).attr("id")+"-expanded");
-    });
-    for (let btn of $("#main-nav-list .dd-btn")) {
-        if (sessionStorage.getItem($(btn).attr("id")+"-expanded") === "true") toggleNavDropdown(btn);
-    }
+$(document).ready(function() {
     
-    // back to top button
-    $("#back-to-top").on("click", function(e) {
-        window.scrollTo(0, 0);
+    // navigation functions
+    $("#nav-toggle-btn").on("click", function() {
+        this.classList.toggle("expanded");
+        $("#" + this.getAttribute("data-toggle")).toggleClass("hide");
+        togglePopupButton(this);
+    });
+    $("#main-nav-list .dd-btn").on("click", function() {
+        if (this.hasAttribute("disabled")) return;
+        this.parentElement.classList.toggle("expanded");
+        togglePopupButton(this);
     });
 
-    // set role for all markdown notices
-    let notices = document.getElementsByClassName("notices");
-    for (let i = 0; i < notices.length; i++) {
-        notices[i].setAttribute("role", "note");
-    }
+    // back to top link (make sure it scrolls the user to the top, just in case)
+    $("#back-to-top").on("click", function() { window.scrollTo(0, 0); });
 
-    // other functions
-    window.onscroll = function(e) {
-        if (!current.scrollTick) {
-            setTimeout(function () {
-                toggleBackToTop();
-                current.scrollTick = false;
+    // window scroll function (to prevent overloading) - any extension can modify the doWindowScrolledAction
+    let window_scroll_tick = false;
+    window.onscroll = function() {
+        if (!window_scroll_tick) {
+            setTimeout(function() {
+                doWindowScrollAction();
+                window_scroll_tick = false;
             }, 100);
         }
-        current.scrollTick = true;
+        window_scroll_tick = true;
     }
 
-    // TODO: ga.js can be found in grav-theme-default/js/tmp/
-    //if (typeof gaProperty !== "undefined") gaStartup();
+    // ---------- Supported Plugin Handling ---------- //
 
-    // TODO: check last nav element - see web dev project for example (I think)
+    // Markdown Notices (set role for notices)
+    $(".notices").attr("role", "note");
 
-    // TODO: Content transition - check grav-theme-default/js/tmp/sidenav.js
-
-    // TODO: temp - may go here, may go elsewhere
-    addExtraJs();
+    // TODO: Other plugins?
+    // Note: Some code for tablists could be found in theme.js for the original basic theme
 });
 
-// button functions
-function toggleNavMenu(el) {
-    $(el).toggleClass("expanded");
-    $("#" + $(el).attr("data-toggle")).toggleClass("hide");
-    toggleExpanded(el);
-    //$("body").toggleClass("sidenav-hidden");
+/**
+ * A function that can be overwritten. Overwriting function can easily manually call toggleBackToTop if it still wants that functionality.
+ */
+function doWindowScrollAction() {
+    toggleBackToTop();
 }
-function toggleNavDropdown(el) {
-    if ($(el).hasClass("disabled")) return;
-    $(el).parent("li").toggleClass("expanded");
-    toggleExpanded(el);
-}
-
-// simple functions
-function toggleExpanded(el) {
-    if ($(el).attr("aria-expanded") === "true") $(el).attr("aria-expanded", "false");
-    else $(el).attr("aria-expanded", "true");
-}
-function toggleStorage(varName) {
-    if (sessionStorage.getItem(varName) === "true") sessionStorage.setItem(varName, "false");
-    else sessionStorage.setItem(varName, "true");
-}
+/**
+ * If the current scroll value is greater than that determined by BACK_TO_TOP_Y, show the button. Note: Checking with both body and documentElement for thoroughness
+ */
 function toggleBackToTop() {
-    button = document.getElementById("back-to-top");
-    if (document.body.scrollTop > backToTopScroll || document.documentElement.scrollTop > backToTopScroll) {
-        button.classList.add("active");
-    } else {
-        button.classList.remove("active");
-    }
+    if (document.body.scrollTop > BACK_TO_TOP_Y || document.documentElement.scrollTop > BACK_TO_TOP_Y) $("#back-to-top").addClass("active");
+    else $("#back-to-top").removeClass("active");
 }
 
-function addExtraJs() {
-    // tablists
-    $("button[role='tab']").on('click keyup', function(e) {
-        if (e.type === "click" || e.which === 32 || e.which === 13) {
-            let parent = $(this).parents(".tabs").first();
-            // deactivate old tab
-            $(parent).find("button.active").attr("aria-selected", "false");
-            $(parent).find("button.active").attr("tabindex", "-1");
-            $(parent).find(".active").removeClass("active");
-            // activate new tab
-            $(this).addClass("active");
-            $(this).attr("aria-selected", "true");
-            $(this).attr("tabindex", "0");
-            $(parent).find("#"+$(this).attr("aria-controls")).addClass("active");
-        }
-        else if (e.which === 39 || e.which === 37 || e.which === 36 || e.which === 35) {
-            e.preventDefault();
-            let tabs = $(this).parent().children("button");
-            if (e.which === 39) {
-                // right arrow
-                if ($(this).next("button").length > 0) $(this).next("button")[0].focus();
-                else tabs[0].focus();
-            } else if (e.which === 37) {
-                // left arrow
-                if ($(this).prev("button").length > 0) $(this).prev("button").focus();
-                else tabs[tabs.length-1].focus();
-            } else if (e.which === 36) {
-                // home
-                tabs[0].focus();
-            } else if (e.which === 35) {
-                // end
-                tabs[tabs.length-1].focus();
-            }
-        }
-    });
+/**
+ * Convenience function for setting/removing aria-expanded for buttons with aria-haspopup="true". Note that the WAI specifications, as of Jan 19, 2022 recommend not including aria-expanded when the popup content is not shown instead of setting it to false. (Setting to false would still be okay though.)
+ * @param btn - The HTML button element
+ */
+function togglePopupButton(btn) {
+    if (btn.hasAttribute("aria-expanded")) this.removeAttribute("aria-expanded");
+    else this.setAttribute("aria-expanded", "true");
+}
+/**
+ * Simple checker using the viewport width. Returns true for small screens, false for larger.
+ */
+ function isMobile() {
+    return (window.innerWidth < MOBILE_WIDTH);
+}
+
+function isClickEvent(e) {
+    return (e.type === "click" || e.which === 32 || e.which === 13);
 }

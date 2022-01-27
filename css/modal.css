@@ -3,12 +3,14 @@
 [role="alertdialog"],
 [role="dialog"] {
   box-sizing: border-box;
-  padding: 15px;
+  /* removed: padding: 15px;*/
   border: 1px solid #000;
   background-color: #fff;
   min-height: 100vh;
   /* added */
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
 }
 
 @media screen and (min-width: 600px) {
@@ -172,7 +174,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: 2px solid #333;
-  margin-bottom: 2rem;
+  margin: 0;
+  padding: 2rem 3rem 1rem;
   position: sticky;
   top: 0;
 }
@@ -185,6 +188,12 @@
 .dialog-top .icon-btn {
   height: 3rem;
   width: 3rem;
+}
+.dialog-content {
+  padding-top: 2rem;
+  overflow-y: auto;
+  margin: 3rem;
+  margin-top: 0;
 }
 [role="dialog"] {
   font-size: 1.6rem;
