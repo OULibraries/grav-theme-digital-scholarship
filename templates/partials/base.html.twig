@@ -10,6 +10,9 @@
         {% endblock metadata %}
 
         {% block starting_scripts %}
+            <script>
+                const link_new_tab = {{ theme_var('link_new_tab') }};
+            </script>
         {% endblock starting_scripts %}
 
         {% block google_analytics %}

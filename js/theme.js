@@ -30,6 +30,17 @@ $(document).ready(function() {
         window_scroll_tick = true;
     }
 
+    // TODO: Just apply to main, or to header/footer/other?
+    // link behavior
+    if (link_new_tab) {
+        // first change target
+        $("main a").attr("target", "_blank");
+        // but make sure this doesn't apply to the back to top button
+        $("#back-to-top").removeAttr("target");
+    }
+    // any links that open in new tab should identify themselves visually and to AT
+    $("main a[target='_blank']").append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-alt'></i>");
+
     // ---------- Supported Plugin Handling ---------- //
 
     // Markdown Notices (set role for notices)
