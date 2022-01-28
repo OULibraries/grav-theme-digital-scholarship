@@ -69,8 +69,8 @@ function toggleBackToTop() {
  * @param btn - The HTML button element
  */
 function togglePopupButton(btn) {
-    if (btn.hasAttribute("aria-expanded")) this.removeAttribute("aria-expanded");
-    else this.setAttribute("aria-expanded", "true");
+    if (btn.hasAttribute("aria-expanded")) btn.removeAttribute("aria-expanded");
+    else btn.setAttribute("aria-expanded", "true");
 }
 /**
  * Simple checker using the viewport width. Returns true for small screens, false for larger.
