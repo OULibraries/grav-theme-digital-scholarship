@@ -1,13 +1,17 @@
-.sr-only, mark::before, mark::after, s::before, s::after, ins::before, ins::after, del::before, del::after {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-}
+@use "sass:color";
+
+$link-standard: #004fa3;
+$link-visited: #551A8B;
+$main-light: #fff;
+$main-dark: #333;
+$theme-color-1: #070f4e;
+$accent-color-1: #fff;
+$theme-color-2: #505050;
+$accent-color-2: #fff;
+
+$font-family-standard: Verdana, Helvetica, Arial, sans-serif;
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-heading: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 /*
 Things this file is for:
@@ -25,422 +29,211 @@ Things this file is not for:
 - etc
 
 */
+
+// Basics
 body {
-  color: #333;
-  background-color: #fff;
+  color: $main-dark;
+  background-color: $main-light;
   font-size: 14px;
   line-height: 1.4;
   letter-spacing: normal;
-  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-family: $font-family-standard;
 }
-
 header {
-  color: #070f4e;
-  background-color: #e3e3e3;
+  color: $theme-color-1;
+  background-color: color.adjust($main-light, $lightness: -11%);
   font-size: 25px;
   line-height: 2.1;
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:visited, &:hover, &:focus {
+      color: inherit;
+    }
+    &:hover:not(:focus) {
+      outline: 1px solid;
+    }
+  }
 }
-header a {
-  text-decoration: none;
-  color: inherit;
-}
-header a:visited, header a:hover, header a:focus {
-  color: inherit;
-}
-header:hover:not(:focus) {
-  outline: 1px solid;
-}
-
 .main-nav {
-  background-color: #505050;
-  color: #fff;
+  background-color: $theme-color-2;
+  color: $accent-color-2;
+  ul, li {
+    border-color: color.adjust($accent-color-2, $alpha: -.4%);
+  }
+  .nav-item {
+    color: inherit;
+    background-color: transparent;
+    font-size: 16px;
+    text-align: left;
+    line-height: 2.2;
+    text-underline-offset: 1px;
+    text-decoration: none;
+    &:hover, &:focus {
+      outline: revert;
+      color: $accent-color-1;
+      background-color: $theme-color-1;
+    }
+    &:disabled:hover, &.disabled:hover, &:disabled:focus, &.disabled:focus {
+      color: inherit;
+      background-color: transparent;
+    }
+  }
+  a.nav-item:hover, a.nav-item:focus {
+    text-decoration: underline;
+  }
+  .active > .nav-item {
+    color: $theme-color-1;
+    background-color: $accent-color-1;
+    &:hover, &:focus {
+      color: $accent-color-1;
+      background-color: $theme-color-1;
+    }
+  }
+  ul ul .nav-item {
+    font-size: 14px;
+  }
 }
-.main-nav ul, .main-nav li {
-  border-color: #fff;
-}
-.main-nav .nav-item {
-  color: inherit;
-  background-color: transparent;
-  font-size: 16px;
-  text-align: left;
-  line-height: 2.2;
-  text-underline-offset: 1px;
-  text-decoration: none;
-}
-.main-nav .nav-item:hover, .main-nav .nav-item:focus {
-  outline: revert;
-  color: #fff;
-  background-color: #070f4e;
-}
-.main-nav .nav-item:disabled:hover, .main-nav .nav-item:disabled:focus {
-  color: inherit;
-  background-color: transparent;
-}
-.main-nav a.nav-item:hover, .main-nav a.nav-item:focus {
-  text-decoration: underline;
-}
-.main-nav .active > .nav-item {
-  color: #070f4e;
-  background-color: #fff;
-}
-.main-nav .active > .nav-item:hover, .main-nav .active > .nav-item:focus {
-  color: #fff;
-  background-color: #070f4e;
-}
-.main-nav ul ul .nav-item {
-  font-size: 14px;
-}
-
 footer {
-  border-color: #333;
+  border-color: $main-dark;
   line-height: 1.7;
 }
 
+/* Typography */
+
+// Headings
 h1 {
   font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: $font-family-heading;
   font-size: 32px;
   text-align: center;
 }
-
 h2 {
   font-weight: bold;
-  font-family: Tahoma, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Tahoma, $font-family-heading;
   font-size: 26px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid $main-dark;
 }
-
 h3 {
   margin-top: 25px;
   font-weight: normal;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: $font-family-heading;
   font-size: 24px;
   border-left: 8px solid;
   border-bottom: 1px solid;
   padding-left: 8px;
-  border-color: #070f4e;
+  border-color: $theme-color-1;
 }
-
 h4 {
   margin-top: 20px;
   font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: $font-family-heading;
   font-size: 20px;
 }
-
 h5 {
   font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: $font-family-heading;
   font-size: 17px;
 }
-
 h6 {
   font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: $font-family-heading;
   font-size: 15px;
 }
-
+// Paragraphs and Lines
 p {
   margin: 0;
   margin-bottom: 10px;
 }
-
 hr {
   margin: 20px 0;
   border: none;
   border-bottom: 2px solid;
-  border-color: #545454;
+  border-color: color.adjust($main-dark, $lightness: 13%);
 }
-
+// Links
 main a, footer a {
   text-decoration: underline;
-  color: #004fa3;
+  color: $link-standard;
+  &:focus, &:hover {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #aaa; // TODO
+    background-color: #f5f5f5; // TODO
+    color: $theme-color-1;
+    outline: revert;
+    outline-offset: 1px;
+    img {
+      outline: dotted 2px #000;
+    }
+  }
+  &:visited {
+    color: $link-visited;
+    &:focus, &:hover {
+      color: color.adjust($link-visited, $lightness: -15%);
+    }
+  }
 }
-main a:focus, main a:hover, footer a:focus, footer a:hover {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  border-color: #aaa;
-  background-color: #f5f5f5;
-  color: #070f4e;
-  outline: revert;
-  outline-offset: 1px;
-}
-main a:focus img, main a:hover img, footer a:focus img, footer a:hover img {
-  outline: dotted 2px #000;
-}
-main a:visited, footer a:visited {
-  color: #551A8B;
-}
-main a:visited:focus, main a:visited:hover, footer a:visited:focus, footer a:visited:hover {
-  color: #2e0e4b;
-}
-
 .skip-link {
   padding: 15px 10px;
   text-decoration: underline;
-  color: #004fa3;
-  background-color: #fff;
-  box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7);
-  border: 2px solid #333;
+  color: $link-standard;
+  background-color: $main-light;
+  box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7); // TODO
+  border: 2px solid $main-dark;
   border-radius: 10px;
-}
-.skip-link:visited {
-  color: #004fa3;
-}
-
-main ul, main ol {
-  display: flow-root;
-  margin: 0;
-  margin-bottom: 15px;
+  &:visited {
+    color: $link-standard;
+  }
 }
 
-main ol ol {
-  list-style-type: lower-alpha;
-}
-main ol ol ol {
-  list-style-type: lower-roman;
-}
-main ol ol ol ol {
-  list-style-type: decimal;
-}
-
-main li {
-  margin: 0;
-  margin-bottom: 5px;
-}
-
-dt {
-  font-weight: bold;
-}
-
-.list-unstyled {
-  list-style: none;
-  padding-inline-start: 0;
-  margin-bottom: 0;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  margin: 10px auto;
-  border: none;
-}
-
-blockquote {
-  margin: 1em 10px;
-  padding: 1em;
-  padding-bottom: 0.4em;
-  border-left: 0.8em solid;
-  font-size: 16.5px;
-  background-color: #eee;
-}
-
-figure blockquote {
-  margin-right: -30px;
-  margin-left: -30px;
-}
-
-main table, main .table {
-  width: 100%;
-  margin: 10px 0 20px 0;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-main table caption, main .table caption {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  text-align: left;
-}
-main table > thead, main .table > thead {
-  color: #000;
-  background-color: #ccc;
-  border: 1px solid #555;
-  border-bottom: 2px solid #555;
-}
-main table > thead > tr > th, main .table > thead > tr > th {
-  border-bottom: none;
-}
-main table th, main table td, main .table th, main .table td {
-  border: 1px solid #555;
-  padding: 8px;
-}
-main table > tbody > tr:hover, main table > tbody > tr:focus, main .table > tbody > tr:hover, main .table > tbody > tr:focus {
-  background-color: #ccc !important;
-  color: #000;
-}
-main table > tbody > tr:focus, main .table > tbody > tr:focus {
-  box-shadow: 0 0 3px 1px #333;
-  transform: translate(0, 0);
-}
-main table > tbody > tr:nth-of-type(odd), main .table > tbody > tr:nth-of-type(odd) {
-  background-color: #eee;
-}
-main table > tbody > tr > th, main .table > tbody > tr > th {
-  background-color: #ccc;
-  color: #000;
-}
-main table > thead + tbody > tr:nth-of-type(odd), main .table > thead + tbody > tr:nth-of-type(odd) {
-  background-color: inherit;
-}
-main table > thead + tbody > tr:nth-of-type(even), main .table > thead + tbody > tr:nth-of-type(even) {
-  background-color: #eee;
-}
-
-code, samp {
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  color: #070f4e;
-  background-color: #f3f3f3;
-}
-
-kbd {
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  background-color: #eee;
-  border-radius: 3px;
-  border: 1px solid #b4b4b4;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
-  color: #333;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1;
-  padding: 2px 4px;
-  white-space: nowrap;
-}
-
-var {
-  font-weight: bold;
-  font-size: 15px;
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-del {
-  background-color: #fbb;
-  color: #333;
-  font-size: 15px;
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-del::before {
-  content: " [deletion start] ";
-}
-del::after {
-  content: " [deletion end] ";
-}
-
-ins {
-  background-color: #d4fcbc;
-  color: #333;
-  font-size: 15px;
-  text-decoration: none;
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-ins::before {
-  content: " [insertion start] ";
-}
-ins::after {
-  content: " [insertion end] ";
-}
-
-s {
-  font-size: 15px;
-}
-s::before {
-  content: " [strikethrough start] ";
-}
-s::after {
-  content: " [strikethrough end] ";
-}
-
-mark::before {
-  content: " [highlight start] ";
-}
-mark::after {
-  content: " [highlight end] ";
-}
-
-pre {
-  display: flow-root;
-  padding: 10px;
-  margin: 10px 0 20px 0;
-  border: none;
-  background-color: #121212;
-  border-radius: 5px;
-}
-pre code {
-  white-space: pre-wrap;
-  color: #f8f8f8;
-  background-color: #121212;
-}
-
-caption {
-  color: #454545;
-}
-
-address {
-  margin-bottom: 15px;
-}
-address span {
-  margin-bottom: 5px;
-  display: block;
-}
-
+// Buttons
 button, input {
   cursor: pointer;
 }
-
 .btn {
   display: inline-block;
   padding: 10px 15px;
   margin: 10px;
-  border: 1px solid #fff;
+  border: 1px solid $accent-color-1;
   border-radius: 10px;
-  color: #fff;
-  background-color: #070f4e;
+  color: $accent-color-1;
+  background-color: $theme-color-1;
   text-align: center;
   white-space: pre-wrap;
   line-height: 1.2;
   font-size: 16px;
   user-select: none;
+  &:hover, &:focus {
+    color: $theme-color-1;
+    background-color: #e2e2e2; // TODO
+    border-color: $theme-color-1;
+    box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7); // TODO
+  }
+  &:visited {
+    color: $accent-color-1;
+    &:hover, &:focus {
+      color: $theme-color-1;
+    }
+  }
+  .outline-btn {
+    color: $theme-color-1;
+    background-color: $accent-color-1;
+    border-color: $theme-color-1;
+    &:hover, &:focus {
+      color: $accent-color-1;
+      background-color: $theme-color-1;
+      border-color: $accent-color-1;
+    }
+    &:visited {
+      color: $theme-color-1;
+      &:hover, &:focus {
+        color: $accent-color-1;
+      }
+    }
+  }
 }
-.btn:hover, .btn:focus {
-  color: #070f4e;
-  background-color: #e3e3e3;
-  border-color: #070f4e;
-  box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7);
-}
-.btn:visited {
-  color: #fff;
-}
-.btn:visited:hover, .btn:visited:focus {
-  color: #070f4e;
-}
-
-.outline-btn {
-  color: #070f4e;
-  background-color: #fff;
-  border-color: #070f4e;
-}
-.outline-btn:hover, .outline-btn:focus {
-  color: #fff;
-  background-color: #070f4e;
-  border-color: #fff;
-}
-.outline-btn:visited {
-  color: #070f4e;
-}
-.outline-btn:visited:hover, .outline-btn:visited:focus {
-  color: #fff;
-}
-
 .btn:disabled, .btn:disabled:hover, .btn:disabled:focus, .btn-disabled, .btn-disabled:hover, .btn-disabled:focus {
   pointer-events: none;
   cursor: default;
@@ -449,52 +242,279 @@ button, input {
   border-color: #999;
   box-shadow: none;
 }
-
-.icon-btn, .hamburger-btn {
+.icon-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
   height: 27px;
   width: 27px;
-  border: 2px solid #333;
+  border: 2px solid $main-dark;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: $main-light;
   text-align: center;
   font-size: 16px;
+  &:hover {
+    box-shadow: 0 0 2px 2px rgba(120, 120, 120, 0.7);
+  }
+  &:active {
+    background-color: #bfbfbf;
+  }
 }
-.icon-btn:hover, .hamburger-btn:hover {
-  box-shadow: 0 0 2px 2px rgba(120, 120, 120, 0.7);
-}
-.icon-btn:active, .hamburger-btn:active {
-  background-color: #bfbfbf;
-}
-
 .hamburger-btn {
   height: 32px;
   width: 32px;
   border-radius: 5px;
   font-size: 20px;
+  .fa-minus {
+    display: none;
+  }
 }
-.hamburger-btn .fa-minus {
-  display: none;
+.hamburger-btn.expanded, .expanded > .hamburger-btn {
+  .fa-bars {
+    display: none;
+  }
+  .fa-minus {
+    display: inline-block;
+  }
 }
 
-.hamburger-btn.expanded .fa-bars, .expanded > .hamburger-btn .fa-bars {
-  display: none;
+// Lists
+main ul, main ol {
+  display: flow-root;
+  margin: 0;
+  margin-bottom: 15px;
 }
-.hamburger-btn.expanded .fa-minus, .expanded > .hamburger-btn .fa-minus {
+main ol ol {
+  list-style-type: lower-alpha;
+  ol {
+    list-style-type: lower-roman;
+    ol {
+      list-style-type: decimal;
+    }
+  }
+}
+main li {
+  margin: 0;
+  margin-bottom: 5px;
+}
+dt {
+  font-weight: bold;
+}
+.list-unstyled {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-bottom: 0;
+}
+
+// Images
+img {
+  display: block;
+  max-width: 100%;
+  margin: 10px auto;
+  border: none;
+}
+
+// Blockquotes and Notices
+blockquote {
+  margin: 1em 10px;
+  padding: 1em;
+  padding-bottom: 0.4em;
+  border-left: 0.8em solid;
+  font-size: 16.5px;
+  background-color: #eee; // TODO
+}
+figure blockquote {
+  margin-right: -30px;
+  margin-left: -30px;
+}
+
+// Tables
+main table, main .table {
+  width: 100%;
+  margin: 10px 0 20px 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
+  }
+  & > thead {
+    color: #000; // TODO
+    background-color: #ccc; // TODO
+    border-color: #555; // TODO
+    border: 1px solid;
+    border-bottom: 2px solid;
+    & > tr > th {
+      border-bottom: none;
+    }
+  }
+  th, td {
+    border: 1px solid #555; // TODO
+    padding: 8px;
+  }
+  & > tbody > tr {
+    &:hover, &:focus {
+      background-color: #ccc !important; // TODO
+      color: #000; // TODO
+    }
+    &:focus {
+      box-shadow: 0 0 3px 1px $main-dark; // TODO
+      transform: translate(0, 0);
+    }
+    &:nth-of-type(odd) {
+      background-color: #eee; // TODO
+    }
+    & > th {
+      background-color: #ccc; // TODO
+      color: #000; // TODO
+    }
+  }
+  & > thead + tbody > tr {
+    &:nth-of-type(odd) {
+      background-color: inherit;
+    }
+    &:nth-of-type(even) {
+      background-color: #eee; // TODO
+    }
+  }
+}
+
+// Semantic Elements
+code, samp {
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: $font-family-monospace;
+  color: $theme-color-1;
+  background-color: #f3f3f3; // TODO
+}
+kbd {
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: $font-family-monospace;
+  background-color: #eee; // TODO
+  border-radius: 3px;
+  border: 1px solid #b4b4b4; // TODO
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset; // TODO
+  color: $main-dark;
   display: inline-block;
+  font-weight: bold;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+var {
+  font-weight: bold;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: $font-family-monospace;
+}
+del {
+  background-color: #fbb; // TODO
+  color: $main-dark;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: $font-family-monospace;
+  &::before {
+    content: " [deletion start] ";
+  }
+  &::after {
+    content: " [deletion end] ";
+  }
+  &::before, &::after {
+      @extend .sr-only;
+  }
+}
+ins {
+  background-color: #d4fcbc; // TODO
+  color: $main-dark;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: $font-family-monospace;
+  &::before, &::after {
+      @extend .sr-only;
+  }
+  &::before {
+    content: " [insertion start] ";
+  }
+  &::after {
+    content: " [insertion end] ";
+  }
+}
+s {
+  font-size: 15px;
+  &::before, &::after {
+      @extend .sr-only;
+  }
+  &::before {
+    content: " [strikethrough start] ";
+  }
+  &::after {
+    content: " [strikethrough end] ";
+  }
+}
+mark {
+  &::before, &::after {
+      @extend .sr-only;
+  }
+  &::before {
+    content: " [highlight start] ";
+  }
+  &::after {
+    content: " [highlight end] ";
+  }
 }
 
+// Code Blocks
+
+pre {
+  display: flow-root;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border: none;
+  background-color: #121212; // TODO
+  border-radius: 5px;
+  code {
+    white-space: pre-wrap;
+    color: #f8f8f8; // TODO
+    background-color: #121212; // TODO
+  }
+}
+caption {
+    color: color.adjust($main-dark, $lightness: 7%);
+}
+address {
+  margin-bottom: 15px;
+  span {
+    margin-bottom: 5px;
+    display: block;
+  }
+}
+
+// Utility Classes
+
+.sr-only {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+}
 .hide, .hidden {
   display: none;
 }
 
+// Font Awesome
 .fa-external-link-alt {
   padding: 2px;
   margin-left: 2px;
-  color: #333;
+  color: $main-dark;
 }
-
-/*# sourceMappingURL=style.scss.map */
