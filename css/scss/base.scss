@@ -1,20 +1,24 @@
 // Variables
 
 // TODO: For media queries?
-$size-1: 320px; // small phone
-$size-2: 480px; // large phone
-$size-3: 768px; // tablet
-$size-4: 1024px; // laptop
-$size-5: 1200px; // desktop
-$size-6: 1600px; // large monitor
+$small: 320px; // small phone
+$phone: 480px; // large phone
+$tablet: 768px; // tablet
+$laptop: 1024px; // laptop
+$desktop: 1200px; // desktop
+$large: 1440px; // large monitor
+
+// TODO: Best?
+$max-width: 1200px;
+$max-padding: calc(50vw - ($max-width)/2);
 
 // general utility
-@media (min-width: $size-3) {
+@media (min-width: $tablet) {
     .mobile-only {
         display: none !important;
     }
 }
-@media (max-width: ($size-3 - 1)) {
+@media (max-width: ($tablet - 1)) {
     .desktop-only {
         display: none !important;
     }
@@ -24,89 +28,96 @@ $size-6: 1600px; // large monitor
 body {
     margin: 0;
 }
-
-// Let's talk basic layout, first
 header {
     display: flex;
-    .logo {
-        flex-grow: .3;
-    }
-    .text {
-        flex-grow: 1;
-        text-align: center;
-    }
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 0;
     & > div {
-        // negotiable, but a good start
-        margin: 10px;
+        margin: 0 10px;
+        flex-grow: 1;
+        flex-basis: 50%;
     }
-    span, img {
+    span {
         display: block;
         padding: 10px;
     }
-}
-/* todo: temp?
-header {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
     .logo {
-        padding: 5px;
-        max-width: 100%;
-        min-width: 275px;
-        img {
-            margin: auto;
-            max-height: 75px;
-        }
         a {
             display: block;
+        }
+        img {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 5px;
         }
     }
     .text {
-        padding: 5px;
+        text-align: center;
         a {
-            display: block;
-            outline-offset: 3px;
+            display: inline-block;
         }
     }
-    @media (min-width: $tablet) {
-        @include font-size(32);
-        .logo {
-            max-width: 40%;
-            img {
-                max-height: 90px;
-            }
-        }
+    @media (min-width: $phone) {
+        flex-wrap: nowrap;
+    }
+    @media(min-width: $tablet) {
+        padding: 10px;
     }
     @media (min-width: $laptop) {
-        @include font-size(36);
+        padding: 10px 20px;
+    }
+    @media(min-width: ($max-width + 120)) {
+        padding: 10px $max-padding;
     }
 }
-*/
-// TODO: Determine the appropriate sizes to make the nav and content layout change
-@media (min-width: 1200px) {
-    .wrapper {
-        display: grid;
-        grid-template-columns: 2fr 7fr;
-        grid-template-rows: repeat(2, min-content);
-        grid-column-gap: 40px;
-        padding: 50px;
-    }
+
+.wrapper {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, min-content);
     nav {
         grid-row: 1;
         grid-column: 1;
     }
     main {
-        grid-row: 1 / 3;
-        grid-column: 2;
+        grid-row: 2;
+        grid-column: 1;
     }
+    @media (min-width: $phone) {
+        padding: 20px;
+    }
+    @media (min-width: $tablet) {
+        padding: 20px 50px;
+    }
+    @media (min-width: $laptop) {
+        grid-template-columns: 2fr 7fr;
+        grid-column-gap: 40px;
+        padding: 20px 80px;
+        main {
+            grid-row: 1 / 3;
+            grid-column: 2;
+        }
+    }
+    @media(min-width: ($max-width + 120)) {
+        padding: 20px $max-padding;
+    }
+}
+
+#nav-toggle-btn {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 .main-nav {
     display: flex;
     flex-direction: column;
+    padding-left: 5px;
     .nav-item {
         display: block;
-        padding: 5px 10px;
-        margin: 5px 0;
+        width: 100%;
+        padding: 10px;
+        margin: 0;
         box-sizing: border-box;
         border: none;
         text-align: left;
@@ -116,17 +127,27 @@ header {
             display: none;
         }
     }
-    li:not(:first-child), li.expanded ul {
-        border-top: 1px solid;
+    li:not(:first-child), li.expanded ul, li.parent ul, li.acive ul {
+        border-top-width: 1px;
+        border-top-style: solid;
+    }
+    ul {
+        margin-top: 0;
     }
     ul ul {
         margin-left: 10px;
     }
-    ul.dd-list {
+    ul ul {
         display: none;
     }
-    .expanded > ul.dd-list, .parent > ul.dd-list {
+    .expanded > ul, .parent > ul, .active > ul {
         display: block;
+    }
+    @media (min-width: $laptop) {
+        margin-top: 20px;
+        #nav-toggle-btn {
+            display: none;
+        }
     }
 }
 .dd-caret-btn {
@@ -143,14 +164,22 @@ header {
     }
 }
 
-// todo: main {
-//    margin: 25px 0;
-//    padding: 0 10px;
-//}
-
 footer {
-    padding: 10px 5px;
-    border-top: 2px solid;
+    padding: 10px 15px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    @media (min-width: $phone) {
+        padding: 10px 20px;
+    }
+    @media (min-width: $tablet) {
+        padding: 20px 50px;
+    }
+    @media (min-width: $laptop) {
+        padding: 30px 80px;
+    }
+    @media (min-width: ($max-width + 120)) {
+        padding: 40px $max-padding;
+    }
 }
 
 #main-skip-link {
@@ -172,17 +201,13 @@ footer {
     right: 15px;
     width: 40px;
     height: 40px;
-    text-decoration: none;
     box-sizing: border-box;
     border-width: 2px;
-    opacity: 0;
-    transition: opacity linear .5s;
-    &.active, &:focus {
-        opacity: 1;
-        pointer-events: auto;
+    @media (min-width: $laptop) {
+        right: 30px;
     }
-    &:hover, &:focus {
-        color: #000;
-        border-color: #000;
+    @media (min-width: ($max-width + 120)) {
+        right: $max-padding;
+        transform: translateX(50px);
     }
 }

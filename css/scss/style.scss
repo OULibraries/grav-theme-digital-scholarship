@@ -9,9 +9,22 @@ $accent-color-1: #fff;
 $theme-color-2: #505050;
 $accent-color-2: #fff;
 
+$notices-yellow: #B68A1B;
+$notices-green: #228b22;
+$notices-blue: #0000cd;
+$notices-red: #b22222;
+
 $font-family-standard: Verdana, Helvetica, Arial, sans-serif;
 $font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-heading: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+// TODO: For media queries?
+$small: 320px; // small phone
+$phone: 480px; // large phone
+$tablet: 768px; // tablet
+$laptop: 1024px; // laptop
+$desktop: 1200px; // desktop
+$large: 1600px; // large monitor
 
 /*
 Things this file is for:
@@ -42,8 +55,7 @@ body {
 header {
   color: $theme-color-1;
   background-color: color.adjust($main-light, $lightness: -11%);
-  font-size: 25px;
-  line-height: 2.1;
+  font-size: 20px;
   a {
     text-decoration: none;
     color: inherit;
@@ -54,17 +66,24 @@ header {
       outline: 1px solid;
     }
   }
+  @media(min-width: $phone) {
+    font-size: 22px;
+  }
+  @media(min-width: $tablet) {
+    font-size: 25px;
+  }
 }
+
 .main-nav {
   background-color: $theme-color-2;
   color: $accent-color-2;
   ul, li {
-    border-color: color.adjust($accent-color-2, $alpha: -.4%);
+    border-color: color.adjust($accent-color-2, $alpha: -.5%);
   }
   .nav-item {
     color: inherit;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
     line-height: 2.2;
     text-underline-offset: 1px;
@@ -90,8 +109,19 @@ header {
       background-color: $theme-color-1;
     }
   }
-  ul ul .nav-item {
-    font-size: 14px;
+}
+#back-to-top {
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity linear .5s;
+  color: #333;
+  &.active, &:focus {
+      opacity: 1;
+      pointer-events: auto;
+  }
+  &:hover, &:focus {
+      color: #000;
+      border-color: #000;
   }
 }
 footer {
@@ -109,6 +139,7 @@ h1 {
   text-align: center;
 }
 h2 {
+  margin-top: 40px;
   font-weight: bold;
   font-family: Tahoma, $font-family-heading;
   font-size: 26px;
@@ -116,7 +147,7 @@ h2 {
   border-bottom: 2px solid $main-dark;
 }
 h3 {
-  margin-top: 25px;
+  margin-top: 35px;
   font-weight: normal;
   font-family: $font-family-heading;
   font-size: 24px;
@@ -126,26 +157,27 @@ h3 {
   border-color: $theme-color-1;
 }
 h4 {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 15px;
   font-weight: bold;
   font-family: $font-family-heading;
   font-size: 20px;
 }
 h5 {
+  margin-top: 25px;
+  margin-bottom: 15px;
   font-weight: bold;
   font-family: $font-family-heading;
   font-size: 17px;
 }
 h6 {
+  margin-top: 20px;
+  margin-bottom: 12px;
   font-weight: bold;
   font-family: $font-family-heading;
   font-size: 15px;
 }
 // Paragraphs and Lines
-p {
-  margin: 0;
-  margin-bottom: 10px;
-}
 hr {
   margin: 20px 0;
   border: none;
@@ -175,6 +207,12 @@ main a, footer a {
     }
   }
 }
+.fa-external-link-alt {
+  padding: 2px;
+  margin-left: 2px;
+  font-size: 10px;
+  color: #555; // TODO
+}
 .skip-link {
   padding: 15px 10px;
   text-decoration: underline;
@@ -191,6 +229,7 @@ main a, footer a {
 // Buttons
 button, input {
   cursor: pointer;
+  font-family: $font-family-standard;
 }
 .btn {
   display: inline-block;
@@ -203,7 +242,7 @@ button, input {
   text-align: center;
   white-space: pre-wrap;
   line-height: 1.2;
-  font-size: 16px;
+  font-size: 14px;
   user-select: none;
   &:hover, &:focus {
     color: $theme-color-1;
@@ -217,29 +256,29 @@ button, input {
       color: $theme-color-1;
     }
   }
-  .outline-btn {
+}
+.outline-btn {
+  color: $theme-color-1;
+  background-color: $accent-color-1;
+  border-color: $theme-color-1;
+  &:hover, &:focus {
+    color: $accent-color-1;
+    background-color: $theme-color-1;
+    //border-color: $accent-color-1;
+  }
+  &:visited {
     color: $theme-color-1;
-    background-color: $accent-color-1;
-    border-color: $theme-color-1;
     &:hover, &:focus {
       color: $accent-color-1;
-      background-color: $theme-color-1;
-      border-color: $accent-color-1;
-    }
-    &:visited {
-      color: $theme-color-1;
-      &:hover, &:focus {
-        color: $accent-color-1;
-      }
     }
   }
 }
 .btn:disabled, .btn:disabled:hover, .btn:disabled:focus, .btn-disabled, .btn-disabled:hover, .btn-disabled:focus {
   pointer-events: none;
   cursor: default;
-  background-color: #e2e2e2;
-  color: #474747;
-  border-color: #999;
+  background-color: #e2e2e2; // TODO
+  color: #474747; // TODO
+  border-color: #999; // TODO
   box-shadow: none;
 }
 .icon-btn {
@@ -255,10 +294,10 @@ button, input {
   text-align: center;
   font-size: 16px;
   &:hover {
-    box-shadow: 0 0 2px 2px rgba(120, 120, 120, 0.7);
+    box-shadow: 0 0 2px 2px rgba(120, 120, 120, 0.7); // TODO
   }
   &:active {
-    background-color: #bfbfbf;
+    background-color: #bfbfbf; // TODO
   }
 }
 .hamburger-btn {
@@ -282,8 +321,6 @@ button, input {
 // Lists
 main ul, main ol {
   display: flow-root;
-  margin: 0;
-  margin-bottom: 15px;
 }
 main ol ol {
   list-style-type: lower-alpha;
@@ -295,11 +332,12 @@ main ol ol {
   }
 }
 main li {
-  margin: 0;
-  margin-bottom: 5px;
+  margin-top: 5px;
 }
 dt {
   font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 2px;
 }
 .list-unstyled {
   list-style: none;
@@ -313,22 +351,77 @@ img {
   max-width: 100%;
   margin: 10px auto;
   border: none;
+  &.full {
+    width: 100%;
+  }
+  &.medium {
+    max-width: 600px;
+  }
+  &.small {
+    max-width: 400px;
+  }
+}
+// make sure there is space for the font awesome icon
+a[target="_blank"] img {
+  max-width: calc(100% - 25px);
+  margin-bottom: 0;
+}
+figure.image {
+  margin: 20px 40px;
+  p {
+    margin: 0;
+  }
+  img {
+    margin: 5px auto;
+  }
+  figcaption {
+    text-align: center; // TODO: ask
+    font-style: italic;
+    font-size: 105%;
+  }
 }
 
 // Blockquotes and Notices
 blockquote {
-  margin: 1em 10px;
-  padding: 1em;
-  padding-bottom: 0.4em;
-  border-left: 0.8em solid;
+  margin: 16px 10px;
+  padding: 5px 5px 5px 20px;
+  border-left: 12px solid;
   font-size: 16.5px;
   background-color: #eee; // TODO
 }
-figure blockquote {
-  margin-right: -30px;
-  margin-left: -30px;
+figure.quote {
+  margin: 20px 15px;
+  blockquote {
+    margin-bottom: 10px;
+  }
+  figcaption {
+    margin-left: 50px;
+  }
+}
+.notices, .notices.yellow, .notices.green, .notices.red, .notices.blue {
+  padding: 5px 5px 5px 20px;
+  color: $main-dark;
+  border: 2px solid;
+  border-left: 10px solid;
+}
+.notices.green {
+  border-color: $notices-green;
+  background-color: color.adjust($notices-green, $lightness: 60%);
+}
+.notices.yellow {
+  border-color: $notices-yellow;
+  background-color: color.adjust($notices-yellow, $lightness: 50%);
+}
+.notices.red {
+  border-color: $notices-red;
+  background-color: color.adjust($notices-red, $lightness: 50%);
+}
+.notices.blue {
+  border-color: $notices-blue;
+  background-color: color.adjust($notices-blue, $lightness: 55%);
 }
 
+// TODO: Is scrolling-x auto and display block okay?
 // Tables
 main table, main .table {
   width: 100%;
@@ -380,6 +473,9 @@ main table, main .table {
     }
   }
 }
+caption {
+    color: color.adjust($main-dark, $lightness: 7%);
+}
 
 // Semantic Elements
 code, samp {
@@ -387,7 +483,7 @@ code, samp {
   border-radius: 4px;
   font-family: $font-family-monospace;
   color: $theme-color-1;
-  background-color: #f3f3f3; // TODO
+  background-color: #e7e7e7; // TODO
 }
 kbd {
   padding: 2px 4px;
@@ -473,20 +569,18 @@ mark {
 // Code Blocks
 
 pre {
-  display: flow-root;
+  //display: flow-root;
   padding: 10px;
   margin: 10px 0 20px 0;
-  border: none;
-  background-color: #121212; // TODO
-  border-radius: 5px;
+  //border: none;
+  //background-color: #121212; // TODO
+  //border-radius: 5px;
   code {
+    padding: 15px;
     white-space: pre-wrap;
     color: #f8f8f8; // TODO
     background-color: #121212; // TODO
   }
-}
-caption {
-    color: color.adjust($main-dark, $lightness: 7%);
 }
 address {
   margin-bottom: 15px;
@@ -510,11 +604,4 @@ address {
 }
 .hide, .hidden {
   display: none;
-}
-
-// Font Awesome
-.fa-external-link-alt {
-  padding: 2px;
-  margin-left: 2px;
-  color: $main-dark;
 }
