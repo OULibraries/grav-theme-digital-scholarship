@@ -430,6 +430,49 @@ main a:visited:focus, main a:visited:hover, footer a:visited:focus, footer a:vis
   color: #004fa3;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  margin: 10px auto;
+  border: none;
+}
+img.full {
+  width: 100%;
+}
+img.medium {
+  max-width: 600px;
+}
+img.small {
+  max-width: 400px;
+}
+
+figure.image {
+  margin: 20px 40px;
+}
+figure.image p {
+  margin: 0;
+}
+figure.image img {
+  margin: 5px auto;
+}
+figure.image figcaption {
+  text-align: center;
+  font-style: italic;
+  font-size: 105%;
+}
+
+.img-link-external:focus, .img-link-external:hover {
+  border: none;
+  background-color: transparent;
+}
+.img-link-external img {
+  display: inline-block;
+  max-width: calc(100% - 25px);
+}
+.img-link-external .fa-external-link-alt {
+  transform: translateY(-12px);
+}
+
 button, input {
   cursor: pointer;
   font-family: Verdana, Helvetica, Arial, sans-serif;
@@ -554,42 +597,6 @@ dt {
   margin-bottom: 0;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-  margin: 10px auto;
-  border: none;
-}
-img.full {
-  width: 100%;
-}
-img.medium {
-  max-width: 600px;
-}
-img.small {
-  max-width: 400px;
-}
-
-a[target=_blank] img {
-  max-width: calc(100% - 25px);
-  margin-bottom: 0;
-}
-
-figure.image {
-  margin: 20px 40px;
-}
-figure.image p {
-  margin: 0;
-}
-figure.image img {
-  margin: 5px auto;
-}
-figure.image figcaption {
-  text-align: center;
-  font-style: italic;
-  font-size: 105%;
-}
-
 blockquote {
   margin: 16px 10px;
   padding: 5px 5px 5px 20px;
@@ -640,8 +647,6 @@ main table, main .table {
   margin: 10px 0 20px 0;
   border-spacing: 0;
   border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
 }
 main table caption, main .table caption {
   padding-top: 8px;
@@ -684,12 +689,16 @@ main table > thead + tbody > tr:nth-of-type(even), main .table > thead + tbody >
   background-color: #eee;
 }
 
+caption {
+  color: #454545;
+}
+
 code, samp {
   padding: 2px 4px;
   border-radius: 4px;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   color: #070f4e;
-  background-color: #f3f3f3;
+  background-color: #e7e7e7;
 }
 
 kbd {
@@ -764,21 +773,14 @@ mark::after {
 }
 
 pre {
-  display: flow-root;
   padding: 10px;
   margin: 10px 0 20px 0;
-  border: none;
-  background-color: #121212;
-  border-radius: 5px;
 }
 pre code {
+  padding: 15px;
   white-space: pre-wrap;
   color: #f8f8f8;
   background-color: #121212;
-}
-
-caption {
-  color: #454545;
 }
 
 address {

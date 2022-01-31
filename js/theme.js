@@ -34,12 +34,11 @@ $(document).ready(function() {
     // link behavior
     if (link_new_tab) {
         // first change target
-        $("main a").attr("target", "_blank");
+        $("main a").add("footer a").attr("target", "_blank");
         // but make sure this doesn't apply to the back to top button
         $("#back-to-top").removeAttr("target");
     }
-    // any links that open in new tab should identify themselves visually and to AT
-    $("main a[target='_blank']").append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-alt'></i>");
+    modifyBlankLinks($("main").add("footer"));
 
     // ---------- Supported Plugin Handling ---------- //
 
@@ -49,6 +48,18 @@ $(document).ready(function() {
     // TODO: Other plugins?
     // Note: Some code for tablists could be found in theme.js for the original basic theme
 });
+
+/** 
+ * A function for modifying link behavior - any links that open in new tab should identify themselves visually and to AT. Provided here so that it is easier to change and/or add to what it affects. Call after modifying links to have the appropriate target.
+ * @param areas - a JQuery object containing all the areas to be searched for this kind of link
+ */
+function modifyBlankLinks(areas) {
+    let links = areas.find("a[target='_blank']");
+    links.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-alt'></i>");
+    // deal with image links
+    links.children("img").parent().addClass("img-link-external");
+
+}
 
 /**
  * A function that can be overwritten. Overwriting function can easily manually call toggleBackToTop if it still wants that functionality.

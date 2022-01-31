@@ -226,6 +226,51 @@ main a, footer a {
   }
 }
 
+// Images
+img {
+  display: block;
+  max-width: 100%;
+  margin: 10px auto;
+  border: none;
+  &.full {
+    width: 100%;
+  }
+  &.medium {
+    max-width: 600px;
+  }
+  &.small {
+    max-width: 400px;
+  }
+}
+figure.image {
+  margin: 20px 40px;
+  p {
+    margin: 0;
+  }
+  img {
+    margin: 5px auto;
+  }
+  figcaption {
+    text-align: center; // TODO: ask
+    font-style: italic;
+    font-size: 105%;
+  }
+}
+// make sure there is space for the font awesome icon and that the default link style isn't applied to it on focus/hover
+.img-link-external {
+  &:focus, &:hover {
+    border: none;
+    background-color: transparent;
+  }
+  img {
+    display: inline-block;
+    max-width: calc(100% - 25px);
+  }
+  .fa-external-link-alt {
+    transform: translateY(-12px);
+  }
+}
+
 // Buttons
 button, input {
   cursor: pointer;
@@ -343,42 +388,6 @@ dt {
   list-style: none;
   padding-inline-start: 0;
   margin-bottom: 0;
-}
-
-// Images
-img {
-  display: block;
-  max-width: 100%;
-  margin: 10px auto;
-  border: none;
-  &.full {
-    width: 100%;
-  }
-  &.medium {
-    max-width: 600px;
-  }
-  &.small {
-    max-width: 400px;
-  }
-}
-// make sure there is space for the font awesome icon
-a[target="_blank"] img {
-  max-width: calc(100% - 25px);
-  margin-bottom: 0;
-}
-figure.image {
-  margin: 20px 40px;
-  p {
-    margin: 0;
-  }
-  img {
-    margin: 5px auto;
-  }
-  figcaption {
-    text-align: center; // TODO: ask
-    font-style: italic;
-    font-size: 105%;
-  }
 }
 
 // Blockquotes and Notices
