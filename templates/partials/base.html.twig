@@ -58,8 +58,8 @@
     {% endblock head %}
 
     {# In case someone wants to set something ahead of time? #}
-    {# {% block setup %}
-    {% endblock setup %} #}
+    {% block setup %}
+    {% endblock setup %}
 
     {% block body %}
     <body id="body" class="{{ header.body_classes }}">
