@@ -4,11 +4,13 @@ const BACK_TO_TOP_Y = 250; // at 250px of scroll, the back to top button will ap
 $(document).ready(function() {
     
     // navigation functions
+    // nag-toggle-btn should show/hide the content specified by data-toggle attribute
     $("#nav-toggle-btn").on("click", function() {
         this.classList.toggle("expanded");
         $("#" + this.getAttribute("data-toggle")).toggleClass("hide");
         togglePopupButton(this);
     });
+    // nav dd-btns should show/hide content contained by parent element (excepting itself) unless disabled
     $("#main-nav-list .dd-btn").on("click", function() {
         if (this.hasAttribute("disabled")) return;
         this.parentElement.classList.toggle("expanded");
@@ -30,15 +32,15 @@ $(document).ready(function() {
         window_scroll_tick = true;
     }
 
-    // TODO: Just apply to main, or to header/footer/other?
-    // link behavior
-    if (link_new_tab) {
-        // first change target
-        $("main a").add("footer a").attr("target", "_blank");
-        // but make sure this doesn't apply to the back to top button
-        $("#back-to-top").removeAttr("target");
-    }
-    modifyBlankLinks($("main").add("footer"));
+    // // TODO: Just apply to main, or to header/footer/other?
+    // // link behavior
+    // if (link_new_tab) {
+    //     // first change target
+    //     $("main a").add("footer a").attr("target", "_blank");
+    //     // but make sure this doesn't apply to the back to top button
+    //     $("#back-to-top").removeAttr("target");
+    // }
+    // modifyBlankLinks($("main").add("footer"));
 
     // ---------- Supported Plugin Handling ---------- //
 
@@ -53,13 +55,13 @@ $(document).ready(function() {
  * A function for modifying link behavior - any links that open in new tab should identify themselves visually and to AT. Provided here so that it is easier to change and/or add to what it affects. Call after modifying links to have the appropriate target.
  * @param areas - a JQuery object containing all the areas to be searched for this kind of link
  */
-function modifyBlankLinks(areas) {
-    let links = areas.find("a[target='_blank']");
-    links.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-alt'></i>");
-    // deal with image links
-    links.children("img").parent().addClass("img-link-external");
+// function modifyBlankLinks(areas) {
+//     let links = areas.find("a[target='_blank']");
+//     links.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-alt'></i>");
+//     // deal with image links
+//     links.children("img").parent().addClass("img-link-external");
 
-}
+// }
 
 /**
  * A function that can be overwritten. Overwriting function can easily manually call toggleBackToTop if it still wants that functionality.

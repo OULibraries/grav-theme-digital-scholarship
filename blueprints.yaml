@@ -20,15 +20,15 @@ form:
   validation: loose
   fields:
 
-    color_scheme:
-      type: select
-      label: Color Scheme
-      description: See documentation for more further customization options.
-      # TODO: Modify and provide actual options
-      options:
-        default: Default
-        op2: Option 2
-        op3: Option 3
+    # color_scheme:
+    #   type: select
+    #   label: Color Scheme
+    #   description: See documentation for more further customization options.
+    #   # TODO: Modify and provide actual options
+    #   options:
+    #     default: Default
+    #     op2: Option 2
+    #     op3: Option 3
 
     favicon:
       type: file
@@ -39,17 +39,17 @@ form:
       accept:
         - image/*
 
-    link_new_tab:
-      type: toggle
-      label: Links open in new tab
-      description: All links added to content will be affected by this setting.
-      highlight: 1
-      default: 0
-      options:
-        0: PLUGIN_ADMIN.DISABLED
-        1: PLUGIN_ADMIN.ENABLED
-      validate:
-        type: bool
+    # link_new_tab:
+    #   type: toggle
+    #   label: Links open in new tab
+    #   description: All links added to content will be affected by this setting.
+    #   highlight: 1
+    #   default: 0
+    #   options:
+    #     0: PLUGIN_ADMIN.DISABLED
+    #     1: PLUGIN_ADMIN.ENABLED
+    #   validate:
+    #     type: bool
 
     header_section:
       type: section
@@ -75,12 +75,12 @@ form:
         none: Remove Title
         custom: Provide Custom Text
 
-    title.custom:
+    title.text:
       type: text
       label: Custom Header Title
       description: If nothing is provided, the site title will be used instead.
 
-    title.url:
+    title.url_option:
       type: select
       label: Title URL
       options:
@@ -91,7 +91,7 @@ form:
     title.custom_url:
       type: text
       label: Custom Title URL
-      description: If custom is selected but nothing is provided here, the header title will not be a link.
+      description: If custom is selected but nothing is provided here, the header title will link to the site home page.
 
     logo.file:
       type: file
@@ -112,41 +112,41 @@ form:
       label: Logo URL
       description: Make the logo a link to the URL specified.
 
-    ga_section:
-      type: section
-      title: Google Analytics
-      underline: true
+    # ga_section:
+    #   type: section
+    #   title: Google Analytics
+    #   underline: true
 
-    ga.enable:
-      type: toggle
-      label: Use Google Analytics
-      highlight: 1
-      default: 0
-      options:
-        0: PLUGIN_ADMIN.DISABLED
-        1: PLUGIN_ADMIN.ENABLED
-      validate:
-        type: bool
+    # ga.enable:
+    #   type: toggle
+    #   label: Use Google Analytics
+    #   highlight: 1
+    #   default: 0
+    #   options:
+    #     0: PLUGIN_ADMIN.DISABLED
+    #     1: PLUGIN_ADMIN.ENABLED
+    #   validate:
+    #     type: bool
 
-    ga.id:
-      type: text
-      label: Google Analytics ID
-      # TODO: Description: What does this look like?
+    # ga.id:
+    #   type: text
+    #   label: Google Analytics ID
+    #   # TODO: Description: What does this look like?
 
-    ga.statement:
-      type: text
-      label: Google Analytics Statement
-      description: Leave blank for no statement.
-      default: "TODO: This site uses Google Analytics...."
+    # ga.statement:
+    #   type: text
+    #   label: Google Analytics Statement
+    #   description: Leave blank for no statement.
+    #   default: "TODO: This site uses Google Analytics...."
 
-    # TODO: Include, or not include?
-    ga.opt_out:
-      type: toggle
-      label: Include Google Analytics Opt-Out Button
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
+    # # TODO: Include, or not include?
+    # ga.opt_out:
+    #   type: toggle
+    #   label: Include Google Analytics Opt-Out Button
+    #   highlight: 1
+    #   default: 1
+    #   options:
+    #     1: PLUGIN_ADMIN.ENABLED
+    #     0: PLUGIN_ADMIN.DISABLED
+    #   validate:
+    #     type: bool

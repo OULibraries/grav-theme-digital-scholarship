@@ -10,17 +10,17 @@
         {% endblock metadata %}
 
         {% block starting_scripts %}
-            <script>
+            {# <script>
                 const link_new_tab = {{ theme_var('link_new_tab') }};
-            </script>
+            </script> #}
         {% endblock starting_scripts %}
 
-        {% block google_analytics %}
+        {#% block google_analytics %}
             {% set use_ga = theme_var('use_ga') and theme_var('ga_id') %}
             {% if use_ga %}
                 {% include 'partials/google_analytics_scripts.html.twig' %}
             {% endif %}
-        {% endblock google_analytics %}
+        {% endblock google_analytics %#}
 
         {% block favicon %}
             {% set favicon = ((theme_var('favicon')|first).name) %}
@@ -38,14 +38,14 @@
 
         {% block stylesheets %}
             {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
-            {% do assets.addCss('theme://css/modal.css') %}
+            {#% do assets.addCss('theme://css/modal.css') %#}
             {% do assets.addCss('theme://css/theme.css') %}
-            {% do assets.addCss('theme://css/' ~ theme_var('color_scheme') ~ '.css') %}
+            {#% do assets.addCss('theme://css/' ~ theme_var('color_scheme') ~ '.css') %#}
         {% endblock stylesheets %}
 
         {% block javascripts %}
             {% do assets.addJs('jquery') %}
-            {% do assets.addJs('theme://js/modal.js') %}
+            {#% do assets.addJs('theme://js/modal.js') %#}
             {% do assets.addJs('theme://js/theme.js') %}
         {% endblock javascripts %}
 
@@ -57,13 +57,12 @@
     </head>
     {% endblock head %}
 
-    {# In case someone wants to set something ahead of time, like body_classes #}
-    {% block setup %}
-        {% set body_classes = body_classes ~ ' ' ~ header.body_classes %}
-    {% endblock setup %}
+    {# In case someone wants to set something ahead of time? #}
+    {# {% block setup %}
+    {% endblock setup %} #}
 
     {% block body %}
-    <body id="body" class="{{ body_classes }}{# Remove?{ theme_var('sticky_header') ?: ' sticky_header' }#}">
+    <body id="body" class="{{ header.body_classes }}">
 
         {% block skip %}
             <a href="#main" id="main-skip-link" class="skip-link">Skip to Content</a>
@@ -113,9 +112,9 @@
         <footer id="footer">
 
             {% block footer %}
-                {% if use_ga %}
+                {#% if use_ga %}
                     {% include 'partials/google_analytics_footer.html.twig' %}
-                {% endif %}
+                {% endif %#}
                 {% include 'partials/footer.html.twig' %}
             {% endblock footer %}
 

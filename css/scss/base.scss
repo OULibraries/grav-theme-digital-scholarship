@@ -148,6 +148,12 @@ header {
         #nav-toggle-btn {
             display: none;
         }
+        #main-nav-list > li:first-child {
+            margin-top: 5px;
+        }
+        #main-nav-list > li:last-child {
+            margin-bottom: 5px;
+        }
     }
 }
 .dd-caret-btn {

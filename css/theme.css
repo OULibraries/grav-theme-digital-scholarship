@@ -148,6 +148,12 @@ header .text a {
   .main-nav #nav-toggle-btn {
     display: none;
   }
+  .main-nav #main-nav-list > li:first-child {
+    margin-top: 5px;
+  }
+  .main-nav #main-nav-list > li:last-child {
+    margin-bottom: 5px;
+  }
 }
 
 .dd-caret-btn .fa-caret-up {
@@ -233,6 +239,7 @@ Things this file is not for:
 - margins and padding (with a few exceptions, generally for rare cases or typography)
 - size (height, width)
 - positioning
+- utility style classes, like list-unstyled
 - etc
 
 */
@@ -521,13 +528,13 @@ button, input {
   color: #fff;
 }
 
-.btn:disabled, .btn:disabled:hover, .btn:disabled:focus, .btn-disabled, .btn-disabled:hover, .btn-disabled:focus {
-  pointer-events: none;
-  cursor: default;
-  background-color: #e2e2e2;
-  color: #474747;
-  border-color: #999;
-  box-shadow: none;
+.btn:disabled, .btn-disabled, .btn.disabled, button:disabled, button.disabled {
+  pointer-events: none !important;
+  cursor: default !important;
+  background-color: #e2e2e2 !important;
+  color: #474747 !important;
+  border-color: #999 !important;
+  box-shadow: none !important;
 }
 
 .icon-btn {
@@ -589,12 +596,6 @@ dt {
   font-weight: bold;
   margin-top: 5px;
   margin-bottom: 2px;
-}
-
-.list-unstyled {
-  list-style: none;
-  padding-inline-start: 0;
-  margin-bottom: 0;
 }
 
 blockquote {
@@ -777,6 +778,7 @@ pre {
   margin: 10px 0 20px 0;
 }
 pre code {
+  display: block;
   padding: 15px;
   white-space: pre-wrap;
   color: #f8f8f8;
@@ -804,6 +806,12 @@ address span {
 
 .hide, .hidden {
   display: none;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=theme.css.map */

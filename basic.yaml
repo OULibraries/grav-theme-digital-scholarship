@@ -7,20 +7,20 @@ streams:
        - themes://basic
 
 enabled: true
-color_scheme: 'default'
+# color_scheme: 'default'
 favicon:
-link_new_tab: false
+# link_new_tab: false
 title:
     option: 'default'
-    custom:
-    url: 'default'
+    text:
+    url_option: 'default'
     custom_url:
 logo:
     file:
     alt:
     url:
-ga:
-    enable: true
-    id:
-    statement:
-    opt_out: true
+# ga:
+#     enable: true
+#     id:
+#     statement:
+#     opt_out: true
