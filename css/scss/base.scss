@@ -8,17 +8,22 @@ $laptop: 1024px; // laptop
 $desktop: 1200px; // desktop
 $large: 1440px; // large monitor
 
+// "mobile" cutoff
+$mobile: $tablet;
+
 // TODO: Best?
 $max-width: 1200px;
 $max-padding: calc(50vw - ($max-width)/2);
 
 // general utility
-@media (min-width: $tablet) {
+// tablet size or larger
+@media (min-width: $mobile) {
     .mobile-only {
         display: none !important;
     }
 }
-@media (max-width: ($tablet - 1)) {
+// smaller than tablet
+@media (max-width: ($mobile - 1)) {
     .desktop-only {
         display: none !important;
     }
@@ -105,7 +110,7 @@ header {
     }
 }
 
-#nav-toggle-btn {
+#nav-toggle-btn.expanded {
     border-bottom-width: 1px;
     border-bottom-style: solid;
 }
@@ -113,6 +118,10 @@ header {
     display: flex;
     flex-direction: column;
     padding-left: 5px;
+    #main-nav-list {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
     .nav-item {
         display: block;
         width: 100%;
@@ -148,11 +157,10 @@ header {
         #nav-toggle-btn {
             display: none;
         }
-        #main-nav-list > li:first-child {
-            margin-top: 5px;
-        }
-        #main-nav-list > li:last-child {
-            margin-bottom: 5px;
+    }
+    @media (max-width: ($laptop - 1)) {
+        .collapsed-mobile {
+            display: none;
         }
     }
 }

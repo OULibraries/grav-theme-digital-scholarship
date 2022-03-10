@@ -1,5 +1,6 @@
-const MOBILE_WIDTH = 599; // anything under 600 pixels wide is counted as a mobile device
+const MOBILE_WIDTH = 767; // anything under 768 pixels wide is counted as a mobile device
 const BACK_TO_TOP_Y = 250; // at 250px of scroll, the back to top button will appear
+const MEDIUM_WIDTH = 1024; // for nav
 
 $(document).ready(function() {
     
@@ -7,9 +8,14 @@ $(document).ready(function() {
     // nag-toggle-btn should show/hide the content specified by data-toggle attribute
     $("#nav-toggle-btn").on("click", function() {
         this.classList.toggle("expanded");
-        $("#" + this.getAttribute("data-toggle")).toggleClass("hide");
+        $("#" + this.getAttribute("data-toggle")).toggleClass("collapsed-mobile");
         togglePopupButton(this);
     });
+    // check if size is between mobile and medium
+    if ((window.innerWidth > MOBILE_WIDTH) && (window.innerWidth < MEDIUM_WIDTH)) {
+        // nav menu should be expanded by default
+        $("#nav-toggle-btn").click();
+    }
     // nav dd-btns should show/hide content contained by parent element (excepting itself) unless disabled
     $("#main-nav-list .dd-btn").on("click", function() {
         if (this.hasAttribute("disabled")) return;

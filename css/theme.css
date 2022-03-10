@@ -103,7 +103,7 @@ header .text a {
   }
 }
 
-#nav-toggle-btn {
+#nav-toggle-btn.expanded {
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
@@ -112,6 +112,10 @@ header .text a {
   display: flex;
   flex-direction: column;
   padding-left: 5px;
+}
+.main-nav #main-nav-list {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .main-nav .nav-item {
   display: block;
@@ -148,11 +152,10 @@ header .text a {
   .main-nav #nav-toggle-btn {
     display: none;
   }
-  .main-nav #main-nav-list > li:first-child {
-    margin-top: 5px;
-  }
-  .main-nav #main-nav-list > li:last-child {
-    margin-bottom: 5px;
+}
+@media (max-width: 1023px) {
+  .main-nav .collapsed-mobile {
+    display: none;
   }
 }
 
