@@ -24,12 +24,18 @@ h2 {
 hr {
     border-color: #555;
 }
-.btn:disabled, btn-disabled, .btn.disabled, button:disabled, button.disabled {
-    background-color: #e2e2e2;
-    color: #474747;
-    border-color: #999;
-    pointer-events: none;
-    cursor: default;
+button, .btn, .icon-btn {
+    &:disabled, &.disabled {
+        background-color: #e2e2e2;
+        color: #474747;
+        border-color: #999;
+        cursor: default;
+        &:hover {
+            background-color: #e2e2e2;
+            color: #474747;
+            border-color: #999;
+        }
+    }
 }
 .icon-btn, a.icon-btn {
     color: $main-text;

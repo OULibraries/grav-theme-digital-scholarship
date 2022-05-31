@@ -98,12 +98,16 @@ hr {
   box-shadow: 0 0 2px 2px #000;
 }
 
-.btn:disabled, btn-disabled, .btn.disabled, button:disabled, button.disabled {
+button:disabled, button.disabled, .btn:disabled, .btn.disabled, .icon-btn:disabled, .icon-btn.disabled {
   color: #c9c9c9;
   background-color: #333;
   border-color: #777;
-  pointer-events: none;
   cursor: default;
+}
+button:disabled:hover, button.disabled:hover, .btn:disabled:hover, .btn.disabled:hover, .icon-btn:disabled:hover, .icon-btn.disabled:hover {
+  color: #c9c9c9;
+  background-color: #333;
+  border-color: #777;
 }
 
 .icon-btn, a.icon-btn {

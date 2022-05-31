@@ -19,12 +19,16 @@ hr {
   border-color: #555;
 }
 
-.btn:disabled, btn-disabled, .btn.disabled, button:disabled, button.disabled {
+button:disabled, button.disabled, .btn:disabled, .btn.disabled, .icon-btn:disabled, .icon-btn.disabled {
   background-color: #e2e2e2;
   color: #474747;
   border-color: #999;
-  pointer-events: none;
   cursor: default;
+}
+button:disabled:hover, button.disabled:hover, .btn:disabled:hover, .btn.disabled:hover, .icon-btn:disabled:hover, .icon-btn.disabled:hover {
+  background-color: #e2e2e2;
+  color: #474747;
+  border-color: #999;
 }
 
 .icon-btn, a.icon-btn {

@@ -95,12 +95,18 @@ hr {
     border-color: #9f9f9f;
     box-shadow: 0 0 2px 2px #000;
 }
-.btn:disabled, btn-disabled, .btn.disabled, button:disabled, button.disabled {
-    color: #c9c9c9;
-    background-color: #333;
-    border-color: #777;
-    pointer-events: none;
-    cursor: default;
+button, .btn, .icon-btn {
+    &:disabled, &.disabled {
+        color: #c9c9c9;
+        background-color: #333;
+        border-color: #777;
+        cursor: default;
+        &:hover {
+            color: #c9c9c9;
+            background-color: #333;
+            border-color: #777;
+        }
+    }
 }
 .icon-btn, a.icon-btn {
     color: $pink;
