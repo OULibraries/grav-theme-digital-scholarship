@@ -21,9 +21,10 @@
             {% else %}
                 <button id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false">
             {% endif %}
+                <svg aria-hidden="true" height="10" width="10">
+                    <polygon class="icon" points="3,0 3,10 8,5" />
+                </svg>
                 <span>{{ p.menu }}</span>
-                <i class="fas fa-caret-up" aria-hidden="true"></i>
-                <i class="fas fa-caret-down" aria-hidden="true"></i>
             </button>
             <ul class="list-unstyled" role="list">
                 {{ self.loop(p) }}
@@ -34,11 +35,14 @@
 {% endmacro %}
 
 <nav id="main-nav" aria-label="Primary" class="main-nav sidenav">
-    <button id="nav-toggle-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false" data-toggle="main-nav-list">
-        <span>Menu</span>
-        <i class="fas fa-caret-up" aria-hidden="true"></i>
-        <i class="fas fa-caret-down" aria-hidden="true"></i>
-    </button>
+    <div class="toggle-wrapper">
+        <button id="nav-toggle-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false" data-toggle="main-nav-list">
+            <svg aria-hidden="true" height="10" width="10">
+                <polygon class="icon" points="3,0 3,10 8,5" />
+            </svg>
+            <span>Menu</span>
+        </button>
+    </div>
     <ul id="main-nav-list" class="list-unstyled collapsed" role="list">
         {{ self.loop(pages) }}
     </ul>

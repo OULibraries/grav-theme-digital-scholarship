@@ -122,9 +122,8 @@ header .text a:hover, header .text a:focus {
   padding-left: 5px;
   padding-right: 5px;
 }
-#main-nav #nav-toggle-btn.expanded {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+#main-nav .toggle-wrapper {
+  padding: 5px 0;
 }
 @media (min-width: 1024px) {
   #main-nav #nav-toggle-btn {
@@ -137,6 +136,10 @@ header .text a:hover, header .text a:focus {
   display: block;
 }
 @media (max-width: 1023px) {
+  #main-nav #main-nav-list {
+    border-top: 1px solid;
+    padding-top: 0;
+  }
   #main-nav #main-nav-list.collapsed {
     display: none;
   }
@@ -145,6 +148,7 @@ header .text a:hover, header .text a:focus {
   display: block;
   width: 100%;
   padding: 10px;
+  padding-left: 16px;
   margin: 0;
   box-sizing: border-box;
   border: none;
@@ -162,6 +166,22 @@ header .text a:hover, header .text a:focus {
 #main-nav .nav-item:disabled:hover, #main-nav .nav-item:disabled:focus, #main-nav .nav-item.disabled:hover, #main-nav .nav-item.disabled:focus {
   color: inhert;
   background-color: transparent;
+}
+#main-nav .dd-btn {
+  padding-left: 3px;
+  display: flex;
+  align-items: center;
+}
+#main-nav .dd-btn .icon {
+  transition: transform 0.2s ease;
+  transform-origin: 5px 5px;
+  fill: currentColor;
+}
+#main-nav .dd-btn[aria-expanded=true] .icon {
+  transform: rotate(90deg);
+}
+#main-nav .dd-btn > span {
+  padding-left: 3px;
 }
 #main-nav a.nav-item:hover, #main-nav a.nav-item:focus {
   text-decoration: underline;
@@ -286,16 +306,6 @@ footer {
 
 button, .btn {
   cursor: pointer;
-}
-
-.dd-caret-btn .fa-caret-up {
-  display: none;
-}
-.dd-caret-btn[aria-expanded=true] .fa-caret-down {
-  display: none;
-}
-.dd-caret-btn[aria-expanded=true] .fa-caret-up {
-  display: inline-block;
 }
 
 .btn, a.btn {

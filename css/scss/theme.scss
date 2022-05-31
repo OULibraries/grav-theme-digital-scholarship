@@ -124,11 +124,10 @@ header {
     flex-direction: column;
     padding-left: 5px;
     padding-right: 5px;
+    .toggle-wrapper {
+        padding: 5px 0;
+    }
     #nav-toggle-btn {
-        &.expanded {
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-        }
         @media (min-width: $laptop) {
             display: none;
         }
@@ -138,6 +137,8 @@ header {
         padding-bottom: 5px;
         display: block;
         @media (max-width: ($laptop - 1)) {
+            border-top: 1px solid;
+            padding-top: 0;
             &.collapsed {
                 display: none;
             }
@@ -147,6 +148,7 @@ header {
         display: block;
         width: 100%;
         padding: 10px;
+        padding-left: 16px;
         margin: 0;
         box-sizing: border-box;
         border: none;
@@ -165,6 +167,24 @@ header {
                 color: inhert;
                 background-color: transparent;
             }
+        }
+    }
+    .dd-btn {
+        padding-left: 3px;
+        display: flex;
+        align-items: center;
+        .icon {
+            transition: transform .2s ease;
+            transform-origin: 5px 5px;
+            fill: currentColor;
+        }
+        &[aria-expanded="true"] {
+            .icon {
+                transform: rotate(90deg);
+            }
+        }
+        &>span {
+            padding-left: 3px;
         }
     }
     a.nav-item:hover, a.nav-item:focus {
@@ -275,19 +295,6 @@ footer {
 // Buttons
 button, .btn {
     cursor: pointer;
-}
-.dd-caret-btn {
-    .fa-caret-up {
-        display: none;
-    }
-    &[aria-expanded="true"] {
-        .fa-caret-down {
-            display: none;
-        }
-        .fa-caret-up {
-            display: inline-block;
-        }
-    }
 }
 .btn, a.btn {
     display: inline-block;
