@@ -10,17 +10,14 @@
         {% endblock metadata %}
 
         {% block starting_scripts %}
-            {# <script>
-                const link_new_tab = {{ theme_var('link_new_tab') }};
-            </script> #}
-        {% endblock starting_scripts %}
-
-        {#% block google_analytics %}
-            {% set use_ga = theme_var('use_ga') and theme_var('ga_id') %}
-            {% if use_ga %}
-                {% include 'partials/google_analytics_scripts.html.twig' %}
+            {% if theme_var('link_new_tab') %}
+                <script>
+                    const link_new_tab = true;
+                    {% if theme_var('same_site_link_new_tab') %}const same_site_tab = true;{% endif %}
+                    const base_url = '{{ base_url }}';
+                </script>
             {% endif %}
-        {% endblock google_analytics %#}
+        {% endblock starting_scripts %}
 
         {% block favicon %}
             {% set favicon = ((theme_var('favicon')|first).name) %}
@@ -38,14 +35,14 @@
 
         {% block stylesheets %}
             {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
-            {#% do assets.addCss('theme://css/modal.css') %#}
+            {% do assets.addCss('theme://css/modal.css') %}
             {% do assets.addCss('theme://css/theme.css') %}
-            {#% do assets.addCss('theme://css/' ~ theme_var('color_scheme') ~ '.css') %#}
+            {% do assets.addCss('theme://css/' ~ theme_var('color_scheme') ~ '.css') %}
         {% endblock stylesheets %}
 
         {% block javascripts %}
             {% do assets.addJs('jquery') %}
-            {#% do assets.addJs('theme://js/modal.js') %#}
+            {% do assets.addJs('theme://js/modal.js') %}
             {% do assets.addJs('theme://js/theme.js') %}
         {% endblock javascripts %}
 
@@ -78,7 +75,7 @@
         </header>
         {% endblock header_wrapper %}
 
-        <div class="wrapper">
+        <div id="wrapper">
             {% block navigation %}
                 {% include 'partials/navigation.html.twig' %}
             {% endblock navigation %}
@@ -112,9 +109,6 @@
         <footer id="footer">
 
             {% block footer %}
-                {#% if use_ga %}
-                    {% include 'partials/google_analytics_footer.html.twig' %}
-                {% endif %#}
                 {% include 'partials/footer.html.twig' %}
             {% endblock footer %}
 

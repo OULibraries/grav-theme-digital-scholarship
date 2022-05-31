@@ -20,15 +20,17 @@ form:
   validation: loose
   fields:
 
-    # color_scheme:
-    #   type: select
-    #   label: Color Scheme
-    #   description: See documentation for more further customization options.
-    #   # TODO: Modify and provide actual options
-    #   options:
-    #     default: Default
-    #     op2: Option 2
-    #     op3: Option 3
+    color_scheme:
+      type: select
+      label: Color Scheme
+      description: See documentation for more further customization options.
+      default: blue
+      # TODO: Modify and provide actual options
+      options:
+        blue: Blue
+        crimson: Crimson
+        green: Green
+        dark: Dark
 
     favicon:
       type: file
@@ -39,33 +41,35 @@ form:
       accept:
         - image/*
 
-    # link_new_tab:
-    #   type: toggle
-    #   label: Links open in new tab
-    #   description: All links added to content will be affected by this setting.
-    #   highlight: 1
-    #   default: 0
-    #   options:
-    #     0: PLUGIN_ADMIN.DISABLED
-    #     1: PLUGIN_ADMIN.ENABLED
-    #   validate:
-    #     type: bool
+    link_new_tab:
+      type: toggle
+      label: Links open in new tab
+      description: All links added to content will be affected by this setting unless they are same-page links, links to pages in the same site, or already have their target attribute set. The default is for links to open in the same page.
+      highlight: 1
+      default: 0
+      options:
+        0: PLUGIN_ADMIN.DISABLED
+        1: PLUGIN_ADMIN.ENABLED
+      validate:
+        type: bool
+
+    same_site_link_new_tab:
+      type: toggle
+      label: Links to other pages in the same site open in new tab.
+      description: All links added to content will be affected by this setting. The default is for links to open in the same page.
+      toggleable: true
+      highlight: 1
+      default: 0
+      options:
+        0: PLUGIN_ADMIN.DISABLED
+        1: PLUGIN_ADMIN.ENABLED
+      validate:
+        type: bool
 
     header_section:
       type: section
       title: Header Options
       underline: true
-
-    # Remove? sticky_header:
-    #   type: toggle
-    #   label: Sticky Header
-    #   highlight: 1
-    #   default: 0
-    #   options:
-    #     0: PLUGIN_ADMIN.DISABLED
-    #     1: PLUGIN_ADMIN.ENABLED
-    #   validate:
-    #     type: bool
 
     title.option:
       type: select
@@ -111,42 +115,3 @@ form:
       type: text
       label: Logo URL
       description: Make the logo a link to the URL specified.
-
-    # ga_section:
-    #   type: section
-    #   title: Google Analytics
-    #   underline: true
-
-    # ga.enable:
-    #   type: toggle
-    #   label: Use Google Analytics
-    #   highlight: 1
-    #   default: 0
-    #   options:
-    #     0: PLUGIN_ADMIN.DISABLED
-    #     1: PLUGIN_ADMIN.ENABLED
-    #   validate:
-    #     type: bool
-
-    # ga.id:
-    #   type: text
-    #   label: Google Analytics ID
-    #   # TODO: Description: What does this look like?
-
-    # ga.statement:
-    #   type: text
-    #   label: Google Analytics Statement
-    #   description: Leave blank for no statement.
-    #   default: "TODO: This site uses Google Analytics...."
-
-    # # TODO: Include, or not include?
-    # ga.opt_out:
-    #   type: toggle
-    #   label: Include Google Analytics Opt-Out Button
-    #   highlight: 1
-    #   default: 1
-    #   options:
-    #     1: PLUGIN_ADMIN.ENABLED
-    #     0: PLUGIN_ADMIN.DISABLED
-    #   validate:
-    #     type: bool

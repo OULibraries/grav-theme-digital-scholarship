@@ -19,7 +19,7 @@
             {% if p.activeChild %}
                 <button id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn disabled" aria-expanded="true" aria-disabled="true" disabled>
             {% else %}
-                <button id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn" aria-haspopup="true">
+                <button id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false">
             {% endif %}
                 <span>{{ p.menu }}</span>
                 <i class="fas fa-caret-up" aria-hidden="true"></i>
@@ -34,12 +34,12 @@
 {% endmacro %}
 
 <nav id="main-nav" aria-label="Primary" class="main-nav sidenav">
-    <button id="nav-toggle-btn" class="nav-item dd-btn dd-caret-btn" aria-haspopup="true" data-toggle="main-nav-list">
+    <button id="nav-toggle-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false" data-toggle="main-nav-list">
         <span>Menu</span>
         <i class="fas fa-caret-up" aria-hidden="true"></i>
         <i class="fas fa-caret-down" aria-hidden="true"></i>
     </button>
-    <ul id="main-nav-list" class="list-unstyled collapsed-mobile" role="list">
+    <ul id="main-nav-list" class="list-unstyled collapsed" role="list">
         {{ self.loop(pages) }}
     </ul>
 </nav>

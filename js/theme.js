@@ -8,26 +8,22 @@ $(document).ready(function() {
     // nag-toggle-btn should show/hide the content specified by data-toggle attribute
     $("#nav-toggle-btn").on("click", function() {
         this.classList.toggle("expanded");
-        $("#" + this.getAttribute("data-toggle")).toggleClass("collapsed-mobile");
-        togglePopupButton(this);
+        $("#" + this.getAttribute("data-toggle")).toggleClass("collapsed");
+        toggleExpanded(this);
     });
-    // check if size is between mobile and medium
-    if ((window.innerWidth > MOBILE_WIDTH) && (window.innerWidth < MEDIUM_WIDTH)) {
-        // nav menu should be expanded by default
-        $("#nav-toggle-btn").click();
-    }
     // nav dd-btns should show/hide content contained by parent element (excepting itself) unless disabled
     $("#main-nav-list .dd-btn").on("click", function() {
         if (this.hasAttribute("disabled")) return;
         this.parentElement.classList.toggle("expanded");
-        togglePopupButton(this);
+        toggleExpanded(this);
     });
+    expandNav();
 
     // back to top link (make sure it scrolls the user to the top, just in case)
     $("#back-to-top").on("click", function() { window.scrollTo(0, 0); });
 
     // window scroll function (to prevent overloading) - any extension can modify the doWindowScrolledAction
-    let window_scroll_tick = false;
+    let window_scroll_tick = false; // TODO: Move this outside of the ready function
     window.onscroll = function() {
         if (!window_scroll_tick) {
             setTimeout(function() {
@@ -38,15 +34,7 @@ $(document).ready(function() {
         window_scroll_tick = true;
     }
 
-    // // TODO: Just apply to main, or to header/footer/other?
-    // // link behavior
-    // if (link_new_tab) {
-    //     // first change target
-    //     $("main a").add("footer a").attr("target", "_blank");
-    //     // but make sure this doesn't apply to the back to top button
-    //     $("#back-to-top").removeAttr("target");
-    // }
-    // modifyBlankLinks($("main").add("footer"));
+    modifyLinks();
 
     // ---------- Supported Plugin Handling ---------- //
 
@@ -57,17 +45,33 @@ $(document).ready(function() {
     // Note: Some code for tablists could be found in theme.js for the original basic theme
 });
 
-/** 
- * A function for modifying link behavior - any links that open in new tab should identify themselves visually and to AT. Provided here so that it is easier to change and/or add to what it affects. Call after modifying links to have the appropriate target.
- * @param areas - a JQuery object containing all the areas to be searched for this kind of link
- */
-// function modifyBlankLinks(areas) {
-//     let links = areas.find("a[target='_blank']");
-//     links.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-alt'></i>");
-//     // deal with image links
-//     links.children("img").parent().addClass("img-link-external");
+function modifyLinks() {
+    if (typeof(link_new_tab) != 'undefined' && link_new_tab) {
+        $("main a:not([target])").add("footer a:not([target])").each(function() {
+            let link = $(this);
+            // make sure link is not same-page or same-site link
+            let href = link.attr("href");
+            if (!href.startsWith("#") && (!(href.startsWith(base_url) || !href.startsWith('http')) || (typeof(same_site_tab) != 'undefined' && same_site_tab))) {
+                // change target and modify link
+                link.attr("target", "_blank");
+                link.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-icon'></i>");
+                // extra modification for image links
+                link.children("img").parent().addClass("img-link-external");
+            }
+        });
+    }
+}
 
-// }
+/**
+ * A function to expand the nav menu if the display is a certain size
+ */
+function expandNav() {
+    // check if size is between mobile and medium
+    if ((window.innerWidth > MOBILE_WIDTH) && (window.innerWidth < MEDIUM_WIDTH)) {
+        // nav menu should be expanded by default
+        $("#nav-toggle-btn").click();
+    }
+}
 
 /**
  * A function that can be overwritten. Overwriting function can easily manually call toggleBackToTop if it still wants that functionality.
@@ -83,13 +87,9 @@ function toggleBackToTop() {
     else $("#back-to-top").removeClass("active");
 }
 
-/**
- * Convenience function for setting/removing aria-expanded for buttons with aria-haspopup="true". Note that the WAI specifications, as of Jan 19, 2022 recommend not including aria-expanded when the popup content is not shown instead of setting it to false. (Setting to false would still be okay though.)
- * @param btn - The HTML button element
- */
-function togglePopupButton(btn) {
-    if (btn.hasAttribute("aria-expanded")) btn.removeAttribute("aria-expanded");
-    else btn.setAttribute("aria-expanded", "true");
+
+function toggleExpanded(btn) {
+    btn.setAttribute("aria-expanded", btn.getAttribute("aria-expanded") == "true" ? "false" : "true");
 }
 /**
  * Simple checker using the viewport width. Returns true for small screens, false for larger.

@@ -1,0 +1,245 @@
+body {
+  color: #e7e7e7;
+  background-color: #121212;
+}
+
+header {
+  color: #73d7ee;
+  background-color: #2a2a2a;
+  box-shadow: 0 0 4px 2px #000;
+}
+header .text a, header .text a:visited {
+  color: inherit;
+}
+header .text a:hover, header .text a:focus, header .text a:visited:hover, header .text a:visited:focus {
+  color: inherit;
+  outline: 2px solid;
+}
+
+#main-nav {
+  color: #fff;
+  background-color: #393939;
+  box-shadow: 0 0 4px 2px #000;
+}
+#main-nav ul, #main-nav li {
+  border-color: rgba(255, 175, 199, 0.5);
+}
+#main-nav .nav-item:hover, #main-nav .nav-item:focus {
+  color: #000;
+  background-color: #ffafc7;
+}
+#main-nav .active > .nav-item {
+  color: #333;
+  background-color: #ffafc7;
+}
+
+.btn, .btn:visited, a.btn {
+  color: #121212;
+  background-color: #73d7ee;
+  border-color: #000;
+}
+.btn:hover, .btn:focus, .btn:visited:hover, .btn:visited:focus, a.btn:hover, a.btn:focus {
+  color: #121212;
+  background-color: #ffafc7;
+  border-color: #121212;
+}
+.btn:focus, .btn:visited:focus, a.btn:focus {
+  outline: 2px solid #ffafc7;
+}
+
+.outline-btn, .outline-btn:visited {
+  color: #ffafc7;
+  background-color: #2a2a2a;
+}
+.outline-btn:hover, .outline-btn:focus, .outline-btn:visited:hover, .outline-btn:visited:focus {
+  color: #121212;
+  background-color: #ffafc7;
+}
+
+h3 {
+  border-color: #9f9f9f;
+  border-left-color: rgba(115, 215, 238, 0.8);
+}
+
+main a, footer a {
+  color: #73d7ee;
+}
+main a:hover, main a:focus, footer a:hover, footer a:focus {
+  color: #ffafc7;
+  background-color: #333;
+  border-color: #777;
+}
+main a:focus, footer a:focus {
+  outline: 2px solid #ffafc7;
+}
+main a:visited, footer a:visited {
+  color: #73d7ee;
+}
+main a:visited:focus, main a:visited:hover, footer a:visited:focus, footer a:visited:hover {
+  color: #ffafc7;
+}
+
+a:focus img, a:hover img {
+  border-color: #ffafc7;
+}
+
+code, samp {
+  color: #73d7ee;
+  background-color: #383838;
+  box-shadow: 0 0 2px 2px #000;
+}
+
+h2 {
+  border-color: #9f9f9f;
+}
+
+hr {
+  border-color: #9f9f9f;
+  box-shadow: 0 0 2px 2px #000;
+}
+
+.btn:disabled, btn-disabled, .btn.disabled, button:disabled, button.disabled {
+  color: #c9c9c9;
+  background-color: #333;
+  border-color: #777;
+  pointer-events: none;
+  cursor: default;
+}
+
+.icon-btn, a.icon-btn {
+  color: #ffafc7;
+  background-color: #333;
+}
+.icon-btn:hover, .icon-btn:focus, a.icon-btn:hover, a.icon-btn:focus {
+  background-color: #121212;
+  border-color: #ffafc7;
+}
+.icon-btn:visited, a.icon-btn:visited {
+  color: #ffafc7;
+}
+.icon-btn:focus, a.icon-btn:focus {
+  outline: 2px solid #ffafc7;
+}
+.icon-btn.dual-bg:focus, a.icon-btn.dual-bg:focus {
+  box-shadow: 0 0 7px 4px #000;
+}
+
+.skip-link {
+  color: #e7e7e7;
+  background-color: #454545;
+  border: none;
+  box-shadow: 0 0 4px 2px #000;
+}
+.skip-link:visited {
+  color: #e7e7e7;
+}
+.skip-link:focus {
+  outline: 2px solid #ffafc7;
+}
+
+blockquote {
+  background-color: #2a2a2a;
+  box-shadow: 0 0 4px 2px #000;
+  border-color: #ffafc7;
+}
+
+.notices.green, .notices.yellow, .notices.red, .notices.blue {
+  background-color: #2a2a2a;
+  box-shadow: 0 0 4px 2px #000;
+  border: none;
+  border-left: 10px solid;
+}
+.notices.yellow {
+  border-color: #81741D;
+  color: #E5D98A;
+}
+.notices.red {
+  border-color: #841F1F;
+  color: #EAA4A4;
+}
+.notices.blue {
+  border-color: #107B93;
+  color: #73d7ee;
+}
+.notices.green {
+  border-color: #186318;
+  color: #80E080;
+}
+
+main table, main .table {
+  box-shadow: 0 0 4px 2px #000;
+}
+main table > thead, main .table > thead {
+  color: #fff;
+  background-color: #454545;
+  border: none;
+  border-bottom: 2px solid #9f9f9f;
+}
+main table > thead th, main .table > thead th {
+  border-top: none;
+}
+main table th, main table td, main .table th, main .table td {
+  border: 1px solid #9f9f9f;
+}
+main table th:first-child, main table td:first-child, main .table th:first-child, main .table td:first-child {
+  border-left: none;
+}
+main table th:last-child, main table td:last-child, main .table th:last-child, main .table td:last-child {
+  border-right: none;
+}
+main table > tbody > tr > th, main .table > tbody > tr > th {
+  color: #fff;
+  background-color: #454545;
+}
+main table > tbody > tr:nth-of-type(odd), main .table > tbody > tr:nth-of-type(odd) {
+  background-color: #222;
+}
+main table > tbody > tr:nth-of-type(odd):hover, main table > tbody > tr:nth-of-type(odd):focus, main .table > tbody > tr:nth-of-type(odd):hover, main .table > tbody > tr:nth-of-type(odd):focus {
+  color: #fff;
+  background-color: #333;
+}
+main table > tbody > tr:last-child th, main table > tbody > tr:last-child, main table > tbody > tr td, main .table > tbody > tr:last-child th, main .table > tbody > tr:last-child, main .table > tbody > tr td {
+  border-bottom: none;
+}
+main table > tbody > tr:hover, main table > tbody > tr:focus, main .table > tbody > tr:hover, main .table > tbody > tr:focus {
+  color: #fff;
+  background-color: #333;
+}
+main table > thead + tbody > tr:nth-of-type(odd), main .table > thead + tbody > tr:nth-of-type(odd) {
+  background-color: inherit;
+}
+main table > thead + tbody > tr:nth-of-type(even), main .table > thead + tbody > tr:nth-of-type(even) {
+  background-color: #222;
+}
+main table > thead + tbody > tr:nth-of-type(odd):hover, main table > thead + tbody > tr:nth-of-type(odd):focus, main table > thead + tbody > tr:nth-of-type(even):hover, main table > thead + tbody > tr:nth-of-type(even):focus, main .table > thead + tbody > tr:nth-of-type(odd):hover, main .table > thead + tbody > tr:nth-of-type(odd):focus, main .table > thead + tbody > tr:nth-of-type(even):hover, main .table > thead + tbody > tr:nth-of-type(even):focus {
+  color: #fff;
+  background-color: #333;
+}
+
+caption {
+  color: #ccc;
+}
+
+del {
+  background-color: #fbb;
+  color: #333;
+}
+
+ins {
+  background-color: #d4fcbc;
+  color: #333;
+}
+
+pre code {
+  color: #e7e7e7;
+  background-color: #2a2a2a;
+}
+
+kbd {
+  color: #333;
+  background-color: #eee;
+  border-color: #b4b4b4;
+  box-shadow: 0 1px 1px 2px #000, 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+/*# sourceMappingURL=dark.css.map */

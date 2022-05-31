@@ -1,0 +1,244 @@
+body {
+  color: #333;
+  background-color: #fff;
+}
+
+header .text a, header .text a:visited {
+  color: inherit;
+}
+header .text a:hover, header .text a:focus, header .text a:visited:hover, header .text a:visited:focus {
+  color: inherit;
+  outline: 2px solid;
+}
+
+h2 {
+  border-color: #333;
+}
+
+hr {
+  border-color: #555;
+}
+
+.btn:disabled, btn-disabled, .btn.disabled, button:disabled, button.disabled {
+  background-color: #e2e2e2;
+  color: #474747;
+  border-color: #999;
+  pointer-events: none;
+  cursor: default;
+}
+
+.icon-btn, a.icon-btn {
+  color: #333;
+  background-color: #fff;
+}
+.icon-btn:hover, .icon-btn:focus, a.icon-btn:hover, a.icon-btn:focus {
+  color: #333;
+  background-color: #e2e2e2;
+  border-color: #333;
+}
+.icon-btn:visited, a.icon-btn:visited {
+  color: #333;
+}
+.icon-btn:focus, a.icon-btn:focus {
+  outline: 2px solid #333;
+}
+.icon-btn.dual-bg:focus, a.icon-btn.dual-bg:focus {
+  box-shadow: 0 0 7px 4px #fff;
+}
+
+button[role=switch] {
+  background-color: transparent;
+  border-color: transparent;
+  color: #333;
+}
+button[role=switch] svg .container {
+  fill: #e7e7e7;
+  stroke: currentColor;
+}
+button[role=switch][aria-checked=true] svg .toggle {
+  fill: #006607;
+}
+button[role=switch]:hover, button[role=switch]:focus {
+  border-color: #333;
+  background-color: #e7e7e7;
+  outline: none;
+}
+
+main a, footer a {
+  color: #004A99;
+}
+main a:visited, footer a:visited {
+  color: #551A8B;
+}
+
+.skip-link {
+  color: #004A99;
+  background-color: #fff;
+  border-color: #333;
+  box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7);
+}
+.skip-link:visited {
+  color: #004A99;
+}
+
+blockquote {
+  background-color: #e7e7e7;
+}
+
+.notices {
+  color: #333;
+}
+.notices.green, .notices.yellow, .notices.red, .notices.blue {
+  color: #333;
+}
+.notices.green {
+  border-color: #228b22;
+  background-color: #e6f9e6;
+}
+.notices.yellow {
+  border-color: #b68a1b;
+  background-color: #f9efd7;
+}
+.notices.red {
+  border-color: #b22222;
+  background-color: #f8dbdb;
+}
+.notices.blue {
+  border-color: #0000cd;
+  background-color: #e7e7ff;
+}
+
+main table > thead, main .table > thead {
+  color: #000;
+  background-color: #ccc;
+  border-color: #333;
+}
+main table th, main table td, main .table th, main .table td {
+  border: 1px solid #333;
+}
+main table > tbody > tr > th, main .table > tbody > tr > th {
+  background-color: #ccc;
+  color: #000;
+}
+main table > tbody > tr:nth-of-type(odd), main .table > tbody > tr:nth-of-type(odd) {
+  background-color: #eee;
+}
+main table > tbody > tr:nth-of-type(odd):hover, main table > tbody > tr:nth-of-type(odd):focus, main .table > tbody > tr:nth-of-type(odd):hover, main .table > tbody > tr:nth-of-type(odd):focus {
+  background-color: #d2d2d2;
+  color: #000;
+}
+main table > tbody > tr:hover, main table > tbody > tr:focus, main .table > tbody > tr:hover, main .table > tbody > tr:focus {
+  background-color: #d2d2d2;
+  color: #000;
+}
+main table > thead + tbody > tr:nth-of-type(odd), main .table > thead + tbody > tr:nth-of-type(odd) {
+  background-color: inherit;
+}
+main table > thead + tbody > tr:nth-of-type(even), main .table > thead + tbody > tr:nth-of-type(even) {
+  background-color: #eee;
+}
+main table > thead + tbody > tr:nth-of-type(odd):hover, main table > thead + tbody > tr:nth-of-type(odd):focus, main table > thead + tbody > tr:nth-of-type(even):hover, main table > thead + tbody > tr:nth-of-type(even):focus, main .table > thead + tbody > tr:nth-of-type(odd):hover, main .table > thead + tbody > tr:nth-of-type(odd):focus, main .table > thead + tbody > tr:nth-of-type(even):hover, main .table > thead + tbody > tr:nth-of-type(even):focus {
+  background-color: #d2d2d2;
+  color: #000;
+}
+
+caption {
+  color: #474747;
+}
+
+del {
+  background-color: #fbb;
+  color: #333;
+}
+
+ins {
+  background-color: #d4fcbc;
+  color: #333;
+}
+
+pre code {
+  color: #f8f8f8;
+  background-color: #121212;
+}
+
+kbd {
+  color: #333;
+  background-color: #eee;
+  border-color: #b4b4b4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+header {
+  color: #841617;
+  background-color: #e2e2e2;
+}
+
+#main-nav {
+  color: #fff;
+  background-color: #841617;
+  box-shadow: 0 0 2px 1px #333;
+}
+#main-nav ul, #main-nav li {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+#main-nav .nav-item:hover, #main-nav .nav-item:focus {
+  color: #185172;
+  background-color: #fff;
+}
+#main-nav .active > .nav-item {
+  color: #185172;
+  background-color: #fff;
+}
+
+.btn, .btn:visited, a.btn {
+  color: #fff;
+  background-color: #185172;
+}
+.btn:hover, .btn:focus, .btn:visited:hover, .btn:visited:focus, a.btn:hover, a.btn:focus {
+  color: #000;
+  background-color: #d8ebfd;
+}
+.btn:focus, .btn:visited:focus, a.btn:focus {
+  outline: 2px solid #185172;
+}
+
+.outline-btn, .outline-btn:visited, a.outline-btn {
+  color: #841617;
+  background-color: #fff;
+}
+.outline-btn:hover, .outline-btn:focus, .outline-btn:visited:hover, .outline-btn:visited:focus, a.outline-btn:hover, a.outline-btn:focus {
+  color: #000;
+  background-color: #d8ebfd;
+}
+
+h3 {
+  border-color: #841617;
+}
+
+main a:hover, main a:focus, footer a:hover, footer a:focus {
+  color: #000;
+  background-color: #d8ebfd;
+  border-color: #185172;
+}
+main a:focus, footer a:focus {
+  outline: 2px solid #185172;
+}
+main a:visited:focus, main a:visited:hover, footer a:visited:focus, footer a:visited:hover {
+  color: #000;
+}
+
+a:focus img, a:hover img {
+  border-color: #185172;
+}
+
+code, samp {
+  color: #000;
+  background-color: #d8ebfd;
+}
+
+.notices.red {
+  border-color: #841617;
+  background-color: #fbdfe0;
+}
+
+/*# sourceMappingURL=crimson.css.map */
