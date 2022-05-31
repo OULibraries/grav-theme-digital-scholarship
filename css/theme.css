@@ -125,11 +125,6 @@ header .text a:hover, header .text a:focus {
 #main-nav .toggle-wrapper {
   padding: 5px 0;
 }
-@media (min-width: 1024px) {
-  #main-nav #nav-toggle-btn {
-    display: none;
-  }
-}
 #main-nav #main-nav-list {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -209,6 +204,9 @@ header .text a:hover, header .text a:focus {
   #main-nav {
     margin-top: 20px;
     padding-right: 0;
+  }
+  #main-nav .toggle-wrapper {
+    display: none;
   }
 }
 

@@ -127,11 +127,6 @@ header {
     .toggle-wrapper {
         padding: 5px 0;
     }
-    #nav-toggle-btn {
-        @media (min-width: $laptop) {
-            display: none;
-        }
-    }
     #main-nav-list {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -212,6 +207,9 @@ header {
     @media (min-width: $laptop) {
         margin-top: 20px;
         padding-right: 0;
+        .toggle-wrapper {
+            display: none;
+        }
     }
 }
 #back-to-top {
