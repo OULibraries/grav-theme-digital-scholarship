@@ -412,7 +412,7 @@ main a, footer a {
         outline-offset: 1px;
     }
 }
-.fa-external-link-icon {
+.fa-external-link-alt {
     padding: 2px;
     margin-left: 2px;
     font-size: 10px;
@@ -422,12 +422,16 @@ a img {
     border: 2px dashed transparent;
 }
 .img-link-external {
-    color: inherit; // tmp placeholder
+    display: flex;
+    align-items: end;
     // make sure there is space for the font awesome icon and that the default link style isn't applied to it on focus/hover
-    // &:focus, &:hover {
-    //     border: none;
-    //     background-color: transparent;
-    // }
+    &:focus-visible, &:hover {
+        border: none;
+        background-color: transparent;
+    }
+    .fa-external-link-alt {
+        margin-bottom: 14px;
+    }
     // img {
     //     display: inline-block;
     //     max-width: calc(100% - 25px);

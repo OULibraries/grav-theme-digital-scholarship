@@ -50,11 +50,11 @@ function modifyLinks() {
         $("main a:not([target])").add("footer a:not([target])").each(function() {
             let link = $(this);
             // make sure link is not same-page or same-site link
-            let href = link.attr("href");
+            let href = link.attr("href").replace('https', 'http');
             if (!href.startsWith("#") && (!(href.startsWith(base_url) || !href.startsWith('http')) || (typeof(same_site_tab) != 'undefined' && same_site_tab))) {
                 // change target and modify link
                 link.attr("target", "_blank");
-                link.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fas fa-external-link-icon'></i>");
+                link.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fa fa-external-link-alt'></i>");
                 // extra modification for image links
                 link.children("img").parent().addClass("img-link-external");
             }

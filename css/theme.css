@@ -418,7 +418,7 @@ main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
   outline-offset: 1px;
 }
 
-.fa-external-link-icon {
+.fa-external-link-alt {
   padding: 2px;
   margin-left: 2px;
   font-size: 10px;
@@ -430,7 +430,15 @@ a img {
 }
 
 .img-link-external {
-  color: inherit;
+  display: flex;
+  align-items: end;
+}
+.img-link-external:focus-visible, .img-link-external:hover {
+  border: none;
+  background-color: transparent;
+}
+.img-link-external .fa-external-link-alt {
+  margin-bottom: 10px;
 }
 
 input, label {

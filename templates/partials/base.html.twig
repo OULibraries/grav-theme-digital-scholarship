@@ -14,7 +14,7 @@
                 <script>
                     const link_new_tab = true;
                     {% if theme_var('same_site_link_new_tab') %}const same_site_tab = true;{% endif %}
-                    const base_url = '{{ base_url }}';
+                    const base_url = '{{ base_url_absolute }}'.replace('https', 'http');
                 </script>
             {% endif %}
         {% endblock starting_scripts %}
