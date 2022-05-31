@@ -17,7 +17,7 @@ header {
         border-color: rgba(255, 255, 255, .5);
     }
     .nav-item {
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
             color: $dark-blue;
             background-color: #fff;
         }
@@ -34,14 +34,14 @@ header {
         color: #000;
         background-color: $light-blue;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $dark-blue;
     }
 }
 .outline-btn, .outline-btn:visited, a.outline-btn {
     color: $crimson;
     background-color: #fff;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: #000;
         background-color: $light-blue;
     }
@@ -50,21 +50,21 @@ h3 {
     border-color: $crimson;
 }
 main a, footer a {
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: #000;
         background-color: $light-blue;
         border-color: $dark-blue;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $dark-blue;
     }
     &:visited {
-        &:focus, &:hover {
+        &:hover, &:focus-visible {
             color: #000;
         }
     }
 }
-a:focus img, a:hover img {
+a:hover img, a:focus-visible img {
     border-color: $dark-blue;
 }
 code, samp {

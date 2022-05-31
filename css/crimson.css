@@ -6,7 +6,7 @@ body {
 header .text a, header .text a:visited {
   color: inherit;
 }
-header .text a:hover, header .text a:focus, header .text a:visited:hover, header .text a:visited:focus {
+header .text a:hover, header .text a:focus-visible, header .text a:visited:hover, header .text a:visited:focus-visible {
   color: inherit;
   outline: 2px solid;
 }
@@ -31,7 +31,7 @@ hr {
   color: #333;
   background-color: #fff;
 }
-.icon-btn:hover, .icon-btn:focus, a.icon-btn:hover, a.icon-btn:focus {
+.icon-btn:hover, .icon-btn:focus-visible, a.icon-btn:hover, a.icon-btn:focus-visible {
   color: #333;
   background-color: #e2e2e2;
   border-color: #333;
@@ -39,10 +39,10 @@ hr {
 .icon-btn:visited, a.icon-btn:visited {
   color: #333;
 }
-.icon-btn:focus, a.icon-btn:focus {
+.icon-btn:focus-visible, a.icon-btn:focus-visible {
   outline: 2px solid #333;
 }
-.icon-btn.dual-bg:focus, a.icon-btn.dual-bg:focus {
+.icon-btn.dual-bg:focus-visible, a.icon-btn.dual-bg:focus-visible {
   box-shadow: 0 0 7px 4px #fff;
 }
 
@@ -58,7 +58,7 @@ button[role=switch] svg .container {
 button[role=switch][aria-checked=true] svg .toggle {
   fill: #006607;
 }
-button[role=switch]:hover, button[role=switch]:focus {
+button[role=switch]:hover, button[role=switch]:focus-visible {
   border-color: #333;
   background-color: #e7e7e7;
   outline: none;
@@ -181,7 +181,7 @@ header {
 #main-nav ul, #main-nav li {
   border-color: rgba(255, 255, 255, 0.5);
 }
-#main-nav .nav-item:hover, #main-nav .nav-item:focus {
+#main-nav .nav-item:hover, #main-nav .nav-item:focus-visible {
   color: #185172;
   background-color: #fff;
 }
@@ -198,7 +198,7 @@ header {
   color: #000;
   background-color: #d8ebfd;
 }
-.btn:focus, .btn:visited:focus, a.btn:focus {
+.btn:focus-visible, .btn:visited:focus-visible, a.btn:focus-visible {
   outline: 2px solid #185172;
 }
 
@@ -206,7 +206,7 @@ header {
   color: #841617;
   background-color: #fff;
 }
-.outline-btn:hover, .outline-btn:focus, .outline-btn:visited:hover, .outline-btn:visited:focus, a.outline-btn:hover, a.outline-btn:focus {
+.outline-btn:hover, .outline-btn:focus-visible, .outline-btn:visited:hover, .outline-btn:visited:focus-visible, a.outline-btn:hover, a.outline-btn:focus-visible {
   color: #000;
   background-color: #d8ebfd;
 }
@@ -215,19 +215,19 @@ h3 {
   border-color: #841617;
 }
 
-main a:hover, main a:focus, footer a:hover, footer a:focus {
+main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
   color: #000;
   background-color: #d8ebfd;
   border-color: #185172;
 }
-main a:focus, footer a:focus {
+main a:focus-visible, footer a:focus-visible {
   outline: 2px solid #185172;
 }
-main a:visited:focus, main a:visited:hover, footer a:visited:focus, footer a:visited:hover {
+main a:visited:hover, main a:visited:focus-visible, footer a:visited:hover, footer a:visited:focus-visible {
   color: #000;
 }
 
-a:focus img, a:hover img {
+a:hover img, a:focus-visible img {
   border-color: #185172;
 }
 

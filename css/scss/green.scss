@@ -20,7 +20,7 @@ header {
         border-color: rgba(0, 0, 0, .5);
     }
     .nav-item {
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
             color: #fff;
             background-color: $purple;
         }
@@ -33,18 +33,18 @@ header {
 .btn, .btn:visited, a.btn, a.btn:visited {
     color: #fff;
     background-color: $green;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: $dark-gray;
         background-color: $light-green;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $green;
     }
 }
 .outline-btn, .outline-btn:visited, a.outline-btn {
     color: $purple;
     background-color: #fff;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: #fff;
         background-color: $purple;
     }
@@ -53,21 +53,21 @@ h3 {
     border-color: $green;
 }
 main a, footer a {
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: $purple;
         background-color: $light-gray;
         border-color: $dark-gray;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $purple;
     }
     &:visited {
-        &:focus, &:hover {
+        &:focus-visible, &:hover {
             color: $purple;
         }
     }
 }
-a:focus img, a:hover img {
+a:focus-visible img, a:hover img {
     border-color: $purple;
 }
 code, samp {

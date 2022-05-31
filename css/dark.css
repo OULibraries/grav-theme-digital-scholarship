@@ -11,7 +11,7 @@ header {
 header .text a, header .text a:visited {
   color: inherit;
 }
-header .text a:hover, header .text a:focus, header .text a:visited:hover, header .text a:visited:focus {
+header .text a:hover, header .text a:focus-visible, header .text a:visited:hover, header .text a:visited:focus-visible {
   color: inherit;
   outline: 2px solid;
 }
@@ -24,7 +24,7 @@ header .text a:hover, header .text a:focus, header .text a:visited:hover, header
 #main-nav ul, #main-nav li {
   border-color: rgba(255, 175, 199, 0.5);
 }
-#main-nav .nav-item:hover, #main-nav .nav-item:focus {
+#main-nav .nav-item:hover, #main-nav .nav-item:focus-visible {
   color: #000;
   background-color: #ffafc7;
 }
@@ -38,12 +38,12 @@ header .text a:hover, header .text a:focus, header .text a:visited:hover, header
   background-color: #73d7ee;
   border-color: #000;
 }
-.btn:hover, .btn:focus, .btn:visited:hover, .btn:visited:focus, a.btn:hover, a.btn:focus {
+.btn:hover, .btn:focus-visible, .btn:visited:hover, .btn:visited:focus-visible, a.btn:hover, a.btn:focus-visible {
   color: #121212;
   background-color: #ffafc7;
   border-color: #121212;
 }
-.btn:focus, .btn:visited:focus, a.btn:focus {
+.btn:focus-visible, .btn:visited:focus-visible, a.btn:focus-visible {
   outline: 2px solid #ffafc7;
 }
 
@@ -51,7 +51,7 @@ header .text a:hover, header .text a:focus, header .text a:visited:hover, header
   color: #ffafc7;
   background-color: #2a2a2a;
 }
-.outline-btn:hover, .outline-btn:focus, .outline-btn:visited:hover, .outline-btn:visited:focus {
+.outline-btn:hover, .outline-btn:focus-visible, .outline-btn:visited:hover, .outline-btn:visited:focus-visible {
   color: #121212;
   background-color: #ffafc7;
 }
@@ -64,22 +64,22 @@ h3 {
 main a, footer a {
   color: #73d7ee;
 }
-main a:hover, main a:focus, footer a:hover, footer a:focus {
+main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
   color: #ffafc7;
   background-color: #333;
   border-color: #777;
 }
-main a:focus, footer a:focus {
+main a:focus-visible, footer a:focus-visible {
   outline: 2px solid #ffafc7;
 }
 main a:visited, footer a:visited {
   color: #73d7ee;
 }
-main a:visited:focus, main a:visited:hover, footer a:visited:focus, footer a:visited:hover {
+main a:visited:focus-visible, main a:visited:hover, footer a:visited:focus-visible, footer a:visited:hover {
   color: #ffafc7;
 }
 
-a:focus img, a:hover img {
+a:focus-visible img, a:hover img {
   border-color: #ffafc7;
 }
 
@@ -110,17 +110,17 @@ hr {
   color: #ffafc7;
   background-color: #333;
 }
-.icon-btn:hover, .icon-btn:focus, a.icon-btn:hover, a.icon-btn:focus {
+.icon-btn:hover, .icon-btn:focus-visible, a.icon-btn:hover, a.icon-btn:focus-visible {
   background-color: #121212;
   border-color: #ffafc7;
 }
 .icon-btn:visited, a.icon-btn:visited {
   color: #ffafc7;
 }
-.icon-btn:focus, a.icon-btn:focus {
+.icon-btn:focus-visible, a.icon-btn:focus-visible {
   outline: 2px solid #ffafc7;
 }
-.icon-btn.dual-bg:focus, a.icon-btn.dual-bg:focus {
+.icon-btn.dual-bg:focus-visible, a.icon-btn.dual-bg:focus-visible {
   box-shadow: 0 0 7px 4px #000;
 }
 
@@ -133,7 +133,7 @@ hr {
 .skip-link:visited {
   color: #e7e7e7;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   outline: 2px solid #ffafc7;
 }
 

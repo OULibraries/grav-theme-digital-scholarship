@@ -14,7 +14,7 @@ header {
     box-shadow: 0 0 4px 2px #000;
     .text a, .text a:visited {
         color: inherit;
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
             color: inherit;
             outline: 2px solid;
         }
@@ -28,7 +28,7 @@ header {
         border-color: rgba(255, 175, 199, .5); // 50% pink
     }
     .nav-item {
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
             color: #000;
             background-color: $pink;
         }
@@ -42,19 +42,19 @@ header {
     color: $background;
     background-color: $blue;
     border-color: #000;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: $background;
         background-color: $pink;
         border-color: $background;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $pink;
     }
 }
 .outline-btn, .outline-btn:visited {
     color: $pink;
     background-color: #2a2a2a;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: $background;
         background-color: $pink;
     }
@@ -65,22 +65,22 @@ h3 {
 }
 main a, footer a {
     color: $blue;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: $pink;
         background-color: #333;
         border-color: #777;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $pink;
     }
     &:visited {
         color: $blue;
-        &:focus, &:hover {
+        &:focus-visible, &:hover {
             color: $pink;
         }
     }
 }
-a:focus img, a:hover img {
+a:focus-visible img, a:hover img {
     border-color: $pink;
 }
 code, samp {
@@ -105,17 +105,17 @@ hr {
 .icon-btn, a.icon-btn {
     color: $pink;
     background-color: #333;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         background-color: $background;
         border-color: $pink;
     }
     &:visited {
         color: $pink;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $pink;
     }
-    &.dual-bg:focus {
+    &.dual-bg:focus-visible {
         box-shadow: 0 0 7px 4px #000;
     }
 }
@@ -132,7 +132,7 @@ hr {
 //             fill:  white;
 //         }
 //     }
-//     &:hover, &:focus {
+//     &:hover, &:focus-visible {
 //         border-color: white;
 //         background-color: white;
 //         outline: none;
@@ -146,7 +146,7 @@ hr {
     &:visited {
         color: $text;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $pink;
     }
 }

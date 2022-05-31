@@ -67,7 +67,7 @@ header {
         text-align: center;
         a {
             display: inline-block;
-            &:hover, &:focus {
+            &:hover, &:focus-visible {
                 text-decoration: underline;
             }
         }
@@ -158,10 +158,11 @@ header {
             .fas {
                 display: none;
             }
-            &:hover, &:focus {
-                color: inhert;
-                background-color: transparent;
-            }
+            pointer-events: none;
+            // &:hover, &:focus {
+            //     color: inhert;
+            //     background-color: transparent;
+            // }
         }
     }
     .dd-btn {
@@ -182,7 +183,7 @@ header {
             padding-left: 3px;
         }
     }
-    a.nav-item:hover, a.nav-item:focus {
+    a.nav-item:hover, a.nav-item:focus-visible {
         text-decoration: underline;
     }
     .active > .nav-item, .parent > .nav-item {
@@ -405,7 +406,7 @@ main a, footer a {
     text-decoration: underline;
     border-radius: 4px;
     padding-bottom: 1px;
-    &:focus, &:hover {
+    &:hover, &:focus-visible {
         border-top: 1px solid;
         border-bottom: 1px solid;
         outline-offset: 1px;

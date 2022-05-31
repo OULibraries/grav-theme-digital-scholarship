@@ -12,7 +12,7 @@ body {
 header {
     .text a, .text a:visited {
         color: inherit;
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
             color: inherit;
             outline: 2px solid;
         }
@@ -34,7 +34,7 @@ hr {
 .icon-btn, a.icon-btn {
     color: $main-text;
     background-color: $main-bg;
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         color: $main-text;
         background-color: #e2e2e2;
         border-color: $main-text;
@@ -42,10 +42,10 @@ hr {
     &:visited {
         color: $main-text;
     }
-    &:focus {
+    &:focus-visible {
         outline: 2px solid $main-text;
     }
-    &.dual-bg:focus {
+    &.dual-bg:focus-visible {
         box-shadow: 0 0 7px 4px #fff;
     }
 }
@@ -62,7 +62,7 @@ button[role="switch"] {
             fill:  #006607;
         }
     }
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
         border-color: $main-text;
         background-color: #e7e7e7;
         outline: none;
@@ -77,7 +77,7 @@ main a, footer a {
 // .fa-external-link-icon {
 //     color: #555; // TODO?
 // }
-// a img:hover, a img:focus {
+// a img:hover, a img:focus-visible {
 //     border-color: $main-text;
 // }
 .skip-link {

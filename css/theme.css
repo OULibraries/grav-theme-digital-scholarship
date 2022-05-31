@@ -49,7 +49,7 @@ header .text {
 header .text a {
   display: inline-block;
 }
-header .text a:hover, header .text a:focus {
+header .text a:hover, header .text a:focus-visible {
   text-decoration: underline;
 }
 @media (min-width: 480px) {
@@ -155,12 +155,11 @@ header .text a:hover, header .text a:focus {
   text-underline-offset: 1px;
   text-decoration: none;
 }
+#main-nav .nav-item:disabled, #main-nav .nav-item.disabled {
+  pointer-events: none;
+}
 #main-nav .nav-item:disabled .fas, #main-nav .nav-item.disabled .fas {
   display: none;
-}
-#main-nav .nav-item:disabled:hover, #main-nav .nav-item:disabled:focus, #main-nav .nav-item.disabled:hover, #main-nav .nav-item.disabled:focus {
-  color: inhert;
-  background-color: transparent;
 }
 #main-nav .dd-btn {
   padding-left: 3px;
@@ -178,7 +177,7 @@ header .text a:hover, header .text a:focus {
 #main-nav .dd-btn > span {
   padding-left: 3px;
 }
-#main-nav a.nav-item:hover, #main-nav a.nav-item:focus {
+#main-nav a.nav-item:hover, #main-nav a.nav-item:focus-visible {
   text-decoration: underline;
 }
 #main-nav .active > .nav-item, #main-nav .parent > .nav-item {
@@ -413,7 +412,7 @@ main a, footer a {
   border-radius: 4px;
   padding-bottom: 1px;
 }
-main a:focus, main a:hover, footer a:focus, footer a:hover {
+main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
   border-top: 1px solid;
   border-bottom: 1px solid;
   outline-offset: 1px;
