@@ -42,6 +42,7 @@ header .logo img {
   box-sizing: border-box;
   margin: 0;
   padding: 5px;
+  max-height: max(60px, 8vw);
 }
 header .text {
   text-align: center;
@@ -76,7 +77,7 @@ header .text a:hover, header .text a:focus-visible {
 }
 
 #wrapper {
-  padding: 10px;
+  padding: 10px 20px;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: repeat(2, min-content);
@@ -101,7 +102,7 @@ header .text a:hover, header .text a:focus-visible {
 }
 @media (min-width: 1024px) {
   #wrapper {
-    grid-template-columns: 2fr 7fr;
+    grid-template-columns: minmax(250px, 3fr) minmax(300px, 7fr);
     grid-column-gap: 40px;
     padding: 20px 80px;
   }
@@ -212,8 +213,8 @@ header .text a:hover, header .text a:focus-visible {
 #back-to-top {
   position: fixed;
   display: flex;
-  bottom: 10%;
-  right: 15px;
+  bottom: 10px;
+  right: 10px;
   width: 40px;
   height: 40px;
   box-sizing: border-box;
@@ -224,15 +225,10 @@ header .text a:hover, header .text a:focus-visible {
   pointer-events: none;
   outline-offset: 4px;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   #back-to-top {
-    right: 30px;
-  }
-}
-@media (min-width: 1320px) {
-  #back-to-top {
-    right: calc(50vw - 600px);
-    transform: translateX(50px);
+    right: max(3vw, 30px);
+    bottom: 20px;
   }
 }
 #back-to-top.active, #back-to-top:focus {
@@ -438,7 +434,7 @@ a img {
   background-color: transparent;
 }
 .img-link-external .fa-external-link-alt {
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 input, label {
@@ -633,6 +629,8 @@ main table, main .table {
   margin: 10px 0 20px 0;
   border-spacing: 0;
   border-collapse: collapse;
+  display: block;
+  overflow-x: scroll;
 }
 main table caption, main .table caption {
   padding-top: 8px;
@@ -661,15 +659,16 @@ img {
   max-width: 100%;
   margin: 10px auto;
   border: none;
+  box-sizing: border-box;
 }
 img.full {
   width: 100%;
 }
 img.medium {
-  max-width: 600px;
+  max-width: min(600px, 100%);
 }
 img.small {
-  max-width: 400px;
+  max-width: min(400px, 100%);
 }
 
 figure.image {

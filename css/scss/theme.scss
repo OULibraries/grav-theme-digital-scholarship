@@ -61,6 +61,7 @@ header {
             box-sizing: border-box;
             margin: 0;
             padding: 5px;
+            max-height: max(60px, 8vw);
         }
     }
     .text {
@@ -88,7 +89,7 @@ header {
     }
 }
 #wrapper {
-    padding: 10px;
+    padding: 10px 20px;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: repeat(2, min-content);
@@ -107,7 +108,7 @@ header {
         padding: 20px 50px;
     }
     @media (min-width: $laptop) {
-        grid-template-columns: 2fr 7fr;
+        grid-template-columns: minmax(250px, 3fr) minmax(300px, 7fr);
         grid-column-gap: 40px;
         padding: 20px 80px;
         main {
@@ -216,8 +217,8 @@ header {
 #back-to-top {
     position: fixed;
     display: flex;
-    bottom: 10%;
-    right: 15px;
+    bottom: 10px;
+    right: 10px;
     width: 40px;
     height: 40px;
     box-sizing: border-box;
@@ -227,12 +228,9 @@ header {
     transition: opacity linear .5s;
     pointer-events: none;
     outline-offset: 4px;
-    @media (min-width: $laptop) {
-        right: 30px;
-    }
-    @media (min-width: ($max-width + 120)) {
-        right: $max-padding;
-        transform: translateX(50px);
+    @media (min-width: $large) {
+        right: max(3vw, 30px);
+        bottom: 20px;
     }
     &.active, &:focus {
         opacity: 1;
@@ -638,6 +636,8 @@ main table, main .table {
     margin: 10px 0 20px 0;
     border-spacing: 0;
     border-collapse: collapse;
+    display: block;
+    overflow-x: scroll;
     caption {
         padding-top: 8px;
         padding-bottom: 8px;
@@ -666,14 +666,15 @@ img {
     max-width: 100%;
     margin: 10px auto;
     border: none;
+    box-sizing: border-box;
     &.full {
         width: 100%;
     }
     &.medium {
-        max-width: 600px;
+        max-width: min(600px, 100%);
     }
     &.small {
-        max-width: 400px;
+        max-width: min(400px, 100%);
     }
 }
 figure.image {
