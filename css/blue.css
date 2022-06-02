@@ -16,19 +16,14 @@ h2 {
 }
 
 hr {
-  border-color: #555;
+  border-color: #404040;
 }
 
-button:disabled, button.disabled, .btn:disabled, .btn.disabled, .icon-btn:disabled, .icon-btn.disabled {
-  background-color: #e2e2e2;
+button:disabled, button:disabled:hover, button:disabled:focus-visible, button.disabled, button.disabled:hover, button.disabled:focus-visible, .btn:disabled, .btn:disabled:hover, .btn:disabled:focus-visible, .btn.disabled, .btn.disabled:hover, .btn.disabled:focus-visible, .icon-btn:disabled, .icon-btn:disabled:hover, .icon-btn:disabled:focus-visible, .icon-btn.disabled, .icon-btn.disabled:hover, .icon-btn.disabled:focus-visible {
+  background-color: #e6e6e6;
   color: #474747;
-  border-color: #999;
+  border-color: #999999;
   cursor: default;
-}
-button:disabled:hover, button.disabled:hover, .btn:disabled:hover, .btn.disabled:hover, .icon-btn:disabled:hover, .icon-btn.disabled:hover {
-  background-color: #e2e2e2;
-  color: #474747;
-  border-color: #999;
 }
 
 .icon-btn, a.icon-btn {
@@ -37,7 +32,7 @@ button:disabled:hover, button.disabled:hover, .btn:disabled:hover, .btn.disabled
 }
 .icon-btn:hover, .icon-btn:focus-visible, a.icon-btn:hover, a.icon-btn:focus-visible {
   color: #333;
-  background-color: #e2e2e2;
+  background-color: #e6e6e6;
   border-color: #333;
 }
 .icon-btn:visited, a.icon-btn:visited {
@@ -52,41 +47,38 @@ button:disabled:hover, button.disabled:hover, .btn:disabled:hover, .btn.disabled
 
 button[role=switch] {
   background-color: transparent;
-  border-color: transparent;
   color: #333;
 }
 button[role=switch] svg .container {
-  fill: #e7e7e7;
+  fill: #e6e6e6;
   stroke: currentColor;
 }
 button[role=switch][aria-checked=true] svg .toggle {
   fill: #006607;
 }
 button[role=switch]:hover, button[role=switch]:focus-visible {
-  border-color: #333;
-  background-color: #e7e7e7;
-  outline: none;
+  background-color: #e6e6e6;
 }
 
 main a, footer a {
-  color: #004A99;
+  color: #00458F;
 }
 main a:visited, footer a:visited {
   color: #551A8B;
 }
 
 .skip-link {
-  color: #004A99;
+  color: #00458F;
   background-color: #fff;
   border-color: #333;
   box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7);
 }
 .skip-link:visited {
-  color: #004A99;
+  color: #00458F;
 }
 
 blockquote {
-  background-color: #e7e7e7;
+  background-color: #e6e6e6;
 }
 
 .notices {
@@ -96,7 +88,7 @@ blockquote {
   color: #333;
 }
 .notices.green {
-  border-color: #228b22;
+  border-color: #006607;
   background-color: #e6f9e6;
 }
 .notices.yellow {
@@ -114,40 +106,37 @@ blockquote {
 
 main table > thead, main .table > thead {
   color: #000;
-  background-color: #ccc;
-  border-color: #333;
+  background-color: #d9d9d9;
+  border-color: #333333;
 }
 main table th, main table td, main .table th, main .table td {
-  border: 1px solid #333;
+  border: 1px solid #333333;
 }
 main table > tbody > tr > th, main .table > tbody > tr > th {
-  background-color: #ccc;
+  background-color: #d9d9d9;
   color: #000;
 }
 main table > tbody > tr:nth-of-type(odd), main .table > tbody > tr:nth-of-type(odd) {
-  background-color: #eee;
+  background-color: #f2f2f2;
 }
 main table > tbody > tr:nth-of-type(odd):hover, main table > tbody > tr:nth-of-type(odd):focus, main .table > tbody > tr:nth-of-type(odd):hover, main .table > tbody > tr:nth-of-type(odd):focus {
-  background-color: #d2d2d2;
-  color: #000;
+  background-color: #e6e6e6;
 }
 main table > tbody > tr:hover, main table > tbody > tr:focus, main .table > tbody > tr:hover, main .table > tbody > tr:focus {
-  background-color: #d2d2d2;
-  color: #000;
+  background-color: #e6e6e6;
 }
 main table > thead + tbody > tr:nth-of-type(odd), main .table > thead + tbody > tr:nth-of-type(odd) {
   background-color: inherit;
 }
 main table > thead + tbody > tr:nth-of-type(even), main .table > thead + tbody > tr:nth-of-type(even) {
-  background-color: #eee;
+  background-color: #f2f2f2;
 }
 main table > thead + tbody > tr:nth-of-type(odd):hover, main table > thead + tbody > tr:nth-of-type(odd):focus, main table > thead + tbody > tr:nth-of-type(even):hover, main table > thead + tbody > tr:nth-of-type(even):focus, main .table > thead + tbody > tr:nth-of-type(odd):hover, main .table > thead + tbody > tr:nth-of-type(odd):focus, main .table > thead + tbody > tr:nth-of-type(even):hover, main .table > thead + tbody > tr:nth-of-type(even):focus {
-  background-color: #d2d2d2;
-  color: #000;
+  background-color: #e6e6e6;
 }
 
 caption {
-  color: #474747;
+  color: #404040;
 }
 
 del {
@@ -161,7 +150,7 @@ ins {
 }
 
 pre code {
-  color: #f8f8f8;
+  color: #f2f2f2;
   background-color: #121212;
 }
 
@@ -174,11 +163,11 @@ kbd {
 
 header {
   color: #0F1E92;
-  background-color: #e7e7e7;
+  background-color: #e6e6e6;
 }
 
 #main-nav {
-  background-color: #555;
+  background-color: #4d4d4d;
   color: #fff;
 }
 #main-nav ul, #main-nav li {
@@ -216,7 +205,7 @@ header {
   background-color: #fff;
 }
 .outline-btn:hover, .outline-btn:focus-visible, a.outline-btn:hover, a.outline-btn:focus-visible {
-  background-color: #ddd;
+  background-color: #d9d9d9;
 }
 .outline-btn:focus-visible, a.outline-btn:focus-visible {
   outline: 2px solid #070f4e;
@@ -236,7 +225,7 @@ h3 {
 main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
   background-color: #fff3a8;
   color: #000;
-  border-color: #999;
+  border-color: #999999;
 }
 main a:focus-visible, footer a:focus-visible {
   outline: 2px solid #070f4e;
@@ -251,7 +240,7 @@ a:hover img, a:focus-visible img {
 
 code, samp {
   color: #0F1E92;
-  background-color: #e7e7e7;
+  background-color: #e6e6e6;
 }
 
 /*# sourceMappingURL=blue.css.map */

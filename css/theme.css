@@ -351,7 +351,11 @@ button[role=switch] {
   text-align: left;
   font-size: inherit;
   background-color: transparent;
-  border: 2px solid transparent;
+  margin: 5px 0;
+  border: none;
+}
+button[role=switch]:hover, button[role=switch]:focus-visible {
+  outline: 2px solid;
 }
 button[role=switch] span {
   display: inline-block;
@@ -407,10 +411,10 @@ main a, footer a {
   text-decoration: underline;
   border-radius: 4px;
   padding-bottom: 1px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
   outline-offset: 1px;
 }
 
@@ -430,7 +434,7 @@ a img {
   align-items: end;
 }
 .img-link-external:focus-visible, .img-link-external:hover {
-  border: none;
+  border-color: transparent;
   background-color: transparent;
 }
 .img-link-external .fa-external-link-alt {
@@ -630,7 +634,7 @@ main table, main .table {
   border-spacing: 0;
   border-collapse: collapse;
   display: block;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 main table caption, main .table caption {
   padding-top: 8px;

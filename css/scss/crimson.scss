@@ -1,6 +1,8 @@
+@use "sass:color";
+
 @import 'light_theme';
 
-$light-gray: #e2e2e2;
+$light-gray: color.adjust(#000, $lightness: 90%);
 $crimson: #841617;
 $light-blue: #d8ebfd;
 $dark-blue: #185172;

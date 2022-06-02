@@ -2,8 +2,29 @@
 
 $main-bg: #fff;
 $main-text: #333;
-$link-standard: #004A99;
-$link-visited: #551A8B;
+// $link-blue: #004A99;
+$link-blue: #00458F;
+$link-purple: #551A8B;
+$black: #000;
+$del: #fbb;
+$ins: #d4fcbc;
+
+// Notices (primarily)
+$green: #006607;
+$light-green: #e6f9e6;
+$yellow: #b68a1b;
+$light-yellow: #f9efd7;
+$red: #b22222;
+$light-red: #f8dbdb;
+$blue: #0000cd;
+$light-blue: #e7e7ff;
+
+// Tables
+$header_bg: color.adjust($black, $lightness: 85%);
+$header_text: $black;
+$border: color.adjust($black, $lightness: 20%);
+$other_row_bg: color.adjust($black, $lightness: 95%);
+$active_row_bg: color.adjust($black, $lightness: 90%);
 
 body {
     color: $main-text;
@@ -22,18 +43,16 @@ h2 {
   border-color: $main-text;
 }
 hr {
-    border-color: #555;
+    // border-color: color.adjust($black, $lightness: 30%);
+    border-color: color.adjust($black, $lightness: 25%);
 }
 button, .btn, .icon-btn {
     &:disabled, &.disabled {
-        background-color: #e2e2e2;
-        color: #474747;
-        border-color: #999;
-        cursor: default;
-        &:hover {
-            background-color: #e2e2e2;
-            color: #474747;
-            border-color: #999;
+        &, &:hover, &:focus-visible {
+            background-color: color.adjust($black, $lightness: 90%);
+            color: color.adjust($black, $lightness: 28%);
+            border-color: color.adjust($black, $lightness: 60%);
+            cursor: default;
         }
     }
 }
@@ -42,7 +61,7 @@ button, .btn, .icon-btn {
     background-color: $main-bg;
     &:hover, &:focus-visible {
         color: $main-text;
-        background-color: #e2e2e2;
+        background-color: color.adjust($black, $lightness: 90%);
         border-color: $main-text;
     }
     &:visited {
@@ -57,46 +76,37 @@ button, .btn, .icon-btn {
 }
 button[role="switch"] {
     background-color: transparent;
-    border-color: transparent;
     color: $main-text;
     svg .container {
-        fill: #e7e7e7;
+        fill: color.adjust($black, $lightness: 90%);
         stroke: currentColor;
     }
     &[aria-checked="true"] {
         svg .toggle {
-            fill:  #006607;
+            fill: $green;
         }
     }
     &:hover, &:focus-visible {
-        border-color: $main-text;
-        background-color: #e7e7e7;
-        outline: none;
+        background-color: color.adjust($black, $lightness: 90%);
     }
 }
 main a, footer a {
-    color: $link-standard;
+    color: $link-blue;
     &:visited {
-        color: $link-visited;
+        color: $link-purple;
     }
 }
-// .fa-external-link-icon {
-//     color: #555; // TODO?
-// }
-// a img:hover, a img:focus-visible {
-//     border-color: $main-text;
-// }
 .skip-link {
-    color: $link-standard;
+    color: $link-blue;
     background-color: $main-bg;
     border-color: $main-text;
     box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7);
     &:visited {
-        color: $link-standard;
+        color: $link-blue;
     }
 }
 blockquote {
-    background-color: #e7e7e7;
+    background-color: color.adjust($black, $lightness: 90%);
 }
 .notices {
     color: $main-text;
@@ -104,46 +114,46 @@ blockquote {
         color: $main-text;
     }
     &.green {
-        border-color: #228b22;
-        background-color: #e6f9e6;
+        border-color: $green;
+        background-color: $light-green;
     }
     &.yellow {
-        border-color: #b68a1b;
-        background-color: #f9efd7;
+        border-color: $yellow;
+        background-color: $light-yellow;
     }
     &.red {
-        border-color: #b22222;
-        background-color: #f8dbdb;
+        border-color: $red;
+        background-color: $light-red;
     }
     &.blue {
-        border-color: #0000cd;
-        background-color: #e7e7ff;
+        border-color: $blue;
+        background-color: $light-blue;
     }
 }
 main table, main .table {
     & > thead {
-        color: #000;
-        background-color: #ccc;
-        border-color: #333;
+        color: $header_text;
+        background-color: $header_bg;
+        border-color: $border;
     }
     th, td {
-        border: 1px solid #333;
+        border: 1px solid $border;
     }
     & > tbody > tr {
         & > th {
-            background-color: #ccc;
-            color: #000;
+            background-color: $header_bg;
+            color: $header_text;
         }
         &:nth-of-type(odd) {
-            background-color: #eee;
+            background-color: $other_row_bg;
             &:hover, &:focus {
-                background-color: #d2d2d2;
-                color: #000;
+                background-color: $active_row_bg;
+                // color: $black;
             }
         }
         &:hover, &:focus {
-            background-color: #d2d2d2;
-            color: #000;
+            background-color: $active_row_bg;
+            // color: $black;
         }
     }
     & > thead + tbody > tr {
@@ -151,31 +161,31 @@ main table, main .table {
             background-color: inherit;
         }
         &:nth-of-type(even) {
-            background-color: #eee;
+            background-color: $other_row_bg;
         }
         &:nth-of-type(odd), &:nth-of-type(even) {
             &:hover, &:focus {
-                background-color: #d2d2d2;
-                color: #000;
+                background-color: $active_row_bg;
+                // color: $black;
             }
         }
     }
 }
 caption {
-    color: #474747;
+    color: color.adjust($black, $lightness: 25%);
 }
 del {
-    background-color: #fbb;
+    background-color: $del;
     color: $main-text;
 }
 ins {
-    background-color: #d4fcbc;
+    background-color: $ins;
     color: $main-text;
 }
 pre {
     code {
-        color: #f8f8f8;
-        background-color: #121212;
+        color: color.adjust($black, $lightness: 95%);
+        background-color: color.adjust($black, $lightness: 7%);
     }
 }
 kbd {

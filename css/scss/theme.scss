@@ -343,7 +343,12 @@ button[role="switch"] {
     text-align: left;
     font-size: inherit;
     background-color: transparent;
-    border: 2px solid transparent;
+    margin: 5px 0;
+    // border: 2px solid transparent;
+    border: none;
+    &:hover, &:focus-visible {
+        outline: 2px solid;
+    }
     span {
         display: inline-block;
         vertical-align: middle;
@@ -404,9 +409,9 @@ main a, footer a {
     text-decoration: underline;
     border-radius: 4px;
     padding-bottom: 1px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
     &:hover, &:focus-visible {
-        border-top: 1px solid;
-        border-bottom: 1px solid;
         outline-offset: 1px;
     }
 }
@@ -424,7 +429,7 @@ a img {
     align-items: end;
     // make sure there is space for the font awesome icon and that the default link style isn't applied to it on focus/hover
     &:focus-visible, &:hover {
-        border: none;
+        border-color: transparent;
         background-color: transparent;
     }
     .fa-external-link-alt {
@@ -637,7 +642,7 @@ main table, main .table {
     border-spacing: 0;
     border-collapse: collapse;
     display: block;
-    overflow-x: scroll;
+    overflow-x: auto;
     caption {
         padding-top: 8px;
         padding-bottom: 8px;

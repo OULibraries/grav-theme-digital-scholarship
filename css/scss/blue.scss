@@ -4,27 +4,14 @@
 
 $blue-1: #070f4e;
 $blue-2: #0F1E92;
-$light-gray: #e7e7e7;
-$gray: #555;
+$light-gray: color.adjust(#000, $lightness: 90%);
+$gray: color.adjust(#000, $lightness: 30%);
 $yellow: #ffe100;
 $light-yellow: #fff3a8;
 
 header {
     color: $blue-2;
     background-color: $light-gray;
-    // .text a {
-    //     color: inherit;
-    //     &:hover, &:focus {
-    //         color: $blue-1;
-    //         outline: 2px solid;
-    //     }
-    //     &:visited {
-    //         color: inherit;
-    //         &:hover, &:focus {
-    //             color: $blue-1;
-    //         }
-    //     }
-    // }
 }
 #main-nav {
     background-color: $gray;
@@ -65,7 +52,7 @@ header {
     color: $blue-1;
     background-color: #fff;
     &:hover, &:focus-visible {
-        background-color: #ddd;
+        background-color: color.adjust(#000, $lightness: 85%);
     }
     &:focus-visible {
         outline: 2px solid $blue-1;
@@ -85,7 +72,7 @@ main a, footer a {
     &:hover, &:focus-visible {
         background-color: $light-yellow;
         color: #000;
-        border-color: #999;
+        border-color: color.adjust(#000, $lightness: 60%);
     }
     &:focus-visible {
         outline: 2px solid $blue-1;
