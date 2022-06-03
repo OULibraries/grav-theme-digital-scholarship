@@ -1,0 +1,26 @@
+{% import _self as self %}
+
+{# I don't think this is exactly ideal - there are probably some edge cases that could cause weird behavior - but it will have to do for now. #}
+{% macro loop(page) %}
+    {% import _self as self %}
+
+    {% for p in page.children %}
+        {% set has_children = p.children.visible.count > 0 or p.children.routable.count > 0 %}
+        {# if routable, display link #}
+        {% if p.routable %}
+            <li><a href="{{ p.url }}">{{ p.menu }}</a>
+            {% if has_children %}
+                <ul>{{ self.loop(p) }}</ul>
+            {% endif %}
+            </li>
+        {# if not routable, check if any children are visible and display as plain text if so #}
+        {% elseif p.visible and has_children %}
+            <li>
+                <span>{{ p.menu }}</span>
+                <ul>{{ self.loop(p) }}</ul>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+<ul>{{ self.loop(pages) }}</ul>

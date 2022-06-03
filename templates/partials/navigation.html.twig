@@ -15,7 +15,6 @@
                 </ul>
             {% endif %}
         {% elseif p.children.visible.count > 0 %} {# i.e. folder with pages inside #}
-        {# TODO: Determine if the buttons should have aria-haspopup instead of aria-expanded false #}
             {% if p.activeChild %}
                 <button type="button" id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn disabled" aria-expanded="true" aria-disabled="true" disabled>
             {% else %}
