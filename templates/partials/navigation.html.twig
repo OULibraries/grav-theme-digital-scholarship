@@ -17,16 +17,16 @@
         {% elseif p.children.visible.count > 0 %} {# i.e. folder with pages inside #}
         {# TODO: Determine if the buttons should have aria-haspopup instead of aria-expanded false #}
             {% if p.activeChild %}
-                <button id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn disabled" aria-expanded="true" aria-disabled="true" disabled>
+                <button type="button" id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn disabled" aria-expanded="true" aria-disabled="true" disabled>
             {% else %}
-                <button id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false">
+                <button type="button" id="{{ p.slug }}-dd-btn" class="nav-item dd-btn dd-caret-btn" aria-controls="{{ p.slug }}-list" aria-expanded="false">
             {% endif %}
                 <svg aria-hidden="true" height="10" width="10">
                     <polygon class="icon" points="3,0 3,10 8,5" />
                 </svg>
                 <span>{{ p.menu }}</span>
             </button>
-            <ul class="list-unstyled" role="list">
+            <ul id="{{ p.slug }}-list" class="list-unstyled" role="list">
                 {{ self.loop(p) }}
             </ul>
         {% endif %}
@@ -36,7 +36,7 @@
 
 <nav id="main-nav" aria-label="Primary" class="main-nav sidenav">
     <div class="toggle-wrapper">
-        <button id="nav-toggle-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false" data-toggle="main-nav-list">
+        <button type="button" id="nav-toggle-btn" class="nav-item dd-btn dd-caret-btn" aria-expanded="false" data-toggle="main-nav-list" aria-controls="main-nav-list">
             <svg aria-hidden="true" height="10" width="10">
                 <polygon class="icon" points="3,0 3,10 8,5" />
             </svg>
