@@ -299,6 +299,9 @@ footer {
 
 button, .btn {
   cursor: pointer;
+  font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
 }
 
 .btn, a.btn {
