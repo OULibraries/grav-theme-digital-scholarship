@@ -54,7 +54,7 @@ hr {
   border-color: #dedede;
 }
 
-img {
+main img {
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.6);
 }
 
@@ -276,6 +276,20 @@ kbd {
 
 footer {
   border-color: #dedede;
+}
+
+[role=alertdialog],
+[role=dialog] {
+  background-color: #383838;
+}
+
+.dialog-top {
+  border-color: #dedede;
+}
+
+.overlay-2 {
+  background-color: #383838;
+  color: #fff;
 }
 
 /*# sourceMappingURL=dark.css.map */

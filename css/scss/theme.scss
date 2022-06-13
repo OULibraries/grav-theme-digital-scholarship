@@ -340,6 +340,31 @@ button, .btn {
         }
     }
 }
+.disclosure {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    svg {
+        height: 18px;
+        width: 18px;
+        path {
+            d: path("m 2,7 l 7,7 l 7,-7");
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 3;
+            transform-origin: 9px 9px;
+            transform: rotate(-90deg);
+        }
+    }
+    &[aria-expanded="true"] svg path {
+        transform: none;
+    }
+    &:hover, &:focus-visible {
+        border-color: transparent;
+        outline: 2px solid;
+        border-radius: 3px;
+    }
+}
 button[role="switch"] {
     // based heavily on w3 wai - https://www.w3.org/TR/wai-aria-practices/examples/switch/switch-button.html
     display: block;

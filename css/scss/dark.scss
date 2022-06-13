@@ -79,7 +79,7 @@ h3 {
 hr {
     border-color: $light-gray;
 }
-img {
+main img {
     box-shadow: 0 0 3px 1px rgba(0, 0, 0, .6);
 }
 main a, footer a {
@@ -321,5 +321,15 @@ kbd {
     box-shadow: 0 1px 1px 2px #000, 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
 }
 footer {
+    border-color: $light-gray;
+}
+
+// modal dialogs
+
+[role="alertdialog"],
+[role="dialog"] {
+    background-color: $overlay-2;
+}
+.dialog-top {
     border-color: $light-gray;
 }

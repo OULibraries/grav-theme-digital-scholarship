@@ -19,12 +19,14 @@ $light-red: #f8dbdb;
 $blue: #0000cd;
 $light-blue: #e7e7ff;
 
+$light-gray: color.adjust($black, $lightness: 90%);
+
 // Tables
 $header_bg: color.adjust($black, $lightness: 85%);
 $header_text: $black;
 $border: color.adjust($black, $lightness: 20%);
 $other_row_bg: color.adjust($black, $lightness: 95%);
-$active_row_bg: color.adjust($black, $lightness: 90%);
+$active_row_bg: $light-gray;
 
 body {
     color: $main-text;
@@ -49,7 +51,7 @@ hr {
 button, .btn, .icon-btn {
     &:disabled, &.disabled {
         &, &:hover, &:focus-visible {
-            background-color: color.adjust($black, $lightness: 90%);
+            background-color: $light-gray;
             color: color.adjust($black, $lightness: 28%);
             border-color: color.adjust($black, $lightness: 60%);
             cursor: default;
@@ -61,7 +63,7 @@ button, .btn, .icon-btn {
     background-color: $main-bg;
     &:hover, &:focus-visible {
         color: $main-text;
-        background-color: color.adjust($black, $lightness: 90%);
+        background-color: $light-gray;
         border-color: $main-text;
     }
     &:visited {
@@ -71,14 +73,19 @@ button, .btn, .icon-btn {
         outline: 2px solid $main-text;
     }
     &.dual-bg:focus-visible {
-        box-shadow: 0 0 7px 4px #fff;
+        box-shadow: 0 0 1px 2px #fff;
+    }
+}
+.disclosure {
+    &:hover, &:focus-visible {
+        background-color: $light-gray;
     }
 }
 button[role="switch"] {
     background-color: transparent;
     color: $main-text;
     svg .container {
-        fill: color.adjust($black, $lightness: 90%);
+        fill: $light-gray;
         stroke: currentColor;
     }
     &[aria-checked="true"] {
@@ -87,7 +94,7 @@ button[role="switch"] {
         }
     }
     &:hover, &:focus-visible {
-        background-color: color.adjust($black, $lightness: 90%);
+        background-color: $light-gray;
     }
 }
 main a, footer a {
@@ -106,7 +113,7 @@ main a, footer a {
     }
 }
 blockquote {
-    background-color: color.adjust($black, $lightness: 90%);
+    background-color: $light-gray;
 }
 .notices {
     color: $main-text;

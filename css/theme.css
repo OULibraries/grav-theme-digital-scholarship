@@ -349,6 +349,32 @@ button, .btn {
   display: inline-block;
 }
 
+.disclosure {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+}
+.disclosure svg {
+  height: 18px;
+  width: 18px;
+}
+.disclosure svg path {
+  d: path("m 2,7 l 7,7 l 7,-7");
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  transform-origin: 9px 9px;
+  transform: rotate(-90deg);
+}
+.disclosure[aria-expanded=true] svg path {
+  transform: none;
+}
+.disclosure:hover, .disclosure:focus-visible {
+  border-color: transparent;
+  outline: 2px solid;
+  border-radius: 3px;
+}
+
 button[role=switch] {
   display: block;
   text-align: left;
