@@ -17,6 +17,7 @@ class Basic extends Theme {
         if ($this->isAdmin()) {
             $this->enable([
                 'onAdminSave' => ['onAdminSave', 0],
+                'onAdminPageTypes' => ['onAdminPageTypes', 0],
             ]);
             return;
         }
@@ -35,6 +36,12 @@ class Basic extends Theme {
                 $file->save();
             }
         }
+    }
+    // remove sitemap from list of options
+    public function onAdminPageTypes(Event $event) {
+        $types = $event['types'];
+        unset($types['sitemap']);
+        $event['types'] = $types;
     }
     
 }
