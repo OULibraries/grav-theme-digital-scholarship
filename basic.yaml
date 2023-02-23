@@ -7,7 +7,7 @@ streams:
        - themes://basic
 
 enabled: true
-# color_scheme: 'default'
+color_scheme: blue
 favicon:
 # link_new_tab: false
 title:

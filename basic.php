@@ -24,11 +24,8 @@ class Basic extends Theme {
     }
     // purpose: make sure sitemap page is created if it does not exist
     public function onAdminSave(Event $event) {
-        $obj = $event['object'];
-        // only take effect if the theme config has been saved
-        if (method_exists($obj, 'blueprints') && $obj->blueprints()->getFilename() === 'basic/blueprints') {
-            $obj->set('title.text', 'success');
-            // check for existence of sitemap, create if needed
+        // check setting before making sitemap
+        if ($this->config->get('themes.basic.disable_sitemap') ?? true) {
             $path = Grav::instance()['locator']->findResource('page://') . '/sitemap/sitemap.md';
             $file = MarkdownFile::instance($path);
             if (!$file->exists()) {

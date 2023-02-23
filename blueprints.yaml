@@ -23,7 +23,7 @@ form:
     color_scheme:
       type: select
       label: Color Scheme
-      description: See documentation for more further customization options.
+      description: See documentation for further customization options.
       default: blue
       # TODO: Modify and provide actual options
       options:
@@ -36,7 +36,7 @@ form:
       type: file
       label: Favicon
       description: Will replace the default icon displayed in the address bar and bookmarks list for the website.
-      destination: 'theme://images/favicon'
+      destination: 'user://data/basic/favicon'
       multiple: false
       accept:
         - image/*
@@ -53,13 +53,25 @@ form:
       validate:
         type: bool
 
-    same_site_link_new_tab:
+    # same_site_link_new_tab:
+    #   type: toggle
+    #   label: Links to other pages in the same site open in new tab
+    #   description: All links added to content will be affected by this setting. The default is for links to open in the same page.
+    #   toggleable: true
+    #   highlight: 1
+    #   default: 0
+    #   options:
+    #     0: PLUGIN_ADMIN.DISABLED
+    #     1: PLUGIN_ADMIN.ENABLED
+    #   validate:
+    #     type: bool
+
+    disable_sitemap:
       type: toggle
-      label: Links to other pages in the same site open in new tab.
-      description: All links added to content will be affected by this setting. The default is for links to open in the same page.
-      toggleable: true
+      label: Generate Sitemap
+      description: By default, a sitemap will be generated if one does not exist (checked every time a page is saved from the admin panel). If you disable this feature you will have to add the site map page manually in order to include it. Be aware that WCAG 2.4.5 - Multiple Ways requires multiple ways to navigate through a site's pages. If you disable the automatic sitemap generation, do not add one manually, and do not implement some other site navigation method, you may be in violation of this requirement.
       highlight: 1
-      default: 0
+      default: 1
       options:
         0: PLUGIN_ADMIN.DISABLED
         1: PLUGIN_ADMIN.ENABLED
@@ -71,37 +83,37 @@ form:
       title: Header Options
       underline: true
 
-    title.option:
-      type: select
-      label: Header Title
-      options:
-        default: Site Title
-        none: Remove Title
-        custom: Provide Custom Text
+    # title.option:
+    #   type: select
+    #   label: Header Title
+    #   options:
+    #     default: Site Title
+    #     none: Remove Title
+    #     custom: Provide Custom Text
 
-    title.text:
-      type: text
-      label: Custom Header Title
-      description: If nothing is provided, the site title will be used instead.
+    # title.text:
+    #   type: text
+    #   label: Custom Header Title
+    #   description: If nothing is provided, the site title will be used instead.
 
-    title.url_option:
-      type: select
-      label: Title URL
-      options:
-        default: Link to Home Page
-        none: Not a Link
-        custom: Provide Custom URL
+    # title.url_option:
+    #   type: select
+    #   label: Title URL
+    #   options:
+    #     default: Link to Home Page
+    #     none: Not a Link
+    #     custom: Provide Custom URL
 
-    title.custom_url:
-      type: text
-      label: Custom Title URL
-      description: If custom is selected but nothing is provided here, the header title will link to the site home page.
+    # title.custom_url:
+    #   type: text
+    #   label: Custom Title URL
+    #   description: If custom is selected but nothing is provided here, the header title will link to the site home page.
 
     logo.file:
       type: file
       label: Logo
       description: Logo to display in every page header.
-      destination: 'theme://images/logo'
+      destination: 'user://data/basic/logo'
       multiple: false
       accept:
         - image/*

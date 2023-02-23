@@ -185,10 +185,6 @@
   flex-grow: 1;
   padding-bottom: 0;
 }
-.dialog-top .icon-btn {
-  height: 30px;
-  width: 30px;
-}
 .dialog-content {
   padding-top: 20px;
   overflow-y: auto;

@@ -19,12 +19,16 @@ $font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-heading: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 // Basic Layout
+html {
+    width: 100vw;
+}
 body {
     margin: 0;
     font-size: 14px;
     line-height: 1.4;
     letter-spacing: normal;
     font-family: $font-family-standard;
+    overflow-x: hidden;
 }
 #main-skip-link {
     top: -70px;
@@ -216,11 +220,11 @@ header {
 }
 #back-to-top {
     position: fixed;
-    display: flex;
+    font-size: 24px;
     bottom: 10px;
     right: 10px;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     box-sizing: border-box;
     border-width: 2px;
     text-decoration: none;
@@ -288,6 +292,9 @@ footer {
 .hide, .hidden {
     display: none;
 }
+.wrapper {
+    padding: 10px;
+}
 
 // Buttons
 button, .btn {
@@ -315,27 +322,31 @@ button, .btn {
     justify-content: center;
     align-items: center;
     padding: 0;
-    height: 27px;
-    width: 27px;
+    height: 36px;
+    width: 36px;
     border: 2px solid;
     border-radius: 50%;
     text-align: center;
-    font-size: 16px;
+    font-size: 24px;
     outline-offset: 2px;
 }
 .hamburger-btn { // to be used with .icon-btn
-    height: 32px;
-    width: 32px;
+    height: 36px;
+    width: 36px;
     border-radius: 5px;
-    font-size: 20px;
-    .fa-minus {
+    font-size: 28px;
+    padding: 0;
+    .fa-bars {
+        margin-top: 3px;
+    }
+    .fa-times {
         display: none;
     }
     &[aria-expanded='true'] {
         .fa-bars {
             display: none;
         }
-        .fa-minus {
+        .fa-times {
             display: inline-block;
         }
     }
@@ -431,6 +442,43 @@ button[role="switch"] {
         }
     }
 }
+// Icon Buttons
+.content-toggle-wrapper {
+    .content-toggle-btn, .plus-minus-btn {
+        .fa-minus {
+            display: none;
+        }
+    }
+    .toggle-content {
+        display: none;
+    }
+    &.expanded {
+        .content-toggle-btn, .plus-minus-btn {
+            .fa-plus {
+                display: none;
+            }
+            .fa-minus {
+                display: inline-block;
+            }
+        }
+        .toggle-content {
+            display: block;
+        }
+    }
+}
+.settings-btn {
+    padding-top: 2px;
+}
+.plus-minus-btn {
+    padding-top: 2px;
+    padding-left: 1px;
+}
+.toggle-content-btn {
+    padding-top: 3px;
+}
+.close-btn {
+    //
+}
 
 // Links
 main a, footer a {
@@ -443,10 +491,10 @@ main a, footer a {
         outline-offset: 1px;
     }
 }
-.fa-external-link-alt {
+.fa-external-link {
     padding: 2px;
     margin-left: 2px;
-    font-size: 10px;
+    font-size: 12px;
 }
 a img {
     padding: 2px;
@@ -455,19 +503,20 @@ a img {
 .img-link-external {
     display: flex;
     align-items: end;
+    text-decoration: none;
     // make sure there is space for the font awesome icon and that the default link style isn't applied to it on focus/hover
     &:focus-visible, &:hover {
         border-color: transparent;
         background-color: transparent;
     }
-    .fa-external-link-alt {
+    .fa-external-link {
         margin-bottom: 14px;
     }
     // img {
     //     display: inline-block;
     //     max-width: calc(100% - 25px);
     // }
-    // .fa-external-link-icon {
+    // .fa-external-link {
     //     transform: translateY(-12px);
     // }
 }

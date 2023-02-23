@@ -1,8 +1,9 @@
 {% set has_logo = theme_var('logo.file') and not header.remove_logo %}
-{% if has_logo %}
+{# {% set has_logo = theme_var('logo.file') and not header.remove_logo %} #}
+{% if theme_var('logo.file') %} {# has_logo #}
     {# Start by setting the logo image for convenience. #}
     {% set logo_img %}
-        <img src="{{ url('theme://images/logo/' ~ theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('logo') }}" />
+        <img src="{{ url('user://data/basic/logo/' ~ theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('') }}" />
     {% endset %}
     <div class="logo">
         {# Only make the logo a link if a url and alt text have both been provided. #}
@@ -15,17 +16,17 @@
 {% endif %}
 
 {# Include the site title/custom title text if indicated or if no logo image has been provided. #}
-{% set title_option = header.site_title_option|default(theme_var('title.option')) %}
-{% if title_option != 'none' or not has_logo %}
+{# {% set title_option = header.site_title_option|default(theme_var('title.option')) %} #}
+{# {% if title_option != 'none' or not has_logo %}
     {% set title_text = (title_option == 'custom' and theme_var('title.text')) ? theme_var('title.text') : site.title %}
-    {% set title_url = theme_var('title.url_option') == 'none' ? '' : (theme_var('title.url_option') == 'custom' and theme_var('title.custom_url')) ? theme_var('title.custom_url') : base_url %}
+    {% set title_url = theme_var('title.url_option') == 'none' ? '' : (theme_var('title.url_option') == 'custom' and theme_var('title.custom_url')) ? theme_var('title.custom_url') : base_url %} #}
     <div class="text">
-        {% if title_url %}
-            <a href="{{ title_url }}">
-                <span>{{ title_text }}</span>
+        {# {% if title_url %} #}
+            <a href="{{ base_url }}"> {# title_url #}
+                <span>{{ site.title }}</span> {# title_text #}
             </a>
-        {% else %}
+        {# {% else %}
             <span>{{ title_text }}</span>
-        {% endif %}
+        {% endif %} #}
     </div>
-{% endif %}
+{# {% endif %} #}

@@ -1,9 +1,14 @@
+html {
+  width: 100vw;
+}
+
 body {
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
   letter-spacing: normal;
   font-family: Verdana, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 #main-skip-link {
@@ -212,11 +217,11 @@ header .text a:hover, header .text a:focus-visible {
 
 #back-to-top {
   position: fixed;
-  display: flex;
+  font-size: 24px;
   bottom: 10px;
   right: 10px;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   box-sizing: border-box;
   border-width: 2px;
   text-decoration: none;
@@ -297,6 +302,10 @@ footer {
   display: none;
 }
 
+.wrapper {
+  padding: 10px;
+}
+
 button, .btn {
   cursor: pointer;
   font-family: inherit;
@@ -324,28 +333,32 @@ button, .btn {
   justify-content: center;
   align-items: center;
   padding: 0;
-  height: 27px;
-  width: 27px;
+  height: 36px;
+  width: 36px;
   border: 2px solid;
   border-radius: 50%;
   text-align: center;
-  font-size: 16px;
+  font-size: 24px;
   outline-offset: 2px;
 }
 
 .hamburger-btn {
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 28px;
+  padding: 0;
 }
-.hamburger-btn .fa-minus {
+.hamburger-btn .fa-bars {
+  margin-top: 3px;
+}
+.hamburger-btn .fa-times {
   display: none;
 }
 .hamburger-btn[aria-expanded=true] .fa-bars {
   display: none;
 }
-.hamburger-btn[aria-expanded=true] .fa-minus {
+.hamburger-btn[aria-expanded=true] .fa-times {
   display: inline-block;
 }
 
@@ -436,6 +449,35 @@ button[role=switch][aria-checked=true] .on {
   display: inline-block;
 }
 
+.content-toggle-wrapper .content-toggle-btn .fa-minus, .content-toggle-wrapper .plus-minus-btn .fa-minus {
+  display: none;
+}
+.content-toggle-wrapper .toggle-content {
+  display: none;
+}
+.content-toggle-wrapper.expanded .content-toggle-btn .fa-plus, .content-toggle-wrapper.expanded .plus-minus-btn .fa-plus {
+  display: none;
+}
+.content-toggle-wrapper.expanded .content-toggle-btn .fa-minus, .content-toggle-wrapper.expanded .plus-minus-btn .fa-minus {
+  display: inline-block;
+}
+.content-toggle-wrapper.expanded .toggle-content {
+  display: block;
+}
+
+.settings-btn {
+  padding-top: 2px;
+}
+
+.plus-minus-btn {
+  padding-top: 2px;
+  padding-left: 1px;
+}
+
+.toggle-content-btn {
+  padding-top: 3px;
+}
+
 main a, footer a {
   text-decoration: underline;
   border-radius: 4px;
@@ -447,10 +489,10 @@ main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
   outline-offset: 1px;
 }
 
-.fa-external-link-alt {
+.fa-external-link {
   padding: 2px;
   margin-left: 2px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 a img {
@@ -461,12 +503,13 @@ a img {
 .img-link-external {
   display: flex;
   align-items: end;
+  text-decoration: none;
 }
 .img-link-external:focus-visible, .img-link-external:hover {
   border-color: transparent;
   background-color: transparent;
 }
-.img-link-external .fa-external-link-alt {
+.img-link-external .fa-external-link {
   margin-bottom: 14px;
 }
 

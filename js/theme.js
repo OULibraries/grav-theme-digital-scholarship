@@ -22,6 +22,9 @@ $(document).ready(function() {
     // back to top link (make sure it scrolls the user to the top, just in case)
     $("#back-to-top").on("click", function() { window.scrollTo(0, 0); });
 
+    // icon button functions
+    setIconBtnFunctions();
+
     // window scroll function (to prevent overloading) - any extension can modify the doWindowScrolledAction
     let window_scroll_tick = false; // TODO: Move this outside of the ready function
     window.onscroll = function() {
@@ -51,10 +54,10 @@ function modifyLinks() {
             let link = $(this);
             // make sure link is not same-page or same-site link
             let href = link.attr("href").replace('https', 'http');
-            if (!href.startsWith("#") && (!(href.startsWith(base_url) || !href.startsWith('http')) || (typeof(same_site_tab) != 'undefined' && same_site_tab))) {
+            if (!href.startsWith("#") && (!(href.startsWith(base_url) || !href.startsWith('http')) /*|| (typeof(same_site_tab) != 'undefined' && same_site_tab)*/)) {
                 // change target and modify link
                 link.attr("target", "_blank");
-                link.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fa fa-external-link-alt'></i>");
+                link.append("<span class='sr-only'>, Opens in new window</span><i aria-hidden='true' class='fa fa-external-link'></i>");
                 // extra modification for image links
                 link.children("img").parent().addClass("img-link-external");
             }
@@ -100,4 +103,15 @@ function toggleExpanded(btn) {
 
 function isClickEvent(e) {
     return (e.type === "click" || e.which === 32 || e.which === 13);
+}
+
+function setIconBtnFunctions() {
+    $(".content-toggle-btn").on("click", toggleContent);
+    $(".dialog-open-btn").on("click", function() { openDialog(this.getAttribute("data-opens"), this); });
+    $(".dialog-close-btn").on("click", function() { closeDialog(this); });
+}
+
+function toggleContent(e) {
+    $(this).parent().toggleClass('expanded');
+    toggleExpanded(this);
 }

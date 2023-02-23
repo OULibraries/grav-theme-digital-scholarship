@@ -13,7 +13,7 @@
             {% if theme_var('link_new_tab') %}
                 <script>
                     const link_new_tab = true;
-                    {% if theme_var('same_site_link_new_tab') %}const same_site_tab = true;{% endif %}
+                    {# {% if theme_var('same_site_link_new_tab') %}const same_site_tab = true;{% endif %} #}
                     const base_url = '{{ base_url_absolute }}'.replace('https', 'http');
                 </script>
             {% endif %}
@@ -22,7 +22,7 @@
         {% block favicon %}
             {% set favicon = ((theme_var('favicon')|first).name) %}
             {% if favicon %}
-                <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('theme://images/favicon/'~favicon) }}" />
+                <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('user://data/basic/favicon/'~favicon) }}" />
             {% else %}
                 <link rel="icon" type="image/png" href="{{ url('theme://images/default/favicon.png') }}" />
             {% endif %}
@@ -34,7 +34,8 @@
         {% endblock page_title %}
 
         {% block stylesheets %}
-            {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
+            {# {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %} #}
+            {% do assets.addCss('https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css') %}
             {% do assets.addCss('theme://css/modal.css') %}
             {% do assets.addCss('theme://css/theme.css') %}
             {% do assets.addCss('theme://css/' ~ theme_var('color_scheme') ~ '.css') %}
