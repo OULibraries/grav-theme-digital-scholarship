@@ -429,9 +429,9 @@ button[role=switch] svg .toggle {
   stroke-width: 0;
   fill-opacity: 1;
   fill: currentColor;
-  r: 11;
-  cx: 16;
-  cy: 15;
+  r: 11px;
+  cx: 16px;
+  cy: 15px;
 }
 button[role=switch] .on {
   display: none;
@@ -440,7 +440,7 @@ button[role=switch][aria-checked=true] svg .container {
   fill-opacity: 0;
 }
 button[role=switch][aria-checked=true] svg .toggle {
-  cx: 36;
+  cx: 36px;
 }
 button[role=switch][aria-checked=true] .off {
   display: none;

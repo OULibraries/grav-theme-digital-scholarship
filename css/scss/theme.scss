@@ -417,9 +417,9 @@ button[role="switch"] {
             stroke-width: 0;
             fill-opacity: 1;
             fill: currentColor;
-            r: 11;
-            cx: 16;
-            cy: 15;
+            r: 11px;
+            cx: 16px;
+            cy: 15px;
         }
     }
     .on {
@@ -431,7 +431,7 @@ button[role="switch"] {
                 fill-opacity: 0;
             }
             .toggle {
-                cx: 36;
+                cx: 36px;
             }
         }
         .off {
