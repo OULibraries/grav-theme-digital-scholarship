@@ -67,7 +67,7 @@
         {% endblock skip %}
 
         {% block header_wrapper %}
-        <header id="top">
+        <header id="top" tabindex="-1">
 
             {% block header %}
                 {% include 'partials/header.html.twig' %}
@@ -82,7 +82,7 @@
             {% endblock navigation %}
 
             {% block main_wrapper %}
-            <main id="main">
+            <main id="main" tabindex="-1">
 
                 {% block main %}
 
