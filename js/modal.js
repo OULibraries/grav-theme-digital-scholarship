@@ -463,9 +463,11 @@ aria.Utils = aria.Utils || {};
 
 // added:
 $(document).ready(function() {
+  // click outside of the modal dialog to close it
   $(".dialog-backdrop").on("click", function(e) {
     closeDialog($(this).children()[1])
   });
+  // interactive elements outside of modal dialog ignore clicks
   $(".dialog-backdrop").children().on("click", function(e) {
       e.stopPropagation();
   });

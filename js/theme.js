@@ -42,10 +42,14 @@ $(document).ready(function() {
     // ---------- Supported Plugin Handling ---------- //
 
     // Markdown Notices (set role for notices)
+    // Note: At the moment, NVDA ignores this, and presumably other screen readers will as well
     $(".notices").attr("role", "note");
 
 });
 
+/**
+ * If the link_new_tab setting is enabled, modify all external links in the main and footer sections. Links that already have a target attribute set are ignored. When modifying the links: Change target to _blank, add external link icon for sighted users, and add hidden message for screen reader users. Image links require an additional class.
+ */
 function modifyLinks() {
     if (typeof(link_new_tab) != 'undefined' && link_new_tab) {
         $("main a:not([target])").add("footer a:not([target])").each(function() {
@@ -88,7 +92,10 @@ function toggleBackToTop() {
     else $("#back-to-top").removeClass("active");
 }
 
-
+/**
+ * A basic function needed for any toggle buttons that expand/collapse content.
+ * @param {Object} btn HTML <button> element
+ */
 function toggleExpanded(btn) {
     btn.setAttribute("aria-expanded", btn.getAttribute("aria-expanded") == "true" ? "false" : "true");
 }
@@ -98,17 +105,26 @@ function toggleExpanded(btn) {
  function isMobile() {
     return (window.innerWidth < MOBILE_WIDTH);
 }
-
+/**
+ * Checks to see if a given event is a click. For keypress events, specifically checks for spacebar and enter, as either option should count as a click.
+ * @param {Event} e 
+ * @returns Boolean
+ */
 function isClickEvent(e) {
     return (e.type === "click" || e.which === 32 || e.which === 13);
 }
-
+/**
+ * Some basic handlers that apply to everything with the same class
+ */
 function setIconBtnFunctions() {
     $(".content-toggle-btn").on("click", toggleContent);
     $(".dialog-open-btn").on("click", function() { openDialog(this.getAttribute("data-opens"), this); });
     $(".dialog-close-btn").on("click", function() { closeDialog(this); });
 }
-
+/**
+ * Toggles expand/collapse status of a section of content. Called when a content toggle button is clicked.
+ * @param {Event} e 
+ */
 function toggleContent(e) {
     $(this).parent().toggleClass('expanded');
     toggleExpanded(this);
