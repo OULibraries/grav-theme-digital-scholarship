@@ -25,7 +25,6 @@ form:
       label: Color Scheme
       description: See documentation for further customization options.
       default: blue
-      # TODO: Modify and provide actual options
       options:
         blue: Blue
         crimson: Crimson
@@ -53,19 +52,6 @@ form:
       validate:
         type: bool
 
-    # same_site_link_new_tab:
-    #   type: toggle
-    #   label: Links to other pages in the same site open in new tab
-    #   description: All links added to content will be affected by this setting. The default is for links to open in the same page.
-    #   toggleable: true
-    #   highlight: 1
-    #   default: 0
-    #   options:
-    #     0: PLUGIN_ADMIN.DISABLED
-    #     1: PLUGIN_ADMIN.ENABLED
-    #   validate:
-    #     type: bool
-
     generate_sitemap:
       type: toggle
       label: Generate Sitemap
@@ -82,32 +68,6 @@ form:
       type: section
       title: Header Options
       underline: true
-
-    # title.option:
-    #   type: select
-    #   label: Header Title
-    #   options:
-    #     default: Site Title
-    #     none: Remove Title
-    #     custom: Provide Custom Text
-
-    # title.text:
-    #   type: text
-    #   label: Custom Header Title
-    #   description: If nothing is provided, the site title will be used instead.
-
-    # title.url_option:
-    #   type: select
-    #   label: Title URL
-    #   options:
-    #     default: Link to Home Page
-    #     none: Not a Link
-    #     custom: Provide Custom URL
-
-    # title.custom_url:
-    #   type: text
-    #   label: Custom Title URL
-    #   description: If custom is selected but nothing is provided here, the header title will link to the site home page.
 
     logo.file:
       type: file

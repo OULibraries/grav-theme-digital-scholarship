@@ -26,7 +26,7 @@ $(document).ready(function() {
     setIconBtnFunctions();
 
     // window scroll function (to prevent overloading) - any extension can modify the doWindowScrolledAction
-    let window_scroll_tick = false; // TODO: Move this outside of the ready function
+    let window_scroll_tick = false;
     window.onscroll = function() {
         if (!window_scroll_tick) {
             setTimeout(function() {
@@ -44,8 +44,6 @@ $(document).ready(function() {
     // Markdown Notices (set role for notices)
     $(".notices").attr("role", "note");
 
-    // TODO: Other plugins?
-    // Note: Some code for tablists could be found in theme.js for the original basic theme
 });
 
 function modifyLinks() {
