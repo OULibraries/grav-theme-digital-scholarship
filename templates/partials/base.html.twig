@@ -13,7 +13,6 @@
             {% if theme_var('link_new_tab') %}
                 <script>
                     const link_new_tab = true;
-                    {# {% if theme_var('same_site_link_new_tab') %}const same_site_tab = true;{% endif %} #}
                     const base_url = '{{ base_url_absolute }}'.replace('https', 'http');
                 </script>
             {% endif %}
@@ -34,7 +33,6 @@
         {% endblock page_title %}
 
         {% block stylesheets %}
-            {# {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %} #}
             {% do assets.addCss('https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css') %}
             {% do assets.addCss('theme://css/modal.css') %}
             {% do assets.addCss('theme://css/theme.css') %}
@@ -55,7 +53,7 @@
     </head>
     {% endblock head %}
 
-    {# In case someone wants to set something ahead of time? #}
+    {# In case someone wants to set something ahead of time #}
     {% block setup %}
     {% endblock setup %}
 

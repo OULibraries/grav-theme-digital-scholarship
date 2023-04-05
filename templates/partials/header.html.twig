@@ -1,6 +1,5 @@
 {% set has_logo = theme_var('logo.file') and not header.remove_logo %}
-{# {% set has_logo = theme_var('logo.file') and not header.remove_logo %} #}
-{% if theme_var('logo.file') %} {# has_logo #}
+{% if theme_var('logo.file') %}
     {# Start by setting the logo image for convenience. #}
     {% set logo_img %}
         <img src="{{ url('user://data/digital-scholarship/logo/' ~ theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('') }}" />
@@ -15,18 +14,9 @@
     </div>
 {% endif %}
 
-{# Include the site title/custom title text if indicated or if no logo image has been provided. #}
-{# {% set title_option = header.site_title_option|default(theme_var('title.option')) %} #}
-{# {% if title_option != 'none' or not has_logo %}
-    {% set title_text = (title_option == 'custom' and theme_var('title.text')) ? theme_var('title.text') : site.title %}
-    {% set title_url = theme_var('title.url_option') == 'none' ? '' : (theme_var('title.url_option') == 'custom' and theme_var('title.custom_url')) ? theme_var('title.custom_url') : base_url %} #}
-    <div class="text">
-        {# {% if title_url %} #}
-            <a href="{{ base_url }}"> {# title_url #}
-                <span>{{ site.title }}</span> {# title_text #}
-            </a>
-        {# {% else %}
-            <span>{{ title_text }}</span>
-        {% endif %} #}
-    </div>
-{# {% endif %} #}
+{# Include the site title/custom title text #}
+<div class="text">
+    <a href="{{ base_url }}">
+        <span>{{ site.title }}</span>
+    </a>
+</div>
