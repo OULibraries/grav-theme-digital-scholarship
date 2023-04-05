@@ -3,7 +3,7 @@
 {% if theme_var('logo.file') %} {# has_logo #}
     {# Start by setting the logo image for convenience. #}
     {% set logo_img %}
-        <img src="{{ url('user://data/basic/logo/' ~ theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('') }}" />
+        <img src="{{ url('user://data/digital-scholarship/logo/' ~ theme_var('logo.file')|first.name) }}" alt="{{ theme_var('logo.alt')|default('') }}" />
     {% endset %}
     <div class="logo">
         {# Only make the logo a link if a url and alt text have both been provided. #}

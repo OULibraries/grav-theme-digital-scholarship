@@ -6,7 +6,7 @@ use Grav\Common\Theme;
 use RocketTheme\Toolbox\Event\Event;
 use RocketTheme\Toolbox\File\MarkdownFile;
 
-class Basic extends Theme {
+class DigitalScholarship extends Theme {
 
     public static function getSubscribedEvents(): array {
         return [
@@ -25,7 +25,7 @@ class Basic extends Theme {
     // purpose: make sure sitemap page is created if it does not exist
     public function onAdminSave(Event $event) {
         // check setting before making sitemap
-        if ($this->config->get('themes.basic.generate_sitemap') ?? true) {
+        if ($this->config->get('themes.digital-scholarship.generate_sitemap') ?? true) {
             $path = Grav::instance()['locator']->findResource('page://') . '/sitemap/sitemap.md';
             $file = MarkdownFile::instance($path);
             if (!$file->exists()) {

@@ -22,7 +22,7 @@
         {% block favicon %}
             {% set favicon = ((theme_var('favicon')|first).name) %}
             {% if favicon %}
-                <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('user://data/basic/favicon/'~favicon) }}" />
+                <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('user://data/digital-scholarship/favicon/'~favicon) }}" />
             {% else %}
                 <link rel="icon" type="image/png" href="{{ url('theme://images/default/favicon.png') }}" />
             {% endif %}

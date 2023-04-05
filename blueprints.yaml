@@ -1,4 +1,5 @@
-name: Basic Theme
+name: Digital Scholarship
+slug: digital-scholarship
 version: 1.0.0
 description: Basic Theme - in development
 icon: book
@@ -6,11 +7,10 @@ author:
   name: Theo Acker/University of Oklahoma Libraries
   email: theoacker@ou.edu
   url: https://libraries.ou.edu/users/theo-acker/theo-acker
-homepage: https://github.com/TheoAcker12/grav-theme-basic
+homepage: https://github.com/TheoAcker12/grav-theme-digital-scholarship
 demo:
-keywords:
-bugs: https://github.com/TheoAcker12/grav-theme-basic/issues
-docs: https://github.com/TheoAcker12/grav-theme-basic/blob/main/README.md
+bugs: https://github.com/TheoAcker12/grav-theme-digital-scholarship/issues
+docs: https://github.com/TheoAcker12/grav-theme-digital-scholarship/blob/main/README.md
 license: MIT
 
 dependencies:
@@ -35,7 +35,7 @@ form:
       type: file
       label: Favicon
       description: Will replace the default icon displayed in the address bar and bookmarks list for the website.
-      destination: 'user://data/basic/favicon'
+      destination: 'user://data/digital-scholarship/favicon'
       multiple: false
       accept:
         - image/*
@@ -73,7 +73,7 @@ form:
       type: file
       label: Logo
       description: Logo to display in every page header.
-      destination: 'user://data/basic/logo'
+      destination: 'user://data/digital-scholarship/logo'
       multiple: false
       accept:
         - image/*
