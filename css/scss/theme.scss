@@ -1,2 +1,782 @@
-@import 'base';
-@import 'styles';
+// Variables to use
+
+// For media queries
+$small: 320px; // small phone
+$phone: 480px; // large phone
+$tablet: 768px; // tablet
+$laptop: 1024px; // laptop
+$desktop: 1200px; // desktop
+$large: 1440px; // large monitor
+$mobile: $tablet; // "mobile" cutoff
+
+// Max width (for site as a whole)
+$max-width: 1200px;
+$max-padding: calc(50vw - ($max-width)/2);
+
+// Fonts
+$font-family-standard: Verdana, Helvetica, Arial, sans-serif;
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-heading: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+// Basic Layout
+html {
+    width: 100vw;
+}
+body {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: normal;
+    font-family: $font-family-standard;
+    overflow-x: hidden;
+}
+#main-skip-link {
+    top: -70px;
+    left: 20px;
+    z-index: 10;
+    &:focus, &:active {
+        top: 15px;
+    }
+}
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 20px;
+    & > div {
+        margin: 0 10px;
+        flex-grow: 1;
+        flex-basis: 50%;
+    }
+    span {
+        display: block;
+        padding: 10px;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .logo {
+        a {
+            display: block;
+        }
+        img {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 5px;
+            max-height: max(60px, 8vw);
+        }
+    }
+    .text {
+        text-align: center;
+        a {
+            display: inline-block;
+            &:hover, &:focus-visible {
+                text-decoration: underline;
+            }
+        }
+    }
+    @media (min-width: $phone) {
+        flex-wrap: nowrap;
+        font-size: 22px;
+    }
+    @media(min-width: $tablet) {
+        padding: 10px;
+        font-size: 25px;
+    }
+    @media (min-width: $laptop) {
+        padding: 10px 20px;
+    }
+    @media(min-width: ($max-width + 120)) {
+        padding: 10px $max-padding;
+    }
+}
+#wrapper {
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, min-content);
+    nav {
+        grid-row: 1;
+        grid-column: 1;
+    }
+    main {
+        grid-row: 2;
+        grid-column: 1;
+    }
+    @media (min-width: $phone) {
+        padding: 20px;
+    }
+    @media (min-width: $tablet) {
+        padding: 20px 50px;
+    }
+    @media (min-width: $laptop) {
+        grid-template-columns: minmax(250px, 3fr) minmax(300px, 7fr);
+        grid-column-gap: 40px;
+        padding: 20px 80px;
+        main {
+            grid-row: 1 / 3;
+            grid-column: 2;
+        }
+    }
+    @media(min-width: ($max-width + 120)) {
+        padding: 20px $max-padding;
+    }
+}
+#main-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-right: 5px;
+    .toggle-wrapper {
+        padding: 5px 0;
+    }
+    #main-nav-list {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: block;
+        @media (max-width: ($laptop - 1)) {
+            border-top: 1px solid;
+            padding-top: 0;
+            &.collapsed {
+                display: none;
+            }
+        }
+    }
+    .nav-item {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        padding-left: 16px;
+        margin: 0;
+        box-sizing: border-box;
+        border: none;
+        color: inherit;
+        background-color: transparent;
+        font-size: 14px;
+        text-align: left;
+        line-height: 2.2;
+        text-underline-offset: 1px;
+        text-decoration: none;
+        &:disabled, &.disabled {
+            .fas {
+                display: none;
+            }
+            pointer-events: none;
+            // &:hover, &:focus {
+            //     color: inhert;
+            //     background-color: transparent;
+            // }
+        }
+    }
+    .dd-btn {
+        padding-left: 3px;
+        display: flex;
+        align-items: center;
+        .icon {
+            transition: transform .2s ease;
+            transform-origin: 5px 5px;
+            fill: currentColor;
+        }
+        &[aria-expanded="true"] {
+            .icon {
+                transform: rotate(90deg);
+            }
+        }
+        &>span {
+            padding-left: 3px;
+        }
+    }
+    a.nav-item:hover, a.nav-item:focus-visible {
+        text-decoration: underline;
+    }
+    .active > .nav-item, .parent > .nav-item {
+        font-weight: bold;
+    }
+    li:not(:first-child), li.expanded ul, li.parent ul, li.acive ul {
+        border-top-width: 1px;
+        border-top-style: solid;
+    }
+    ul {
+        margin-top: 0;
+    }
+    ul ul {
+        margin-left: 10px;
+    }
+    ul ul {
+        display: none;
+    }
+    .expanded > ul, .parent > ul, .active > ul {
+        display: block;
+    }
+    @media (min-width: $laptop) {
+        margin-top: 20px;
+        padding-right: 0;
+        .toggle-wrapper {
+            display: none;
+        }
+    }
+}
+#back-to-top {
+    position: fixed;
+    font-size: 24px;
+    bottom: 10px;
+    right: 10px;
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+    border-width: 2px;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity linear .5s;
+    pointer-events: none;
+    outline-offset: 4px;
+    @media (min-width: $large) {
+        right: max(3vw, 30px);
+        bottom: 20px;
+    }
+    &.active, &:focus {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+footer {
+    padding: 10px 15px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    line-height: 1.7;
+    @media (min-width: $phone) {
+        padding: 10px 20px;
+    }
+    @media (min-width: $tablet) {
+        padding: 20px 50px;
+    }
+    @media (min-width: $laptop) {
+        padding: 30px 80px;
+    }
+    @media (min-width: ($max-width + 120)) {
+        padding: 40px $max-padding;
+    }
+}
+
+// General Utility Classes - i.e. not for any specific element
+@media (min-width: $mobile) { // tablet size or larger
+    .mobile-only {
+        display: none !important;
+    }
+}
+@media (max-width: ($mobile - 1)) { // smaller than tablet
+    .desktop-only {
+        display: none !important;
+    }
+}
+.skip-link {
+    position: absolute;
+    transition: top .5s ease; // can modify transition-property for individual skip link that requires a different type of transition
+    padding: 15px 10px;
+    text-decoration: underline;
+    border-radius: 10px;
+    border: 2px solid;
+}
+.sr-only {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+}
+.hide, .hidden {
+    display: none;
+}
+.wrapper {
+    padding: 10px;
+}
+
+// Buttons
+button, .btn {
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+}
+.btn, a.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px;
+    border: 2px solid;
+    border-radius: 10px;
+    text-align: center;
+    white-space: pre-wrap;
+    line-height: 1.2;
+    font-size: 14px;
+    user-select: none;
+    transition: background-color .2s ease, color .2s ease;
+    outline-offset: 2px;
+}
+.icon-btn, a.icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 36px;
+    width: 36px;
+    border: 2px solid;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    outline-offset: 2px;
+}
+.hamburger-btn { // to be used with .icon-btn
+    height: 36px;
+    width: 36px;
+    border-radius: 5px;
+    font-size: 28px;
+    padding: 0;
+    .fa-bars {
+        margin-top: 3px;
+    }
+    .fa-times {
+        display: none;
+    }
+    &[aria-expanded='true'] {
+        .fa-bars {
+            display: none;
+        }
+        .fa-times {
+            display: inline-block;
+        }
+    }
+}
+.disclosure {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    svg {
+        height: 18px;
+        width: 18px;
+        path {
+            d: path("m 2,7 l 7,7 l 7,-7");
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 3;
+            transform-origin: 9px 9px;
+            transform: rotate(-90deg);
+        }
+    }
+    &[aria-expanded="true"] svg path {
+        transform: none;
+    }
+    &:hover, &:focus-visible {
+        border-color: transparent;
+        outline: 2px solid;
+        border-radius: 3px;
+    }
+}
+button[role="switch"] {
+    // based heavily on w3 wai - https://www.w3.org/TR/wai-aria-practices/examples/switch/switch-button.html
+    display: block;
+    text-align: left;
+    font-size: inherit;
+    background-color: transparent;
+    margin: 5px 0;
+    // border: 2px solid transparent;
+    border: none;
+    &:hover, &:focus-visible {
+        outline: 2px solid;
+    }
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0;
+        margin: 0;
+    }
+    .label {
+        padding-right: 10px;
+    }
+    svg {
+        forced-color-adjust: auto;
+        position: relative;
+        vertical-align: middle;
+        height: 30;
+        width: 52;
+        .container {
+            fill-opacity: 1;
+            stroke-width: 2;
+            stroke: currentColor;
+            x: 1;
+            y: 1;
+            height: 28;
+            width: 50;
+            rx: 14;
+        }
+        .toggle {
+            stroke-width: 0;
+            fill-opacity: 1;
+            fill: currentColor;
+            r: 11px;
+            cx: 16px;
+            cy: 15px;
+        }
+    }
+    .on {
+        display: none;
+    }
+    &[aria-checked="true"] {
+        svg {
+            .container {
+                fill-opacity: 0;
+            }
+            .toggle {
+                cx: 36px;
+            }
+        }
+        .off {
+            display: none;
+        }
+        .on {
+            display: inline-block;
+        }
+    }
+}
+// Icon Buttons
+.content-toggle-wrapper {
+    .content-toggle-btn, .plus-minus-btn {
+        .fa-minus {
+            display: none;
+        }
+    }
+    .toggle-content {
+        display: none;
+    }
+    &.expanded {
+        .content-toggle-btn, .plus-minus-btn {
+            .fa-plus {
+                display: none;
+            }
+            .fa-minus {
+                display: inline-block;
+            }
+        }
+        .toggle-content {
+            display: block;
+        }
+    }
+}
+.settings-btn {
+    padding-top: 2px;
+}
+.plus-minus-btn {
+    padding-top: 2px;
+    padding-left: 1px;
+}
+.toggle-content-btn {
+    padding-top: 3px;
+}
+.close-btn {
+    //
+}
+
+// Links
+main a, footer a {
+    text-decoration: underline;
+    border-radius: 4px;
+    padding-bottom: 1px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    &:hover, &:focus-visible {
+        outline-offset: 1px;
+    }
+}
+.fa-external-link {
+    padding: 2px;
+    margin-left: 2px;
+    font-size: 12px;
+}
+a img {
+    padding: 2px;
+    border: 2px dashed transparent;
+}
+.img-link-external {
+    display: flex;
+    align-items: end;
+    text-decoration: none;
+    // make sure there is space for the font awesome icon and that the default link style isn't applied to it on focus/hover
+    &:focus-visible, &:hover {
+        border-color: transparent;
+        background-color: transparent;
+    }
+    .fa-external-link {
+        margin-bottom: 14px;
+    }
+    // img {
+    //     display: inline-block;
+    //     max-width: calc(100% - 25px);
+    // }
+    // .fa-external-link {
+    //     transform: translateY(-12px);
+    // }
+}
+
+// Other Input
+input, label {
+    cursor: pointer;
+    font-family: $font-family-standard;
+}
+
+// Headings
+h1 {
+    font-weight: bold;
+    font-family: $font-family-heading;
+    font-size: 32px;
+    text-align: center;
+}
+h2 {
+    margin-top: 40px;
+    font-weight: bold;
+    font-family: Tahoma, $font-family-heading;
+    font-size: 26px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+}
+h3 {
+    margin-top: 35px;
+    font-weight: normal;
+    font-family: $font-family-heading;
+    font-size: 24px;
+    border-left: 8px solid;
+    border-bottom: 1px solid;
+    padding-left: 8px;
+}
+h4 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: $font-family-heading;
+    font-size: 20px;
+}
+h5 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: $font-family-heading;
+    font-size: 17px;
+}
+h6 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-family: $font-family-heading;
+    font-size: 15px;
+}
+// Lists
+.list-unstyled {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-bottom: 0;
+}
+main ul, main ol, .list {
+    display: flow-root;
+    li {
+        margin-top: 5px;
+    }
+}
+main ol ol, .list ol ol {
+    list-style-type: lower-alpha;
+    ol {
+        list-style-type: lower-roman;
+        ol {
+            list-style-type: decimal;
+        }
+    }
+}
+dt {
+    // could also style dl (the list) and/or dd (the definition)
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+// Blockquotes
+blockquote {
+    margin: 16px 10px;
+    padding: 5px 5px 5px 20px;
+    border-left: 12px solid;
+    font-size: 16.5px;
+}
+figure.quote {
+    margin: 20px 15px;
+    blockquote {
+        margin-bottom: 10px;
+    }
+    figcaption {
+        margin-left: 50px;
+    }
+}
+// Code Blocks
+pre {
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    code {
+        display: block;
+        padding: 15px;
+        white-space: pre-wrap;
+    }
+}
+// Various Other Semantic Elements
+code, samp {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: $font-family-monospace;
+}
+var {
+    font-weight: bold;
+    font-size: 15px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: $font-family-monospace;
+}
+del {
+    font-size: 15px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: $font-family-monospace;
+    &::before {
+        content: " [deletion start] ";
+    }
+    &::after {
+        content: " [deletion end] ";
+    }
+    &::before, &::after {
+        @extend .sr-only;
+    }
+}
+ins {
+    font-size: 15px;
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: $font-family-monospace;
+    &::before {
+        content: " [insertion start] ";
+    }
+    &::after {
+        content: " [insertion end] ";
+    }
+    &::before, &::after {
+        @extend .sr-only;
+    }
+}
+s {
+    font-size: 15px;
+    &::before {
+        content: " [strikethrough start] ";
+    }
+    &::after {
+        content: " [strikethrough end] ";
+    }
+    &::before, &::after {
+        @extend .sr-only;
+    }
+}
+mark {
+    font-size: 15px;
+    &::before {
+        content: " [highlight start] ";
+    }
+    &::after {
+        content: " [highlight end] ";
+    }
+    &::before, &::after {
+        @extend .sr-only;
+    }
+}
+address {
+    margin-bottom: 15px;
+    span {
+        margin-bottom: 5px;
+        display: block;
+    }
+}
+kbd {
+    // from MDN Web docs - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    font-family: $font-family-monospace;
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid;
+    font-weight: bold;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+// Tables
+main table, main .table {
+    width: 100%;
+    margin: 10px 0 20px 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    caption {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        text-align: left;
+    }
+    & > thead {
+        border: 1px solid;
+        border-bottom: 2px solid;
+        & > tr > th {
+            border-bottom: none;
+        }
+    }
+    th, td {
+        padding: 8px;
+    }
+}
+
+// Images and Lines (non-text)
+hr {
+    margin: 20px 0;
+    border: none;
+    border-bottom: 2px solid;
+}
+img {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto;
+    border: none;
+    box-sizing: border-box;
+    &.full {
+        width: 100%;
+    }
+    &.medium {
+        max-width: min(600px, 100%);
+    }
+    &.small {
+        max-width: min(400px, 100%);
+    }
+}
+figure.image {
+    margin: 20px 40px;
+    p {
+        margin: 0;
+    }
+    img {
+        margin: 5px auto;
+    }
+    figcaption {
+        text-align: center;
+        font-style: italic;
+        font-size: 105%;
+    }
+}
+
+// Misc / Other Plugins
+.notices, .notices.yellow, .notices.green, .notices.red, .notices.blue {
+    padding: 5px 5px 5px 20px;
+    border: 2px solid;
+    border-left: 10px solid;
+}

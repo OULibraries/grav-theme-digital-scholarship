@@ -1,0 +1,79 @@
+@use "sass:color";
+
+@import 'light_theme';
+
+$light-gray: color.adjust(#000, $lightness: 90%);
+$crimson: #841617;
+$light-blue: #d8ebfd;
+$dark-blue: #185172;
+
+header {
+    color: $crimson;
+    background-color: $light-gray;
+}
+#main-nav {
+    color: #fff;
+    background-color: $crimson;
+    box-shadow: 0 0 2px 1px #333;
+    ul, li {
+        border-color: rgba(255, 255, 255, .5);
+    }
+    .nav-item {
+        &:hover, &:focus-visible {
+            color: $dark-blue;
+            background-color: #fff;
+        }
+    }
+    .active > .nav-item {
+        color: $dark-blue;
+        background-color: #fff;
+    }
+}
+.btn, .btn:visited, a.btn {
+    color: #fff;
+    background-color: $dark-blue;
+    &:hover, &:focus {
+        color: #000;
+        background-color: $light-blue;
+    }
+    &:focus-visible {
+        outline: 2px solid $dark-blue;
+    }
+}
+.outline-btn, .outline-btn:visited, a.outline-btn {
+    color: $crimson;
+    background-color: #fff;
+    &:hover, &:focus-visible {
+        color: #000;
+        background-color: $light-blue;
+    }
+}
+h3 {
+    border-color: $crimson;
+}
+main a, footer a {
+    &:hover, &:focus-visible {
+        color: #000;
+        background-color: $light-blue;
+        border-color: $dark-blue;
+    }
+    &:focus-visible {
+        outline: 2px solid $dark-blue;
+    }
+    &:visited {
+        &:hover, &:focus-visible {
+            color: #000;
+        }
+    }
+}
+a:hover img, a:focus-visible img {
+    border-color: $dark-blue;
+}
+code, samp {
+    color: #000;
+    background-color: $light-blue;
+}
+.notices.red {
+    border-color: $crimson;
+    background-color: #fbdfe0;
+}

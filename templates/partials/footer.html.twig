@@ -4,3 +4,8 @@
         {{ page.find('/modules/footer').content|raw }}
     </div>
 {% endif %}
+{% if page.find('/sitemap') %}
+    <div class="footer-section sitemap">
+        <p><a href="{{ page.find('/sitemap').url }}">Site Map</a></p>
+    </div>
+{% endif %}

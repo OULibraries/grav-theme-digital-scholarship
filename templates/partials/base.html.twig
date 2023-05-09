@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="TWIG">
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 
     {% block head %}
     <head>
@@ -10,19 +10,18 @@
         {% endblock metadata %}
 
         {% block starting_scripts %}
-        {% endblock starting_scripts %}
-
-        {% block google_analytics %}
-            {% set use_ga = theme_var('use_ga') and theme_var('ga_id') %}
-            {% if use_ga %}
-                {% include 'partials/google_analytics_scripts.html.twig' %}
+            {% if theme_var('link_new_tab') %}
+                <script>
+                    const link_new_tab = true;
+                    const base_url = '{{ base_url_absolute }}'.replace('https', 'http');
+                </script>
             {% endif %}
-        {% endblock google_analytics %}
+        {% endblock starting_scripts %}
 
         {% block favicon %}
             {% set favicon = ((theme_var('favicon')|first).name) %}
             {% if favicon %}
-                <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('theme://images/favicon/'~favicon) }}" />
+                <link rel="icon" type="image/{{ favicon|split('.')|last }}" href="{{ url('user://data/digital-scholarship/favicon/'~favicon) }}" />
             {% else %}
                 <link rel="icon" type="image/png" href="{{ url('theme://images/default/favicon.png') }}" />
             {% endif %}
@@ -34,7 +33,7 @@
         {% endblock page_title %}
 
         {% block stylesheets %}
-            {% do assets.addCss('theme://css/fontawesome-5-all.min.css') %}
+            {% do assets.addCss('https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css') %}
             {% do assets.addCss('theme://css/modal.css') %}
             {% do assets.addCss('theme://css/theme.css') %}
             {% do assets.addCss('theme://css/' ~ theme_var('color_scheme') ~ '.css') %}
@@ -54,20 +53,19 @@
     </head>
     {% endblock head %}
 
-    {# In case someone wants to set something ahead of time, like body_classes #}
+    {# In case someone wants to set something ahead of time #}
     {% block setup %}
-        {% set body_classes = body_classes ~ ' ' ~ header.body_classes %}
     {% endblock setup %}
 
     {% block body %}
-    <body id="body" class="{{ body_classes }}{# Remove?{ theme_var('sticky_header') ?: ' sticky_header' }#}">
+    <body id="body" class="{{ header.body_classes }}">
 
         {% block skip %}
             <a href="#main" id="main-skip-link" class="skip-link">Skip to Content</a>
         {% endblock skip %}
 
         {% block header_wrapper %}
-        <header id="top">
+        <header id="top" tabindex="-1">
 
             {% block header %}
                 {% include 'partials/header.html.twig' %}
@@ -76,13 +74,13 @@
         </header>
         {% endblock header_wrapper %}
 
-        <div class="wrapper">
+        <div id="wrapper">
             {% block navigation %}
                 {% include 'partials/navigation.html.twig' %}
             {% endblock navigation %}
 
             {% block main_wrapper %}
-            <main id="main">
+            <main id="main" tabindex="-1">
 
                 {% block main %}
 
@@ -110,9 +108,6 @@
         <footer id="footer">
 
             {% block footer %}
-                {% if use_ga %}
-                    {% include 'partials/google_analytics_footer.html.twig' %}
-                {% endif %}
                 {% include 'partials/footer.html.twig' %}
             {% endblock footer %}
 

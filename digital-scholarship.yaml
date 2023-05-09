@@ -1,0 +1,16 @@
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '': themes://digital-scholarship
+
+enabled: true
+color_scheme: blue
+favicon:
+link_new_tab: false
+generate_sitemap: true
+logo:
+    file:
+    alt:
+    url:

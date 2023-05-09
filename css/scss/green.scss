@@ -1,0 +1,81 @@
+@use "sass:color";
+
+@import 'light_theme';
+
+$light-gray: color.adjust(#000, $lightness: 90%);
+$gray: color.adjust(#000, $lightness: 80%);
+$dark-gray: color.adjust(#000, $lightness: 20%);
+$light-green: #baf484;
+$green: #386312;
+$light-purple: #b57fdd;
+$purple: #810081;
+
+header {
+    color: #fff;
+    background-color: $green;
+}
+#main-nav {
+    color: $dark-gray;
+    background-color: #fff;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, .5);
+    ul, li {
+        border-color: rgba(0, 0, 0, .5);
+    }
+    .nav-item {
+        &:hover, &:focus-visible {
+            color: #fff;
+            background-color: $purple;
+        }
+    }
+    .active > .nav-item {
+        color: $light-gray;
+        background-color: $purple;
+    }
+}
+.btn, .btn:visited, a.btn, a.btn:visited {
+    color: #fff;
+    background-color: $green;
+    &:hover, &:focus-visible {
+        color: $dark-gray;
+        background-color: $light-green;
+    }
+    &:focus-visible {
+        outline: 2px solid $green;
+    }
+}
+.outline-btn, .outline-btn:visited, a.outline-btn {
+    color: $purple;
+    background-color: #fff;
+    &:hover, &:focus-visible {
+        color: #fff;
+        background-color: $purple;
+    }
+}
+h3 {
+    border-color: $green;
+}
+main a, footer a {
+    &:hover, &:focus-visible {
+        color: $purple;
+        background-color: $light-gray;
+        border-color: $dark-gray;
+    }
+    &:focus-visible {
+        outline: 2px solid $purple;
+    }
+    &:visited {
+        &:focus-visible, &:hover {
+            color: $purple;
+        }
+    }
+}
+a:focus-visible img, a:hover img {
+    border-color: $purple;
+}
+code, samp {
+    color: #000;
+    background-color: $light-green;
+}
+.notices.green {
+    border-color: $green;
+}

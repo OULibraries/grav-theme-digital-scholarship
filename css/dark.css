@@ -1,0 +1,295 @@
+body {
+  color: #fff;
+  background-color: #121212;
+}
+
+header {
+  background-color: #0F5F71;
+  color: #fff;
+  box-shadow: 0 0 4px 2px #000;
+  border-bottom: 1px solid #2b2b2b;
+}
+header .text a, header .text a:visited {
+  color: inherit;
+}
+header .text a:hover, header .text a:focus-visible, header .text a:visited:hover, header .text a:visited:focus-visible {
+  color: inherit;
+  outline: 2px solid;
+}
+
+#main-nav {
+  color: #fff;
+  background-color: #383838;
+  box-shadow: 0 0 4px 3px #000;
+}
+#main-nav ul, #main-nav li {
+  border-color: rgba(255, 175, 199, 0.5);
+}
+#main-nav .nav-item:hover, #main-nav .nav-item:focus-visible {
+  color: #000;
+  background-color: #FFB8CC;
+}
+#main-nav .active > .nav-item {
+  color: #383838;
+  background-color: #FFB8CC;
+}
+
+main {
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 0px 4px 2px #000;
+  background-color: #2b2b2b;
+}
+
+h2 {
+  border-color: #dedede;
+}
+
+h3 {
+  border-color: #dedede;
+  border-left-color: #73d7ee;
+}
+
+hr {
+  border-color: #dedede;
+}
+
+main img {
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.6);
+}
+
+main a, footer a {
+  color: #73d7ee;
+}
+main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
+  color: #FFB8CC;
+  background-color: #121212;
+  border-color: #6b6b6b;
+}
+main a:hover img, main a:focus-visible img, footer a:hover img, footer a:focus-visible img {
+  border-color: #FFB8CC;
+}
+main a:focus-visible, footer a:focus-visible {
+  outline: 2px solid #FFB8CC;
+}
+main a:visited, footer a:visited {
+  color: #73d7ee;
+}
+main a:visited:focus-visible, main a:visited:hover, footer a:visited:focus-visible, footer a:visited:hover {
+  color: #FFB8CC;
+}
+main a img, footer a img {
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+blockquote {
+  background-color: #383838;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+  border-color: #FFB8CC;
+}
+
+.notices.green, .notices.yellow, .notices.red, .notices.blue {
+  background-color: #383838;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+  border: none;
+  border-left: 10px solid;
+}
+.notices.yellow {
+  border-color: #81741D;
+  color: #F7F25F;
+}
+.notices.red {
+  border-color: #841F1F;
+  color: #fbb;
+}
+.notices.blue {
+  border-color: #0F5F71;
+  color: #73d7ee;
+}
+.notices.green {
+  border-color: #186318;
+  color: #d4fcbc;
+}
+
+.btn, .btn:visited, a.btn {
+  color: #fff;
+  background-color: #0F5F71;
+  border-color: #121212;
+  border-width: 1px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.btn:hover, .btn:focus-visible, .btn:visited:hover, .btn:visited:focus-visible, a.btn:hover, a.btn:focus-visible {
+  background-color: #2b2b2b;
+  border-color: #121212;
+}
+.btn:focus-visible, .btn:visited:focus-visible, a.btn:focus-visible {
+  outline: 2px solid #FFB8CC;
+}
+
+.outline-btn, .outline-btn:visited {
+  color: #FFB8CC;
+  border-color: #FFB8CC;
+  border-width: 2px;
+  background-color: #383838;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.7);
+}
+.outline-btn:hover, .outline-btn:focus-visible, .outline-btn:visited:hover, .outline-btn:visited:focus-visible {
+  background-color: #121212;
+  border-color: #FFB8CC;
+}
+
+.icon-btn, a.icon-btn {
+  color: #FFB8CC;
+  border-color: #FFB8CC;
+  background-color: #383838;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.7);
+}
+.icon-btn:hover, .icon-btn:focus-visible, a.icon-btn:hover, a.icon-btn:focus-visible {
+  background-color: #121212;
+  border-color: #FFB8CC;
+}
+.icon-btn:visited, a.icon-btn:visited {
+  color: #FFB8CC;
+}
+.icon-btn:focus-visible, a.icon-btn:focus-visible {
+  outline: 2px solid #FFB8CC;
+}
+.icon-btn.dual-bg:focus-visible, a.icon-btn.dual-bg:focus-visible {
+  box-shadow: 0 0 7px 4px #000;
+}
+
+button:disabled, button:disabled:hover, button:disabled:focus-visible, button.disabled, button.disabled:hover, button.disabled:focus-visible, .btn:disabled, .btn:disabled:hover, .btn:disabled:focus-visible, .btn.disabled, .btn.disabled:hover, .btn.disabled:focus-visible, .icon-btn:disabled, .icon-btn:disabled:hover, .icon-btn:disabled:focus-visible, .icon-btn.disabled, .icon-btn.disabled:hover, .icon-btn.disabled:focus-visible {
+  background-color: #383838;
+  color: #c4c4c4;
+  border-color: #787878;
+  cursor: default;
+  border-width: 2px;
+  box-shadow: none;
+}
+
+code, samp {
+  color: #73d7ee;
+  background-color: #383838;
+  box-shadow: 0 0 2px 1px #121212;
+}
+
+del {
+  background-color: #fbb;
+  color: #121212;
+}
+
+ins {
+  background-color: #d4fcbc;
+  color: #121212;
+}
+
+mark {
+  padding: 2px;
+  background-color: #F7F25F;
+}
+
+pre code {
+  color: #fff;
+  background-color: #383838;
+  border: 1px solid #121212;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+button[role=switch] {
+  color: inherit;
+}
+button[role=switch] svg .container {
+  fill-opacity: 1;
+  fill: #000;
+  stroke: currentColor;
+}
+button[role=switch][aria-checked=true] svg .container {
+  fill-opacity: 1;
+  fill: #0F5F71;
+}
+button[role=switch]:hover, button[role=switch]:focus-visible {
+  background-color: #1f1f1f;
+}
+
+.skip-link {
+  color: #fff;
+  background-color: #383838;
+  border: none;
+  box-shadow: 0 0 4px 2px #000;
+}
+.skip-link:visited {
+  color: #fff;
+}
+.skip-link:focus-visible {
+  outline: 2px solid #FFB8CC;
+}
+
+main table > thead, main .table > thead {
+  color: #fff;
+  background-color: #1f1f1f;
+  border: none;
+  border-bottom: 2px solid #d1d1d1;
+}
+main table th, main table td, main .table th, main .table td {
+  border: 1px solid #d1d1d1;
+}
+main table > tbody > tr, main .table > tbody > tr {
+  background-color: #383838;
+}
+main table > tbody > tr > th, main .table > tbody > tr > th {
+  color: #fff;
+  background-color: #1f1f1f;
+}
+main table > tbody > tr:nth-of-type(odd), main .table > tbody > tr:nth-of-type(odd) {
+  background-color: inherit;
+}
+main table > tbody > tr:nth-of-type(odd):hover, main table > tbody > tr:nth-of-type(odd):focus, main .table > tbody > tr:nth-of-type(odd):hover, main .table > tbody > tr:nth-of-type(odd):focus {
+  color: #fff;
+  background-color: #121212;
+}
+main table > tbody > tr:hover, main table > tbody > tr:focus, main .table > tbody > tr:hover, main .table > tbody > tr:focus {
+  color: #fff;
+  background-color: #121212;
+}
+main table > thead + tbody > tr:nth-of-type(odd), main .table > thead + tbody > tr:nth-of-type(odd) {
+  background-color: #383838;
+}
+main table > thead + tbody > tr:nth-of-type(even), main .table > thead + tbody > tr:nth-of-type(even) {
+  background-color: inherit;
+}
+main table > thead + tbody > tr:nth-of-type(odd):hover, main table > thead + tbody > tr:nth-of-type(odd):focus, main table > thead + tbody > tr:nth-of-type(even):hover, main table > thead + tbody > tr:nth-of-type(even):focus, main .table > thead + tbody > tr:nth-of-type(odd):hover, main .table > thead + tbody > tr:nth-of-type(odd):focus, main .table > thead + tbody > tr:nth-of-type(even):hover, main .table > thead + tbody > tr:nth-of-type(even):focus {
+  color: #fff;
+  background-color: #121212;
+}
+
+caption {
+  color: #dedede;
+}
+
+kbd {
+  color: #333;
+  background-color: #eee;
+  border-color: #b4b4b4;
+  box-shadow: 0 1px 1px 2px #000, 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+footer {
+  border-color: #dedede;
+}
+
+[role=alertdialog],
+[role=dialog] {
+  background-color: #383838;
+}
+
+.dialog-top {
+  border-color: #dedede;
+}
+
+.overlay-2 {
+  background-color: #383838;
+  color: #fff;
+}
+
+/*# sourceMappingURL=dark.css.map */

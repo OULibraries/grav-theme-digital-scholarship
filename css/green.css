@@ -1,0 +1,240 @@
+body {
+  color: #333;
+  background-color: #fff;
+}
+
+header .text a, header .text a:visited {
+  color: inherit;
+}
+header .text a:hover, header .text a:focus-visible, header .text a:visited:hover, header .text a:visited:focus-visible {
+  color: inherit;
+  outline: 2px solid;
+}
+
+h2 {
+  border-color: #333;
+}
+
+hr {
+  border-color: #404040;
+}
+
+button:disabled, button:disabled:hover, button:disabled:focus-visible, button.disabled, button.disabled:hover, button.disabled:focus-visible, .btn:disabled, .btn:disabled:hover, .btn:disabled:focus-visible, .btn.disabled, .btn.disabled:hover, .btn.disabled:focus-visible, .icon-btn:disabled, .icon-btn:disabled:hover, .icon-btn:disabled:focus-visible, .icon-btn.disabled, .icon-btn.disabled:hover, .icon-btn.disabled:focus-visible {
+  background-color: #e6e6e6;
+  color: #474747;
+  border-color: #999999;
+  cursor: default;
+}
+
+.icon-btn, a.icon-btn {
+  color: #333;
+  background-color: #fff;
+}
+.icon-btn:hover, .icon-btn:focus-visible, a.icon-btn:hover, a.icon-btn:focus-visible {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #333;
+}
+.icon-btn:visited, a.icon-btn:visited {
+  color: #333;
+}
+.icon-btn:focus-visible, a.icon-btn:focus-visible {
+  outline: 2px solid #333;
+}
+.icon-btn.dual-bg:focus-visible, a.icon-btn.dual-bg:focus-visible {
+  box-shadow: 0 0 1px 2px #fff;
+}
+
+.disclosure:hover, .disclosure:focus-visible {
+  background-color: #e6e6e6;
+}
+
+button[role=switch] {
+  background-color: transparent;
+  color: #333;
+}
+button[role=switch] svg .container {
+  fill: #e6e6e6;
+  stroke: currentColor;
+}
+button[role=switch][aria-checked=true] svg .toggle {
+  fill: #006607;
+}
+button[role=switch]:hover, button[role=switch]:focus-visible {
+  background-color: #e6e6e6;
+}
+
+main a, footer a {
+  color: #00458F;
+}
+main a:visited, footer a:visited {
+  color: #551A8B;
+}
+
+.skip-link {
+  color: #00458F;
+  background-color: #fff;
+  border-color: #333;
+  box-shadow: 0 0 2px 2px rgba(76, 76, 76, 0.7);
+}
+.skip-link:visited {
+  color: #00458F;
+}
+
+blockquote {
+  background-color: #e6e6e6;
+}
+
+.notices {
+  color: #333;
+}
+.notices.green, .notices.yellow, .notices.red, .notices.blue {
+  color: #333;
+}
+.notices.green {
+  border-color: #006607;
+  background-color: #e6f9e6;
+}
+.notices.yellow {
+  border-color: #b68a1b;
+  background-color: #f9efd7;
+}
+.notices.red {
+  border-color: #b22222;
+  background-color: #f8dbdb;
+}
+.notices.blue {
+  border-color: #0000cd;
+  background-color: #e7e7ff;
+}
+
+main table > thead, main .table > thead {
+  color: #000;
+  background-color: #d9d9d9;
+  border-color: #333333;
+}
+main table th, main table td, main .table th, main .table td {
+  border: 1px solid #333333;
+}
+main table > tbody > tr > th, main .table > tbody > tr > th {
+  background-color: #d9d9d9;
+  color: #000;
+}
+main table > tbody > tr:nth-of-type(odd), main .table > tbody > tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+main table > tbody > tr:nth-of-type(odd):hover, main table > tbody > tr:nth-of-type(odd):focus, main .table > tbody > tr:nth-of-type(odd):hover, main .table > tbody > tr:nth-of-type(odd):focus {
+  background-color: #e6e6e6;
+}
+main table > tbody > tr:hover, main table > tbody > tr:focus, main .table > tbody > tr:hover, main .table > tbody > tr:focus {
+  background-color: #e6e6e6;
+}
+main table > thead + tbody > tr:nth-of-type(odd), main .table > thead + tbody > tr:nth-of-type(odd) {
+  background-color: inherit;
+}
+main table > thead + tbody > tr:nth-of-type(even), main .table > thead + tbody > tr:nth-of-type(even) {
+  background-color: #f2f2f2;
+}
+main table > thead + tbody > tr:nth-of-type(odd):hover, main table > thead + tbody > tr:nth-of-type(odd):focus, main table > thead + tbody > tr:nth-of-type(even):hover, main table > thead + tbody > tr:nth-of-type(even):focus, main .table > thead + tbody > tr:nth-of-type(odd):hover, main .table > thead + tbody > tr:nth-of-type(odd):focus, main .table > thead + tbody > tr:nth-of-type(even):hover, main .table > thead + tbody > tr:nth-of-type(even):focus {
+  background-color: #e6e6e6;
+}
+
+caption {
+  color: #404040;
+}
+
+del {
+  background-color: #fbb;
+  color: #333;
+}
+
+ins {
+  background-color: #d4fcbc;
+  color: #333;
+}
+
+pre code {
+  color: #f2f2f2;
+  background-color: #121212;
+}
+
+kbd {
+  color: #333;
+  background-color: #eee;
+  border-color: #b4b4b4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+header {
+  color: #fff;
+  background-color: #386312;
+}
+
+#main-nav {
+  color: #333333;
+  background-color: #fff;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+#main-nav ul, #main-nav li {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+#main-nav .nav-item:hover, #main-nav .nav-item:focus-visible {
+  color: #fff;
+  background-color: #810081;
+}
+#main-nav .active > .nav-item {
+  color: #e6e6e6;
+  background-color: #810081;
+}
+
+.btn, .btn:visited, a.btn, a.btn:visited {
+  color: #fff;
+  background-color: #386312;
+}
+.btn:hover, .btn:focus-visible, .btn:visited:hover, .btn:visited:focus-visible, a.btn:hover, a.btn:focus-visible, a.btn:visited:hover, a.btn:visited:focus-visible {
+  color: #333333;
+  background-color: #baf484;
+}
+.btn:focus-visible, .btn:visited:focus-visible, a.btn:focus-visible, a.btn:visited:focus-visible {
+  outline: 2px solid #386312;
+}
+
+.outline-btn, .outline-btn:visited, a.outline-btn {
+  color: #810081;
+  background-color: #fff;
+}
+.outline-btn:hover, .outline-btn:focus-visible, .outline-btn:visited:hover, .outline-btn:visited:focus-visible, a.outline-btn:hover, a.outline-btn:focus-visible {
+  color: #fff;
+  background-color: #810081;
+}
+
+h3 {
+  border-color: #386312;
+}
+
+main a:hover, main a:focus-visible, footer a:hover, footer a:focus-visible {
+  color: #810081;
+  background-color: #e6e6e6;
+  border-color: #333333;
+}
+main a:focus-visible, footer a:focus-visible {
+  outline: 2px solid #810081;
+}
+main a:visited:focus-visible, main a:visited:hover, footer a:visited:focus-visible, footer a:visited:hover {
+  color: #810081;
+}
+
+a:focus-visible img, a:hover img {
+  border-color: #810081;
+}
+
+code, samp {
+  color: #000;
+  background-color: #baf484;
+}
+
+.notices.green {
+  border-color: #386312;
+}
+
+/*# sourceMappingURL=green.css.map */

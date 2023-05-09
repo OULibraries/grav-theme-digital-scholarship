@@ -1,0 +1,92 @@
+@use "sass:color";
+
+@import 'light_theme';
+
+$blue-1: #070f4e;
+$blue-2: #0F1E92;
+$light-gray: color.adjust(#000, $lightness: 90%);
+$gray: color.adjust(#000, $lightness: 30%);
+$yellow: #ffe100;
+$light-yellow: #fff3a8;
+
+header {
+    color: $blue-2;
+    background-color: $light-gray;
+}
+#main-nav {
+    background-color: $gray;
+    color: #fff;
+    ul, li {
+        border-color: rgba(255, 255, 255, .5);
+    }
+    .nav-item {
+        &:hover, &:focus-visible {
+            color: $blue-1;
+            background-color: #fff;
+        }
+    }
+    .active > .nav-item {
+        color: $blue-2;
+        background-color: #fff;
+    }
+}
+.btn, a.btn {
+    background-color: $blue-2;
+    color: #fff;
+    // border: 2px solid;
+    &:hover, &:focus-visible {
+        color: $blue-1;
+        background-color: $yellow;
+    }
+    &:focus-visible {
+        outline: 2px solid $blue-1;
+    }
+    &:visited {
+        color: #fff;
+        &:hover, &:focus-visible {
+            color: $blue-1;
+        }
+    }
+}
+.outline-btn, a.outline-btn {
+    color: $blue-1;
+    background-color: #fff;
+    &:hover, &:focus-visible {
+        background-color: color.adjust(#000, $lightness: 85%);
+    }
+    &:focus-visible {
+        outline: 2px solid $blue-1;
+    }
+    &:visited {
+        color: $blue-1;
+        &:hover, &:focus-visible {
+            color: $blue-1;
+        }
+    }
+}
+h3 {
+    border-color: $blue-1;
+    border-left-color: $blue-2;
+}
+main a, footer a {
+    &:hover, &:focus-visible {
+        background-color: $light-yellow;
+        color: #000;
+        border-color: color.adjust(#000, $lightness: 60%);
+    }
+    &:focus-visible {
+        outline: 2px solid $blue-1;
+    }
+    &:visited {
+        &:hover, &:focus-visible {
+            color: #000;
+        }
+    }
+}
+a:hover img, a:focus-visible img {
+    border-color: $blue-1;
+}
+code, samp {
+    color: $blue-2;
+    background-color: $light-gray;
+}
