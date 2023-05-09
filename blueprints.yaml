@@ -6,10 +6,10 @@ description: "A simple theme focused on meeting web accessibility standards"
 icon: book
 author:
   name: Theo Acker/University of Oklahoma Libraries
-homepage: https://theoacker.oucreate.com/leaflet-tour
-demo: https://theoacker.oucreate.com/leaflet-tour/theme-demo
-bugs: https://github.com/TheoAcker12/grav-theme-digital-scholarship/issues
-docs: https://github.com/TheoAcker12/grav-theme-digital-scholarship/blob/main/README.md
+homepage: https://leaflet-tour.oucreate.com
+demo: https://leaflet-tour.oucreate.com/theme-demo
+bugs: https://github.com/oulibraries/grav-theme-digital-scholarship/issues
+docs: https://github.com/oulibraries/grav-theme-digital-scholarship/blob/main/README.md
 license: MIT
 
 dependencies:
