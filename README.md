@@ -1,6 +1,6 @@
 # Digital Scholarship Theme
 
-![Simple webpage with a side nav](./screenshot.png)
+![Simple webpage with a side nav](./screenshot.jpg)
 
 **Digital Scholarship** is a Grav theme designed to provide a functional, if basic, Grav website that meets accessibility standards and can be extended with other themes and plugins. It is currently required in order to use the Leaflet Tour plugin.
 
