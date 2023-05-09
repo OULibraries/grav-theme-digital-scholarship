@@ -1,14 +1,13 @@
 name: Digital Scholarship
 slug: digital-scholarship
+type: theme
 version: 1.0.0
-description: Basic Theme - in development
+description: "A simple theme focused on meeting web accessibility standards"
 icon: book
 author:
   name: Theo Acker/University of Oklahoma Libraries
-  email: theoacker@ou.edu
-  url: https://libraries.ou.edu/users/theo-acker/theo-acker
-homepage: https://github.com/TheoAcker12/grav-theme-digital-scholarship
-demo:
+homepage: https://theoacker.oucreate.com/leaflet-tour
+demo: https://theoacker.oucreate.com/leaflet-tour/theme-demo
 bugs: https://github.com/TheoAcker12/grav-theme-digital-scholarship/issues
 docs: https://github.com/TheoAcker12/grav-theme-digital-scholarship/blob/main/README.md
 license: MIT

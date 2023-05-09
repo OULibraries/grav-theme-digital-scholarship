@@ -3,24 +3,14 @@ streams:
    theme:
      type: ReadOnlyStream
      prefixes:
-       '':
-       - themes://digital-scholarship
+       '': themes://digital-scholarship
 
 enabled: true
 color_scheme: blue
 favicon:
-# link_new_tab: false
-title:
-    option: 'default'
-    text:
-    url_option: 'default'
-    custom_url:
+link_new_tab: false
+generate_sitemap: true
 logo:
     file:
     alt:
     url:
-# ga:
-#     enable: true
-#     id:
-#     statement:
-#     opt_out: true

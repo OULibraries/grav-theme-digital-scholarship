@@ -4,11 +4,11 @@
 
 **Digital Scholarship** is a Grav theme designed to provide a functional, if basic, Grav website that meets accessibility standards and can be extended with other themes and plugins. It is currently required in order to use the Leaflet Tour plugin.
 
-You can see a showcase of theme styles on the [demo site](https://theoacker.oucreate.com/leaflet-tour/theme-demo).
+You can see a showcase of theme styles on the [demo site](https://leaflet-tour.oucreate.com/theme-demo).
 
 <h2 id="features">Features</h2>
 
-- Create websites that are accessible to people with disabilities (instructions for what users need to do to ensure this are included in the [accessibility page of the Leaflet Tour documentation](https://theoacker.oucreate.com/leaflet-tour/accessibility))
+- Create websites that are accessible to people with disabilities (instructions for what users need to do to ensure this are included in the [accessibility page of the Leaflet Tour documentation](https://leaflet-tour.oucreate.com/accessibility))
 - Built-in template for extending theme with accessible modal dialogs
 - Automatically generated sitemap creation
 - Various customization options
@@ -31,7 +31,7 @@ Alternatively, you can install this theme using your system's terminal or comman
 
 To install this theme manually:
 
-1. Download the zip file from the [theme repository](https://github.com/TheoAcker12/grav-theme-digital-scholarship) or by finding the files on the [GetGrav website](https://getgrav.org/downloads/plugins).
+1. Download the zip file from the [theme repository](https://github.com/oulibraries/grav-theme-digital-scholarship) or by finding the files on the [GetGrav website](https://getgrav.org/downloads/plugins).
 2. Upload the file to `your-site/grav/user/themes`.
 3. Unzip/extract the file.
 4. Rename the folder to `digital-scholarship`.
@@ -70,7 +70,7 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
 
 The [Git Sync](https://github.com/trilbymedia/grav-plugin-git-sync) plugin is strongly recommended as a way to backup your work.
 
-Check out the information on the [Leaflet Tour documenation site](https://theoacker.oucreate.com/leaflet-tour) for full usage instructions. These instructions will also include what you need to know in order to make your site accessible to people with disabilities.
+Check out the information on the [Leaflet Tour documenation site](https://leaflet-tour.oucreate.com) for full usage instructions. These instructions will also include what you need to know in order to make your site accessible to people with disabilities.
 
 <h3 id="using-the-footer">Using the Footer</h3>
 
@@ -97,6 +97,6 @@ The theme uses [Fork Awesome](https://forkaweso.me/Fork-Awesome/) icons
 
 <h2 id="contributing">Contributing</h2>
 
-If you encounter any errors/bugs or would like to request a feature, please [open an issue on GitHub](https://github.com/TheoAcker12/grav-plugin-leaflet-tour/issues) or send an email to theoacker@ou.edu. You can also send an email to provide any other feedback you have. More information about collaboration options can be found on the [collaboration section of the documentation site](https://theoacker.oucreate.com/leaflet-tour/home#collaboration).
+If you encounter any errors/bugs or would like to request a feature, please [open an issue on GitHub](https://github.com/oulibraries/grav-plugin-leaflet-tour/issues) or send an email to theoacker@ou.edu. You can also send an email to provide any other feedback you have. More information about collaboration options can be found on the [collaboration section of the documentation site](https://leaflet-tour.oucreate.com/home#collaboration).
 
 This theme uses the MIT license. Feel free to modify, remix, and/or redistribute the code as long as you provide attribution to the original.
